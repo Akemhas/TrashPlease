@@ -88,5 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89873e7246e084aa5bb93fb1af2fa17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeOfTrash: 0
+  TrashID: BrownTrash
+  TrashSortType: 0
   _image: {fileID: 346370368702982139}

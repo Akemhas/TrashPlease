@@ -6,8 +6,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class TrashLoader : MonoBehaviour
 {
-    public readonly Dictionary<string, GameObject> ReferenceCache = new();
-    private readonly Dictionary<string, int> _referenceCountLookup = new();
+    public readonly Dictionary<string, GameObject> PrefabReferenceCache = new();
+    public readonly Dictionary<string, int> ReferenceCountCache = new();
 
     public void LoadTrash(string address)
     {
@@ -19,35 +19,30 @@ public class TrashLoader : MonoBehaviour
         LoadMultipleTrashAsync(addresses);
     }
 
-    public void DestroyTrash(string address, GameObject go)
+    public void DestroyTrash(Trash trash)
     {
+        var address = trash.TrashAddress;
+        var go = trash.gameObject;
         Destroy(go);
-        var refCount = --_referenceCountLookup[address];
+        var refCount = --ReferenceCountCache[address];
 
         if (refCount > 0) return;
 
-        ReferenceCache.Remove(address);
-        _referenceCountLookup.Remove(address);
-        Addressables.Release(go);
-        Debug.Log($"Trash {address} is not used anymore releasing it's reference");
+        Addressables.Release(PrefabReferenceCache[address]);
+        PrefabReferenceCache.Remove(address);
+        ReferenceCountCache.Remove(address);
+        Debug.Log($"{address} is not being used anymore releasing it's reference");
     }
 
     private async void LoadTrashAsync(string address)
     {
-        if (_referenceCountLookup.TryGetValue(address, out int refCount))
-        {
-            if (refCount > 0) return;
-        }
-        else _referenceCountLookup.TryAdd(address, 0);
-
         var handle = Addressables.LoadAssetAsync<GameObject>(address);
 
         handle.Completed += operationHandle =>
         {
-            if (operationHandle.Status == AsyncOperationStatus.Succeeded)
+            ReferenceCountCache.TryAdd(address, 0);
+            if (PrefabReferenceCache.TryAdd(address, operationHandle.Result))
             {
-                ReferenceCache.TryAdd(address, operationHandle.Result);
-                _referenceCountLookup[address] = refCount + 1;
             }
         };
 
@@ -60,20 +55,16 @@ public class TrashLoader : MonoBehaviour
 
         foreach (var address in addresses)
         {
-            if (_referenceCountLookup.TryGetValue(address, out int refCount))
-            {
-                if (refCount > 0) continue;
-            }
-            else _referenceCountLookup.TryAdd(address, 0);
-
             var handle = Addressables.LoadAssetAsync<GameObject>(address);
 
             handle.Completed += operationHandle =>
             {
                 if (operationHandle.Status == AsyncOperationStatus.Succeeded)
                 {
-                    ReferenceCache.TryAdd(address, operationHandle.Result);
-                    _referenceCountLookup[address] = refCount + 1;
+                    ReferenceCountCache.TryAdd(address, 0);
+                    if (PrefabReferenceCache.TryAdd(address, operationHandle.Result))
+                    {
+                    }
                 }
             };
 
