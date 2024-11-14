@@ -20,16 +20,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c3f8be77c135943b6909dace5083a7ed
-    m_Address: BrownTrash
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e53fe25a6d6544c52b8d3aa54f0deb84
-    m_Address: GreenTrash
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 761b5f70b306a44638278b00bbe4b25d, type: 2}
   m_SchemaSet:

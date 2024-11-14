@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,18 +5,47 @@ using Random = UnityEngine.Random;
 public class TrashController : Singleton<TrashController>
 {
     [SerializeField] private TrashLoader _trashLoader;
-    private Transform _parentTransform;
+    [SerializeField] private Transform _garbageDumpArea;
     private List<GameObject> _instantiatedTrashList = new();
 
     [SerializeField] private string[] _dummyAddresses;
+    [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
 
     private Bounds _trashSpawnBounds;
 
     private void Awake()
     {
-        _parentTransform = UIManager.Instance.TrashParent;
-        _trashSpawnBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(UIManager.Instance.GarbageDumpArea);
-        _trashSpawnBounds.extents *= .5f;
+        InputManager.Instance.TrashDroppedOnPlayerBin += OnTrashDroppedOnPlayerBin;
+        InputManager.Instance.TrashDroppedOnEmptySpace += OnTrashDroppedOnEmptySpace;
+        InputManager.Instance.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
+
+        _trashSpawnBounds = _garbageDumpArea.GetComponent<Collider2D>().bounds;
+        _trashSpawnBounds.extents *= 1 - _spawnSpacingAmount;
+    }
+
+    private void OnTrashDroppedOnTrashArea(Trash trash)
+    {
+        Debug.Log($"Trash area");
+        trash.SavePosition();
+    }
+
+    private void OnTrashDroppedOnEmptySpace(Trash trash)
+    {
+        Debug.Log($"Empty Space");
+        trash.ReturnToStartPosition();
+    }
+
+    private void OnTrashDroppedOnPlayerBin(Trash trash, PlayerBin playerBin)
+    {
+        Debug.Log($"Player bin = {playerBin.name}");
+        if (trash.TrashSortType == playerBin.BinTrashSortType)
+        {
+            DestroyTrash(trash);
+        }
+        else
+        {
+            trash.ReturnToStartPosition();
+        }
     }
 
     [ContextMenu("Load Trash")]
@@ -65,10 +93,12 @@ public class TrashController : Singleton<TrashController>
 
         _trashLoader.ReferenceCountCache[address]++;
         var randomXPos = Random.Range(_trashSpawnBounds.min.x, _trashSpawnBounds.max.x);
-        var randomYPos = Random.Range(_trashSpawnBounds.min.x, _trashSpawnBounds.max.y);
-        var randomQuaternion = Quaternion.Euler(0, 0, Random.Range(-90f, 90f));
-        var instantiatedTrash = Instantiate(prefab, _parentTransform);
-        instantiatedTrash.transform.localPosition = new Vector3(randomXPos, randomYPos, 0);
+        var randomYPos = Random.Range(_trashSpawnBounds.min.y, _trashSpawnBounds.max.y);
+        var randomQuaternion = Quaternion.Euler(0, 0, Random.Range(-70f, 70f));
+
+        var instantiatedTrash = Instantiate(prefab);
+
+        instantiatedTrash.transform.position = new Vector3(randomXPos, randomYPos, 0);
         instantiatedTrash.transform.rotation = randomQuaternion;
         var trash = instantiatedTrash.GetComponent<Trash>();
         trash.TrashAddress = address;

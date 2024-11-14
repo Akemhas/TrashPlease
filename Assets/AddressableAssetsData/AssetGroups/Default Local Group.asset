@@ -14,7 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: dabc8050097564d6abc42938bca4bc4c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1b385b65a4deb4388b55786021b5178a
+    m_Address: Tuna
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d5052e6ba10e40a1b6d6391c7a45197
+    m_Address: CigButt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 829629e7433d94d7fb11ddb38a8b9891
+    m_Address: Soda
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 761b5f70b306a44638278b00bbe4b25d, type: 2}
   m_SchemaSet:
