@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8df284d561208ca458d8f9d6d6fb7da1
+guid: b0048df27de0b472897ca603ebbd3c88
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5577718095757230281
-    second: catFood_0
+      213: -6810749641156755866
+    second: bad_belt_texture_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,15 +40,15 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: catFood_0
+      name: bad_belt_texture_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 47
-        height: 45
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c0c0ea5e09086d40800000000000000
-      internalID: 5577718095757230281
+      spriteID: 66e7bb8494b5b71a0800000000000000
+      internalID: -6810749641156755866
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 338e92703e02043d1bd1e02669606010
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      catFood_0: 5577718095757230281
+      bad_belt_texture_0: -6810749641156755866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

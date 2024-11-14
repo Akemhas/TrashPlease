@@ -31,7 +31,9 @@ public class TrashLoader : MonoBehaviour
         Addressables.Release(PrefabReferenceCache[address]);
         PrefabReferenceCache.Remove(address);
         ReferenceCountCache.Remove(address);
+#if UNITY_EDITOR
         Debug.Log($"{address} is not being used anymore releasing it's reference");
+#endif
     }
 
     private async void LoadTrashAsync(string address)

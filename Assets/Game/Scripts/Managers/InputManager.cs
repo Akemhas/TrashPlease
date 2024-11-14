@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PrimeTween;
 
 public class InputManager : Singleton<InputManager>
 {
@@ -41,6 +42,8 @@ public class InputManager : Singleton<InputManager>
         if (hit.collider == null) return;
 
         _trash = hit.collider.GetComponent<Trash>();
+        _trash.Renderer.sortingOrder = 5;
+        Tween.Scale(_trash.transform, new Vector3(1.5f, 1.5f, 1), new TweenSettings(.2f, Ease.OutBack));
         _dragHandler.AddDraggable(_trash.transform);
         _inputState = InputState.CarryingObject;
     }
@@ -73,6 +76,8 @@ public class InputManager : Singleton<InputManager>
 
     private void ReleaseDrag()
     {
+        Tween.Scale(_trash.transform, Vector3.one, new TweenSettings(.125f, Ease.Linear));
+
         _trash = null;
         _dragHandler.RemoveDraggable();
         _inputState = InputState.Idle;

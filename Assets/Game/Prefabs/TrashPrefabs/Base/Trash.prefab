@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89873e7246e084aa5bb93fb1af2fa17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider2D: {fileID: 3822255981220771088}
+  Renderer: {fileID: 701505924228393946}
   TrashSortType: 1
 --- !u!61 &3822255981220771088
 BoxCollider2D:

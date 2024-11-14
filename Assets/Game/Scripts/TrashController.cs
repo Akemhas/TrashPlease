@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -23,21 +24,31 @@ public class TrashController : Singleton<TrashController>
         _trashSpawnBounds.extents *= 1 - _spawnSpacingAmount;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            DummyLoadTrash();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            DummyInsTrash();
+        }
+    }
+
     private void OnTrashDroppedOnTrashArea(Trash trash)
     {
-        Debug.Log($"Trash area");
         trash.SavePosition();
     }
 
     private void OnTrashDroppedOnEmptySpace(Trash trash)
     {
-        Debug.Log($"Empty Space");
         trash.ReturnToStartPosition();
     }
 
     private void OnTrashDroppedOnPlayerBin(Trash trash, PlayerBin playerBin)
     {
-        Debug.Log($"Player bin = {playerBin.name}");
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
             DestroyTrash(trash);
@@ -101,6 +112,7 @@ public class TrashController : Singleton<TrashController>
         instantiatedTrash.transform.position = new Vector3(randomXPos, randomYPos, 0);
         instantiatedTrash.transform.rotation = randomQuaternion;
         var trash = instantiatedTrash.GetComponent<Trash>();
+        trash.Renderer.sortingOrder = Random.Range(1, 4);
         trash.TrashAddress = address;
         _instantiatedTrashList.Add(instantiatedTrash);
     }

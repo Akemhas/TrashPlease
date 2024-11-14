@@ -30,8 +30,6 @@ public class ConveyorBeltCreator : MonoBehaviour
             Destroy(b);
         }
 
-        Debug.Log(rectWidth);
-
         float currentPosX = -100 + beltWidth * beltScaleX;
 
         while (currentPosX > -rectWidth - (beltWidth*beltScaleX/2))
@@ -48,11 +46,6 @@ public class ConveyorBeltCreator : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnGUI()
     {
         if (GUILayout.Button("Add Bin"))
