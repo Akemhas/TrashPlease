@@ -47,6 +47,7 @@ public class DragHandler : MonoBehaviour
         _worldPos.y = mouseScreenPos.y;
 
         var newPosition = _mainCam.ScreenToWorldPoint(_worldPos);
+        newPosition.z = _draggable.position.z;
         _draggable.position = newPosition;
     }
 }

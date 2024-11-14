@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using PrimeTween;
@@ -20,6 +21,7 @@ public class InputManager : Singleton<InputManager>
     public event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
     public event Action<Trash> TrashDroppedOnEmptySpace;
     public event Action<Trash> TrashDroppedOnTrashArea;
+    public event Action<Trash> TrashPicked;
 
     [SerializeField] private DragHandler _dragHandler;
     [SerializeField] private PlayerInput _playerInput;
@@ -42,7 +44,7 @@ public class InputManager : Singleton<InputManager>
         if (hit.collider == null) return;
 
         _trash = hit.collider.GetComponent<Trash>();
-        _trash.Renderer.sortingOrder = 5;
+        TrashPicked?.Invoke(_trash);
         Tween.Scale(_trash.transform, new Vector3(1.5f, 1.5f, 1), new TweenSettings(.2f, Ease.OutBack));
         _dragHandler.AddDraggable(_trash.transform);
         _inputState = InputState.CarryingObject;

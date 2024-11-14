@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Trash
+  m_Name: CenterBins
   m_EditorClassIdentifier: 
-  m_GroupName: Trash
-  m_GUID: 48a334f0201c342e299db47968ef415b
+  m_GroupName: CenterBins
+  m_GUID: 4a610f0bb44d44d989a81b336aa03702
   m_SerializeEntries:
-  - m_GUID: 1b385b65a4deb4388b55786021b5178a
-    m_Address: Tuna
+  - m_GUID: 2be8dda4095a04af9a4171c3c9024110
+    m_Address: Bin_Black
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f88b0d8066234561b7a6f6f452a4dc8
-    m_Address: RedTrash
+  - m_GUID: 3903374e796c34560856dd88b932ed8c
+    m_Address: Bin_Brown
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4d5052e6ba10e40a1b6d6391c7a45197
-    m_Address: CigButt
+  - m_GUID: 7488454f21c3649219dc75cb310db8ed
+    m_Address: Bin_Blue
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 829629e7433d94d7fb11ddb38a8b9891
-    m_Address: Soda
+  - m_GUID: fff8870d3b55a42d3b31f55417f5bf09
+    m_Address: Bin_Yellow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -39,5 +39,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 761b5f70b306a44638278b00bbe4b25d, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 697f2643412b849509f743affc0dc8a1, type: 2}
-    - {fileID: 11400000, guid: 954b4f64ae6ef48cbb2cee43829d689f, type: 2}
+    - {fileID: 11400000, guid: d1b3a80bd16224a9eb55750b72ad2992, type: 2}
+    - {fileID: 11400000, guid: 374a2c1cdd5b94513a53378b5d2ad0c7, type: 2}

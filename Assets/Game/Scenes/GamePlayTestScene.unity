@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 1718630965}
   - component: {fileID: 1718630966}
   - component: {fileID: 1718630967}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TrashArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,8 +1085,8 @@ Transform:
   m_GameObject: {fileID: 1718630964}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.65, z: 0}
-  m_LocalScale: {x: 0.85, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2089603644}
@@ -1114,7 +1114,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 38b4eca6b28fc454a9ad9d95be2098c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1135,14 +1135,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: b0048df27de0b472897ca603ebbd3c88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dde27cb9f07c7428889c951087851ce8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 5, y: 2.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_DrawMode: 0
+  m_Size: {x: 4, y: 2}
+  m_AdaptiveModeThreshold: 1
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -1185,12 +1185,12 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 5, y: 2.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
+    newSize: {x: 4, y: 2}
+    adaptiveTilingThreshold: 1
+    drawMode: 0
+    adaptiveTiling: 1
   m_AutoTiling: 0
-  m_Size: {x: 5, y: 2.56}
+  m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
 --- !u!1 &2089603643
 GameObject:
@@ -1219,7 +1219,7 @@ Transform:
   m_GameObject: {fileID: 2089603643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1251,12 +1251,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trashLoader: {fileID: 2089603645}
-  _garbageDumpArea: {fileID: 1718630965}
+  _beltRenderer: {fileID: 1718630966}
+  _spawnSpacingAmount: 0.4
+  _binEntranceDuration: 0.8
   _dummyAddresses:
   - CigButt
   - Soda
   - Tuna
-  _spawnSpacingAmount: 0.4
 --- !u!1001 &2632595038344106141
 PrefabInstance:
   m_ObjectHideFlags: 0
