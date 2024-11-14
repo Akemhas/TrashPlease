@@ -14,7 +14,6 @@ public class ConveyorBeltCreator : MonoBehaviour
     private float beltWidth;
     private float beltScaleX;
     public List<GameObject> beltList;
-    public GameObject scannerBelt;
     void Start()
     {
         beltWidth = belt.GetComponent<RectTransform>().rect.width;
@@ -33,28 +32,17 @@ public class ConveyorBeltCreator : MonoBehaviour
 
         Debug.Log(rectWidth);
 
-        float currentPosX = -100;
+        float currentPosX = -100 + beltWidth * beltScaleX;
 
-        scannerBelt = Instantiate(belt);
-        scannerBelt.transform.SetParent(gameObject.transform, false);
-        scannerBelt.transform.SetSiblingIndex(0);
-        scannerBelt.GetComponent<RectTransform>().anchoredPosition = new Vector3(currentPosX, 88, 0);
-        beltList.Add(scannerBelt);
-
-        GameObject lastBelt = Instantiate(belt);
-        lastBelt.transform.SetParent(gameObject.transform, false);
-        lastBelt.transform.SetSiblingIndex(0);
-        lastBelt.GetComponent<RectTransform>().anchoredPosition = new Vector3(currentPosX + beltWidth * beltScaleX, 88, 0);
-        beltList.Add(lastBelt);
-
-        while (currentPosX > -rectWidth + (beltWidth*beltScaleX/2))
+        while (currentPosX > -rectWidth - (beltWidth*beltScaleX/2))
         {
-            currentPosX = currentPosX - beltWidth * beltScaleX;
+            
             GameObject b = Instantiate(belt);
             b.transform.SetParent(gameObject.transform, false);
             b.transform.SetSiblingIndex(0);
             b.GetComponent<RectTransform>().anchoredPosition = new Vector3(currentPosX, 88, 0);
             beltList.Add(b);
+            currentPosX = currentPosX - beltWidth * beltScaleX;
         }
 
 
