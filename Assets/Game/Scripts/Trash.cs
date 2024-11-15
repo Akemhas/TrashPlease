@@ -13,26 +13,26 @@ public class Trash : MonoBehaviour
 
     private void Awake()
     {
-        _startPosition = transform.position;
+        _startPosition = transform.localPosition;
     }
 
     public void SavePosition()
     {
-        _startPosition = transform.position;
+        _startPosition = transform.localPosition;
     }
 
     public void SetZPosition(float z)
     {
-        var pos = transform.position;
+        var pos = transform.localPosition;
         pos.z = z;
         _startPosition.z = z;
-        transform.position = pos;
+        transform.localPosition = pos;
     }
 
     public void ReturnToStartPosition()
     {
         _collider2D.enabled = false;
-        Tween.Position(transform, _startPosition, _ts).OnComplete(() => _collider2D.enabled = true);
+        Tween.LocalPosition(transform, _startPosition, _ts).OnComplete(() => _collider2D.enabled = true);
     }
 
     public void ToggleCollider2D(bool enabled)

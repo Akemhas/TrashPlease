@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.24056602
       objectReference: {fileID: 0}
+    - target: {fileID: 6672157896076750666, guid: c64a17732803849fd89d6c8d42f2c19f, type: 3}
+      propertyPath: SortType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8816518709020548846, guid: c64a17732803849fd89d6c8d42f2c19f, type: 3}
       propertyPath: m_Name
       value: Bin_Blue
