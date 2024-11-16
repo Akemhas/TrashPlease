@@ -67,3 +67,12 @@ remote_config_data
 mono_crash.*.json
 *_BackupThisFolder_ButDontShipItWithYourGame
 *_BurstDebugInformation_DoNotShip
+
+# Ignore the auto-generated AOT compatibility dll.
+/Assets/Plugins/Sirenix/Assemblies/AOT/*
+
+# Ignore all unpacked demos.
+/Assets/Plugins/Sirenix/Demos/*
+
+# But keep the demo packages themselves.
+!/Assets/Plugins/Sirenix/Demos/*.unitypackage
