@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Size.x
-      value: 1.0666667
+      value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Size.y
-      value: 1.0666667
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_IsTrigger
@@ -50,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.0666667
+      value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.0666667
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4827267231866907148, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Name
-      value: Newspapers
+      value: Newspaper
       objectReference: {fileID: 0}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: TrashSortType
