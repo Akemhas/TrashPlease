@@ -1260,6 +1260,7 @@ MonoBehaviour:
   - UsedTissues
   - PaperBag
   - Newspaper
+  - CoffeeBeans
 --- !u!1001 &2632595038344106141
 PrefabInstance:
   m_ObjectHideFlags: 0
