@@ -3,13 +3,29 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] private Collider2D _collider2D;
+    [SerializeField] private BoxCollider2D _boxCollider;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     internal string TrashAddress;
 
     public TrashSortType TrashSortType;
     private Vector3 _startPosition;
 
     private readonly TweenSettings _ts = new(.2f, Ease.InOutCubic);
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (_boxCollider != null && _spriteRenderer != null)
+        {
+            var size = _spriteRenderer.sprite.bounds.size;
+            if (_boxCollider.size == new Vector2(size.x, size.y)) return;
+            
+            // Update the BoxCollider2D size to match the sprite's bounds
+            _boxCollider.size = size;
+            _boxCollider.offset = _spriteRenderer.sprite.bounds.center;
+        }
+    }
+#endif
 
     private void Awake()
     {
@@ -31,13 +47,13 @@ public class Trash : MonoBehaviour
 
     public void ReturnToStartPosition()
     {
-        _collider2D.enabled = false;
-        Tween.LocalPosition(transform, _startPosition, _ts).OnComplete(() => _collider2D.enabled = true);
+        _boxCollider.enabled = false;
+        Tween.LocalPosition(transform, _startPosition, _ts).OnComplete(() => _boxCollider.enabled = true);
     }
 
     public void ToggleCollider2D(bool enabled)
     {
-        _collider2D.enabled = enabled;
+        _boxCollider.enabled = enabled;
     }
 }
 

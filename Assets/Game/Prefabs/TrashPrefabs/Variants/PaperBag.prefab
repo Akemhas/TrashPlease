@@ -9,32 +9,60 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 701505924228393946, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Size.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 701505924228393946, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Size.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 701505924228393946, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c54960ac73a654b4e94e1f70a46363fc, type: 3}
+      objectReference: {fileID: 21300000, guid: 71221e661e5814a50a5beb04bd9da1a1, type: 3}
+    - target: {fileID: 701505924228393946, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Size.x
-      value: 0.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Size.y
-      value: 0.64
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4827267231866907148, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Name
-      value: CigButt
+      value: PaperBag
       objectReference: {fileID: 0}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: TrashSortType
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8806816765880552638, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

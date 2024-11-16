@@ -1256,6 +1256,10 @@ MonoBehaviour:
   - CigButt
   - Soda
   - Tuna
+  - TeaBag
+  - UsedTissues
+  - PaperBag
+  - Newspaper
 --- !u!1001 &2632595038344106141
 PrefabInstance:
   m_ObjectHideFlags: 0

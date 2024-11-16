@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8df284d561208ca458d8f9d6d6fb7da1
+guid: 06f155f887e02409094cd256cfe042e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5577718095757230281
-    second: catFood_0
+      213: 6110437920624562529
+    second: usedtissues18_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,12 +72,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -102,7 +102,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: 65
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 100
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 1
@@ -115,7 +115,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: 65
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 100
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: catFood_0
+      name: usedtissues18_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 47
-        height: 45
+        x: 0
+        y: 0
+        width: 18
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c0c0ea5e09086d40800000000000000
-      internalID: 5577718095757230281
+      spriteID: 16157e01ae2acc450800000000000000
+      internalID: 6110437920624562529
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      catFood_0: 5577718095757230281
+      usedtissues18_0: 6110437920624562529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

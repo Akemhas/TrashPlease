@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: Trash
   m_GUID: 48a334f0201c342e299db47968ef415b
   m_SerializeEntries:
-  - m_GUID: 1b385b65a4deb4388b55786021b5178a
-    m_Address: Tuna
+  - m_GUID: 00b519aef341c4e84811af4a46aac3a5
+    m_Address: PaperBag
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f88b0d8066234561b7a6f6f452a4dc8
-    m_Address: RedTrash
+  - m_GUID: 12268384228d4476bbc207b82dae2d76
+    m_Address: UsedTissues
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b385b65a4deb4388b55786021b5178a
+    m_Address: Tuna
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -32,6 +37,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 829629e7433d94d7fb11ddb38a8b9891
     m_Address: Soda
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a556e91caf7ff4f83b835766af117d88
+    m_Address: TeaBag
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2c3ba614c2e048bbafcfbeed67ee8fe
+    m_Address: Newspaper
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
