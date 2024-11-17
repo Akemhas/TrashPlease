@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    [SerializeField] private TrashData _trashData;
     [SerializeField] private BoxCollider2D _boxCollider;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     internal string TrashAddress;
 
-    public TrashSortType TrashSortType;
+    public TrashSortType TrashSortType => _trashData.SortType;
     private Vector3 _startPosition;
 
     private readonly TweenSettings _ts = new(.2f, Ease.InOutCubic);
