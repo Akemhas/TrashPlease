@@ -13,11 +13,6 @@ public class BinController : Singleton<BinController>
     internal Transform CurrentBin;
 
     private AsyncOperationHandle<GameObject> _binHandle;
-
-    internal Transform lastBin;
-
-    private AsyncOperationHandle<GameObject> _lastBinHandle;
-
     private InstantiationParameters _binSpawnParams;
     private Vector3 _binSpawnPos, _binDestroyPos;
 
@@ -39,12 +34,6 @@ public class BinController : Singleton<BinController>
         {
             DestroyBin();
         }
-
-    }
-
-    public AsyncOperationHandle<GameObject> getbinHandle()
-    {
-        return _binHandle;
     }
 
     private void CalculateBinInsParameters()
@@ -57,7 +46,6 @@ public class BinController : Singleton<BinController>
         _binSpawnPos = new Vector3(-screenWidth / 2 - 2, 0, 0);
         _binSpawnPos.x -= mainCam.transform.position.x;
 
-
         _binDestroyPos = new Vector3(screenWidth / 2 + 2, 0, 0);
         _binDestroyPos.x += mainCam.transform.position.x;
 
@@ -66,7 +54,6 @@ public class BinController : Singleton<BinController>
 
         _binSpawnParams = new InstantiationParameters(_binSpawnPos, Quaternion.identity, transform);
     }
-
 
     public void DestroyBin()
     {
@@ -82,18 +69,16 @@ public class BinController : Singleton<BinController>
             });
     }
 
-    public AsyncOperationHandle<GameObject> StartCreatingBin(TrashSortType sortType)
+    public void StartCreatingBin(TrashSortType sortType)
     {
         if (_binHandle.IsValid())
         {
             Debug.LogWarning($"Please destroy the current bin before instantiating another one");
-            return _binHandle;
+            return;
         }
 
         _binHandle = Addressables.InstantiateAsync(BinAddress(sortType), _binSpawnParams);
         _binHandle.Completed += OnBinInstantiated;
-
-        return _binHandle;
     }
 
     private void OnBinInstantiated(AsyncOperationHandle<GameObject> handle)
@@ -106,7 +91,6 @@ public class BinController : Singleton<BinController>
         Tween.LocalPositionX(t, 0, _binEntranceDuration);
         ScrollConveyorBelt();
     }
-
 
     private void ScrollConveyorBelt()
     {

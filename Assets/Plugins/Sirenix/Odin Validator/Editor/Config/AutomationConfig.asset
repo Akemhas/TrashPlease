@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnPlayMode: 1
   OnPlayModeIfWarnings: 4
-  OnPlayModeIfErrors: 5
+  OnPlayModeIfErrors: 4
   OnPlayModeAlwaysCompleteValidationFully: 0
   OnPlayModeFlashScreen: 0
   OnPlayModeSetup:
