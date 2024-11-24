@@ -12,5 +12,6 @@ public class UIManager : Singleton<UIManager>
 
     private void OnOkButtonClicked()
     {
+        GameManager.Instance.ProgressBin();
     }
 }

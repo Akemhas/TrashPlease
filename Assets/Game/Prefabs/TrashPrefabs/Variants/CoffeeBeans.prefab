@@ -33,6 +33,10 @@ PrefabInstance:
       value: CoffeeBeans
       objectReference: {fileID: 0}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 15311f35c77b14354907f4bfebda65bc, type: 2}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: _trashData
       value: 
       objectReference: {fileID: 11400000, guid: 15311f35c77b14354907f4bfebda65bc, type: 2}

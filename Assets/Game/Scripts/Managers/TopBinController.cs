@@ -6,7 +6,7 @@ using PrimeTween;
 
 public class TopBinController : MonoBehaviour
 {
-    public event Action BinReachedEnd;
+    public event Action<TrashSortType> BinReachedEnd;
 
     [SerializeField] private TopBinPool _topBinPool;
     [SerializeField] private BinFrequencyData _binFrequencyData;
@@ -68,8 +68,21 @@ public class TopBinController : MonoBehaviour
         CreateTopBin();
     }
 
+    public async Awaitable SendBinToScanner()
+    {
+        var bin = _topBinQueue.Dequeue();
 
-    public TopBin PopBin() => _topBinQueue.Dequeue();
+        try
+        {
+            await Tween.PositionX(bin.transform, _scanner.position.x, .4f);
+            _topBinPool.Release(bin);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
     private void MoveBins()
     {
@@ -95,7 +108,7 @@ public class TopBinController : MonoBehaviour
             {
                 if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
                 {
-                    BinReachedEnd?.Invoke();
+                    BinReachedEnd?.Invoke(topBin.SortType);
                 }
 
                 PlayingAnimationCount--;
@@ -104,7 +117,12 @@ public class TopBinController : MonoBehaviour
         }
     }
 
-    public void CreateTopBin()
+    public TopBin Peek() => _topBinQueue.Peek();
+
+    public bool TryPeek(out TopBin result) => _topBinQueue.TryPeek(out result);
+
+
+    public TrashSortType CreateTopBin()
     {
         var sortType = _binFrequencyData.GetSortType(BinCounter);
         BinCounter++;
@@ -112,5 +130,6 @@ public class TopBinController : MonoBehaviour
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
         MoveBins();
+        return sortType;
     }
 }

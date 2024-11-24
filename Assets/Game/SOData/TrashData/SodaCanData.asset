@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54cde4bc90b3f4b32b76e97ee17db2d1, type: 3}
-  m_Name: UsedTissues
+  m_Name: SodaCanData
   m_EditorClassIdentifier: 
-  SortType: 3
-  Name: Used Tissues
+  Address: SodaCan
+  SortType: 1
+  Name: Soda Can
   Information: This is not harmful goes to brown bin

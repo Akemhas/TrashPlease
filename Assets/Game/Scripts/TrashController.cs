@@ -1,19 +1,24 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class TrashController : Singleton<TrashController>
+public class TrashController : MonoBehaviour
 {
-    [ReadOnly] public bool IsCurrentTrashLoaded;
-
+    [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
 
+
+    private List<string> _loadedTrashList = new();
     private List<Trash> _instantiatedTrashList = new();
 
     private Bounds _trashSpawnBounds;
     private float _closestZPosition = 1;
+    private readonly Array _trashSortTypes = Enum.GetValues(typeof(TrashSortType));
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(.02f);
+
 
     private void Awake()
     {
@@ -76,9 +81,40 @@ public class TrashController : Singleton<TrashController>
         }
     }
 
-    public void LoadTrash(string[] trashAddresses)
+    public void LoadTrash(TrashSortType sortType, int count = 3)
     {
-        _trashLoader.LoadMultipleTrash(trashAddresses);
+        _loadedTrashList.Clear();
+
+        var wrongTypes = GetWrongSortTypes(sortType);
+
+        for (int i = 0; i < count; i++)
+        {
+            int randomValue = Random.Range(0, 2);
+            string address;
+
+            if (randomValue % 2 == 0)
+            {
+                address = _trashTypeData.GetRandomTrashAddress(sortType);
+            }
+            else
+            {
+                var wrongSortType = wrongTypes[Random.Range(0, wrongTypes.Count)];
+                address = _trashTypeData.GetRandomTrashAddress(wrongSortType);
+            }
+
+            _trashLoader.LoadTrash(address);
+            _loadedTrashList.Add(address);
+        }
+    }
+
+    public bool CheckTrashSorting(TrashSortType binsSortType)
+    {
+        foreach (var trash in _instantiatedTrashList)
+        {
+            if (trash.TrashSortType != binsSortType) return false;
+        }
+
+        return true;
     }
 
     public void ToggleTrashColliders(bool isEnabled)
@@ -100,44 +136,69 @@ public class TrashController : Singleton<TrashController>
         _trashLoader.DestroyTrash(trash);
     }
 
-    public void InstantiateTrash(string[] trashAddresses, Transform parent)
+    private List<TrashSortType> GetWrongSortTypes(TrashSortType sortType)
     {
-        foreach (var address in trashAddresses)
+        List<TrashSortType> wrongSortTypes = new List<TrashSortType>();
+        foreach (var value in _trashSortTypes)
         {
-            InstantiateTrash(address, parent);
+            var enumValue = (TrashSortType)value;
+            if (enumValue != sortType)
+            {
+                wrongSortTypes.Add(enumValue);
+            }
+        }
+
+        return wrongSortTypes;
+    }
+
+    public void InstantiateTrashWhenReady(Transform parent)
+    {
+        if (parent == null) return;
+        if (_trashLoader.LoadingCount > 0)
+        {
+            StartCoroutine(WaitUntilLoadingFinish(parent));
+        }
+        else
+        {
+            InstantiateTrash(parent);
         }
     }
 
-    public void InstantiateTrash(string address, Transform parent)
+    private IEnumerator WaitUntilLoadingFinish(Transform parent)
     {
-        if (!_trashLoader.PrefabReferenceCache.TryGetValue(address, out GameObject prefab))
+        while (_trashLoader.LoadingCount > 0)
         {
-            Debug.LogWarning($"Trying instantiate {address} without loading it first");
-            return;
+            yield return _waitForSeconds;
         }
 
-        if (parent == null) return;
+        InstantiateTrash(parent);
+    }
 
-        _trashSpawnBounds = parent.GetComponent<Collider2D>().bounds;
-        _trashSpawnBounds.extents *= 1 - _spawnSpacingAmount;
+    private void InstantiateTrash(Transform parent)
+    {
+        foreach (var address in _loadedTrashList)
+        {
+            var prefab = _trashLoader.PrefabReferenceCache[address];
+            _trashSpawnBounds = parent.GetComponent<Collider2D>().bounds;
+            _trashSpawnBounds.extents *= 1 - _spawnSpacingAmount;
 
-        _trashLoader.ReferenceCountCache[address]++;
-        var maxX = _trashSpawnBounds.extents.x / 2;
-        var minX = -maxX;
-        var maxY = _trashSpawnBounds.extents.y / 2;
-        var minY = -maxY;
-        var randomXPos = Random.Range(minX, maxX);
-        var randomYPos = Random.Range(minY, maxY);
+            _trashLoader.ReferenceCountCache[address]++;
+            var maxX = _trashSpawnBounds.extents.x / 2;
+            var minX = -maxX;
+            var maxY = _trashSpawnBounds.extents.y / 2;
+            var minY = -maxY;
+            var randomXPos = Random.Range(minX, maxX);
+            var randomYPos = Random.Range(minY, maxY);
 
-        var randomQuaternion = Quaternion.Euler(0, 0, Random.Range(-70f, 70f));
+            var randomQuaternion = Quaternion.Euler(0, 0, Random.Range(-70f, 70f));
 
-        var instantiatedTrash = Instantiate(prefab, parent);
+            var instantiatedTrash = Instantiate(prefab, parent);
 
-        _closestZPosition -= .001f;
-        instantiatedTrash.transform.localPosition = new Vector3(randomXPos, randomYPos, _closestZPosition);
-        instantiatedTrash.transform.rotation = randomQuaternion;
-        var trash = instantiatedTrash.GetComponent<Trash>();
-        trash.TrashAddress = address;
-        _instantiatedTrashList.Add(trash);
+            _closestZPosition -= .001f;
+            instantiatedTrash.transform.localPosition = new Vector3(randomXPos, randomYPos, _closestZPosition);
+            instantiatedTrash.transform.rotation = randomQuaternion;
+            var trash = instantiatedTrash.GetComponent<Trash>();
+            _instantiatedTrashList.Add(trash);
+        }
     }
 }

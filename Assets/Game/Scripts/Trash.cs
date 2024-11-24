@@ -1,14 +1,16 @@
 using PrimeTween;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] private TrashData _trashData;
+    public TrashData Data;
     [SerializeField] private BoxCollider2D _boxCollider;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    internal string TrashAddress;
 
-    public TrashSortType TrashSortType => _trashData.SortType;
+    public TrashSortType TrashSortType => Data.SortType;
     private Vector3 _startPosition;
 
     private readonly TweenSettings _ts = new(.2f, Ease.InOutCubic);
@@ -16,6 +18,12 @@ public class Trash : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        if (Data && string.IsNullOrEmpty(Data.Address))
+        {
+            Undo.RecordObject(Data,$"Data {Data} Address Change");
+            Data.Address = name;
+            PrefabUtility.RecordPrefabInstancePropertyModifications(Data);
+        }
         if (_boxCollider != null && _spriteRenderer != null)
         {
             var size = _spriteRenderer.sprite.bounds.size;

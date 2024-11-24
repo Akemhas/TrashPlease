@@ -53,6 +53,10 @@ PrefabInstance:
       value: TeaBag
       objectReference: {fileID: 0}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 50cb8fc0e98514fd38b5ab0c0050b68f, type: 2}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: _trashData
       value: 
       objectReference: {fileID: 11400000, guid: 50cb8fc0e98514fd38b5ab0c0050b68f, type: 2}

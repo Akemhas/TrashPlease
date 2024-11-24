@@ -1,3 +1,4 @@
+using System;
 using PrimeTween;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -7,8 +8,11 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class BinController : MonoBehaviour
 {
+    public event Action BinCreated;
+    public event Action BinBeforeDestroy;
+
     [ReadOnly] public Transform CurrentBin;
-    
+
     [SerializeField] private SpriteRenderer _beltRenderer;
     [SerializeField] private Vector2 _targetScrollValue = new Vector2(-1f, 0);
     [SerializeField] private float _binEntranceDuration = .8f;
@@ -22,19 +26,6 @@ public class BinController : MonoBehaviour
     private void Awake()
     {
         CalculateBinInsParameters();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            StartCreatingBin(TrashSortType.Yellow);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            DestroyBin();
-        }
     }
 
     private void CalculateBinInsParameters()
@@ -56,19 +47,13 @@ public class BinController : MonoBehaviour
         _binSpawnParams = new InstantiationParameters(_binSpawnPos, Quaternion.identity, transform);
     }
 
-    public void CheckBin()
+    public void DestroyBin()
     {
-    }
-
-    private void DestroyBin()
-    {
-        TrashController.Instance.ToggleTrashColliders(false);
-
         ScrollConveyorBelt();
         Tween.LocalPositionX(_binHandle.Result.transform, _binDestroyPos.x, _binEntranceDuration)
             .OnComplete(() =>
             {
-                TrashController.Instance.DestroyAllTrash();
+                BinBeforeDestroy?.Invoke();
                 CurrentBin = null;
                 Addressables.ReleaseInstance(_binHandle);
             });
@@ -93,6 +78,7 @@ public class BinController : MonoBehaviour
         lp.y = 0;
         t.localPosition = lp;
         CurrentBin = t;
+        BinCreated?.Invoke();
         Tween.LocalPositionX(t, 0, _binEntranceDuration);
         ScrollConveyorBelt();
     }

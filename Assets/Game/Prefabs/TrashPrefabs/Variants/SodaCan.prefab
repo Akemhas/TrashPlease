@@ -30,8 +30,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827267231866907148, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: m_Name
-      value: Soda
+      value: SodaCan
       objectReference: {fileID: 0}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 27c41f9e695734c3b82a9457de1cc700, type: 2}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: _trashData
       value: 

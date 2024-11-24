@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -12,6 +13,12 @@ public class TrashTypeData : ScriptableObject
     [SerializeField, OnValueChanged("ValueChanged")] private List<TrashData> _trashData;
 
     public TrashSortTypeTrashDataListDictionary TrashLookup = new();
+
+    public string GetRandomTrashAddress(TrashSortType sortType)
+    {
+        var data = TrashLookup[sortType];
+        return data[Random.Range(0, data.Count)].Address;
+    }
 
 #if UNITY_EDITOR
     private void ValueChanged()

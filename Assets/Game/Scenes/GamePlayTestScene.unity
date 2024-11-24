@@ -177,7 +177,7 @@ MonoBehaviour:
   _beltController: {fileID: 1930105323}
   _spawnInterval: 1.5
   _startPoint: {fileID: 366735780}
-  _scanner: {fileID: 0}
+  _scanner: {fileID: 547828901}
 --- !u!114 &134546410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547828901}
   m_Layer: 0
-  m_Name: EndPoint
+  m_Name: ScannerPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -774,7 +774,7 @@ Transform:
   m_GameObject: {fileID: 547828900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 3.82, z: 0}
+  m_LocalPosition: {x: 2.35, y: 3.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1287,8 +1287,8 @@ Transform:
   m_GameObject: {fileID: 1061512152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.75, y: -0.7, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 3.79, y: -0.5, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 444419265}
@@ -1896,6 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsCurrentTrashLoaded: 0
+  _trashTypeData: {fileID: 11400000, guid: a53a6f3d06f204227830e39191827d4d, type: 2}
   _trashLoader: {fileID: 2089603645}
   _spawnSpacingAmount: 0.4
 --- !u!1001 &620888123818607803
