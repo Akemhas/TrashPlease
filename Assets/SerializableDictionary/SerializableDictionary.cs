@@ -16,7 +16,6 @@ public abstract class SerializableDictionaryBase
 	}
 }
 
-[Serializable]
 public abstract class SerializableDictionaryBase<TKey, TValue, TValueStorage> : SerializableDictionaryBase, IDictionary<TKey, TValue>, IDictionary, ISerializationCallbackReceiver, IDeserializationCallback, ISerializable
 {
 	Dictionary<TKey, TValue> m_dict;
@@ -221,7 +220,6 @@ public static class SerializableDictionary
 	}
 }
 
-[Serializable]
 public class SerializableDictionary<TKey, TValue> : SerializableDictionaryBase<TKey, TValue, TValue>
 {
 	public SerializableDictionary() {}
@@ -239,7 +237,6 @@ public class SerializableDictionary<TKey, TValue> : SerializableDictionaryBase<T
 	}
 }
 
-[Serializable]
 public class SerializableDictionary<TKey, TValue, TValueStorage> : SerializableDictionaryBase<TKey, TValue, TValueStorage> where TValueStorage : SerializableDictionary.Storage<TValue>, new()
 {
 	public SerializableDictionary() {}

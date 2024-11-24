@@ -18,5 +18,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73094dd3fb0a243408a846bdd8ebe95f, type: 2}
   - {fileID: 11400000, guid: 7cae9080cfc434bcc8ae616aa46d2422, type: 2}
   - {fileID: 11400000, guid: 27c41f9e695734c3b82a9457de1cc700, type: 2}
+  - {fileID: 11400000, guid: 50cb8fc0e98514fd38b5ab0c0050b68f, type: 2}
+  - {fileID: 11400000, guid: 05f74e9a2b686400abf16256f7be13dc, type: 2}
+  - {fileID: 11400000, guid: 8f97f8dd0b24d49a2976789f53d40ba2, type: 2}
   TrashLookup:
-    _pairs: []
+    m_keys: 03000000000000000200000001000000
+    m_values:
+    - data:
+      - {fileID: 11400000, guid: 23229c57172cc448c81c310a0fbadb07, type: 2}
+      - {fileID: 11400000, guid: 8f97f8dd0b24d49a2976789f53d40ba2, type: 2}
+    - data:
+      - {fileID: 11400000, guid: 15311f35c77b14354907f4bfebda65bc, type: 2}
+      - {fileID: 11400000, guid: 50cb8fc0e98514fd38b5ab0c0050b68f, type: 2}
+    - data:
+      - {fileID: 11400000, guid: 73094dd3fb0a243408a846bdd8ebe95f, type: 2}
+      - {fileID: 11400000, guid: 7cae9080cfc434bcc8ae616aa46d2422, type: 2}
+    - data:
+      - {fileID: 11400000, guid: 27c41f9e695734c3b82a9457de1cc700, type: 2}
+      - {fileID: 11400000, guid: 05f74e9a2b686400abf16256f7be13dc, type: 2}

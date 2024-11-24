@@ -1,16 +1,22 @@
+using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "TrashTypeData", menuName = "TrashTypeData", order = 0)]
 public class TrashTypeData : ScriptableObject
 {
     [SerializeField, OnValueChanged("ValueChanged")] private List<TrashData> _trashData;
 
-    public SerializableDictionary<TrashSortType, List<TrashData>> TrashLookup = new();
+    public TrashSortTypeTrashDataListDictionary TrashLookup = new();
 
+#if UNITY_EDITOR
     private void ValueChanged()
     {
+        Undo.RecordObject(this, "DictionaryChange");
         TrashLookup.Clear();
 
         if (_trashData.Count <= 0)
@@ -28,5 +34,19 @@ public class TrashTypeData : ScriptableObject
 
             TrashLookup[data.SortType].Add(data);
         }
+
+        PrefabUtility.RecordPrefabInstancePropertyModifications(this);
     }
+#endif
+}
+
+
+[Serializable]
+public class TrashSortTypeTrashDataListDictionary : SerializableDictionary<TrashSortType, List<TrashData>, TrashDataListStorage>
+{
+}
+
+[Serializable]
+public class TrashDataListStorage : SerializableDictionary.Storage<List<TrashData>>
+{
 }
