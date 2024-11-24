@@ -1,16 +1,17 @@
 using PrimeTween;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 
-public class BinController : Singleton<BinController>
+public class BinController : MonoBehaviour
 {
+    [ReadOnly] public Transform CurrentBin;
+    
     [SerializeField] private SpriteRenderer _beltRenderer;
     [SerializeField] private Vector2 _targetScrollValue = new Vector2(-1f, 0);
     [SerializeField] private float _binEntranceDuration = .8f;
-
-    internal Transform CurrentBin;
 
     private AsyncOperationHandle<GameObject> _binHandle;
     private InstantiationParameters _binSpawnParams;
@@ -55,7 +56,11 @@ public class BinController : Singleton<BinController>
         _binSpawnParams = new InstantiationParameters(_binSpawnPos, Quaternion.identity, transform);
     }
 
-    public void DestroyBin()
+    public void CheckBin()
+    {
+    }
+
+    private void DestroyBin()
     {
         TrashController.Instance.ToggleTrashColliders(false);
 

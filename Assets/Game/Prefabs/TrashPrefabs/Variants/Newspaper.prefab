@@ -61,6 +61,10 @@ PrefabInstance:
       value: Newspaper
       objectReference: {fileID: 0}
     - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: _trashData
+      value: 
+      objectReference: {fileID: 11400000, guid: 73094dd3fb0a243408a846bdd8ebe95f, type: 2}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
       propertyPath: TrashSortType
       value: 1
       objectReference: {fileID: 0}

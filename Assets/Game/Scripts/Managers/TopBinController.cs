@@ -1,15 +1,19 @@
+using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using PrimeTween;
 
-public class TopBinController : Singleton<TopBinController>
+public class TopBinController : MonoBehaviour
 {
+    public event Action BinReachedEnd;
+
     [SerializeField] private TopBinPool _topBinPool;
     [SerializeField] private BinFrequencyData _binFrequencyData;
     [SerializeField, ChildGameObjectsOnly] private ConveyorBeltController _beltController;
     [SerializeField, Space] private float _spawnInterval;
-    [SerializeField, ChildGameObjectsOnly] private Transform _startPoint, _endPoint;
+    [SerializeField, ChildGameObjectsOnly] private Transform _startPoint;
+    [SerializeField, ChildGameObjectsOnly] private Transform _scanner;
 
     private int BinCounter
     {
@@ -43,17 +47,12 @@ public class TopBinController : Singleton<TopBinController>
         }
     }
 
-    private void Awake()
+    public void Initialize()
     {
         _topBinPool.Initialize(_startPoint.position);
     }
 
-    private void Start()
-    {
-        CreateTopBin();
-    }
-
-    private void Update()
+    public void Tick()
     {
         if (_timeCapped && _elapsedTime < _spawnInterval)
         {
@@ -69,9 +68,14 @@ public class TopBinController : Singleton<TopBinController>
         CreateTopBin();
     }
 
+
+    public TopBin PopBin() => _topBinQueue.Dequeue();
+
     private void MoveBins()
     {
         int i = 1;
+
+        var topMostBin = _topBinQueue.Peek();
 
         foreach (var topBin in _topBinQueue)
         {
@@ -87,12 +91,20 @@ public class TopBinController : Singleton<TopBinController>
             float duration = Mathf.Lerp(.8f, 1.5f, iLerp);
             Tween.StopAll(topBin);
             PlayingAnimationCount++;
-            Tween.PositionX(topBin.transform, beltPosition, duration).OnComplete(() => PlayingAnimationCount--);
+            Tween.PositionX(topBin.transform, beltPosition, duration).OnComplete(() =>
+            {
+                if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
+                {
+                    BinReachedEnd?.Invoke();
+                }
+
+                PlayingAnimationCount--;
+            });
             i++;
         }
     }
 
-    private void CreateTopBin()
+    public void CreateTopBin()
     {
         var sortType = _binFrequencyData.GetSortType(BinCounter);
         BinCounter++;
@@ -101,15 +113,4 @@ public class TopBinController : Singleton<TopBinController>
         _timeCapped = true;
         MoveBins();
     }
-
-    [Button]
-    private void TestBinDestroy()
-    {
-        var topBin = PopBin();
-        Tween.CompleteAll(topBin);
-        Destroy(topBin.gameObject);
-        MoveBins();
-    }
-
-    private TopBin PopBin() => _topBinQueue.Dequeue();
 }

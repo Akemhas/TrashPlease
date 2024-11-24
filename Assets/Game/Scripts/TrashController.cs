@@ -1,12 +1,14 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class TrashController : Singleton<TrashController>
 {
+    [ReadOnly] public bool IsCurrentTrashLoaded;
+
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
-    [SerializeField] private string[] _dummyAddresses;
 
     private List<Trash> _instantiatedTrashList = new();
 
@@ -20,19 +22,6 @@ public class TrashController : Singleton<TrashController>
         inputManager.TrashDroppedOnEmptySpace += OnTrashDroppedOnEmptySpace;
         inputManager.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
         inputManager.TrashPicked += OnTrashPicked;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            DummyLoadTrash();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            DummyInsTrash();
-        }
     }
 
     private void OnTrashPicked(Trash trash)
@@ -87,24 +76,14 @@ public class TrashController : Singleton<TrashController>
         }
     }
 
-    private void DummyLoadTrash()
+    public void LoadTrash(string[] trashAddresses)
     {
-        LoadTrash(_dummyAddresses);
+        _trashLoader.LoadMultipleTrash(trashAddresses);
     }
 
-    private void DummyInsTrash()
+    public void ToggleTrashColliders(bool isEnabled)
     {
-        InstantiateTrash(_dummyAddresses);
-    }
-
-    public void LoadTrash(string[] _trashAddresses)
-    {
-        _trashLoader.LoadMultipleTrash(_trashAddresses);
-    }
-
-    public void ToggleTrashColliders(bool enabled)
-    {
-        foreach (var trash in _instantiatedTrashList) trash.ToggleCollider2D(enabled);
+        foreach (var trash in _instantiatedTrashList) trash.ToggleCollider2D(isEnabled);
     }
 
     public void DestroyAllTrash()
@@ -121,15 +100,15 @@ public class TrashController : Singleton<TrashController>
         _trashLoader.DestroyTrash(trash);
     }
 
-    public void InstantiateTrash(string[] trashAddresses)
+    public void InstantiateTrash(string[] trashAddresses, Transform parent)
     {
         foreach (var address in trashAddresses)
         {
-            InstantiateTrash(address);
+            InstantiateTrash(address, parent);
         }
     }
 
-    public void InstantiateTrash(string address)
+    public void InstantiateTrash(string address, Transform parent)
     {
         if (!_trashLoader.PrefabReferenceCache.TryGetValue(address, out GameObject prefab))
         {
@@ -137,7 +116,6 @@ public class TrashController : Singleton<TrashController>
             return;
         }
 
-        var parent = BinController.Instance.CurrentBin;
         if (parent == null) return;
 
         _trashSpawnBounds = parent.GetComponent<Collider2D>().bounds;
