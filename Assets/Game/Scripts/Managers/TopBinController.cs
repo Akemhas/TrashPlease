@@ -1,16 +1,21 @@
-using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using PrimeTween;
 
 public class TopBinController : Singleton<TopBinController>
 {
     [SerializeField] private TopBinPool _topBinPool;
+    [SerializeField] private BinFrequencyData _binFrequencyData;
     [SerializeField, ChildGameObjectsOnly] private ConveyorBeltController _beltController;
     [SerializeField, Space] private float _spawnInterval;
     [SerializeField, ChildGameObjectsOnly] private Transform _startPoint, _endPoint;
+
+    private int BinCounter
+    {
+        get => PlayerPrefs.GetInt(nameof(BinCounter), 0);
+        set => PlayerPrefs.SetInt(nameof(BinCounter), value % _binFrequencyData.LoopCounterNumber);
+    }
 
     private readonly Queue<TopBin> _topBinQueue = new();
 
@@ -89,7 +94,8 @@ public class TopBinController : Singleton<TopBinController>
 
     private void CreateTopBin()
     {
-        var sortType = GetRandomSortType();
+        var sortType = _binFrequencyData.GetSortType(BinCounter);
+        BinCounter++;
         var topBin = _topBinPool.Get(sortType);
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
@@ -106,11 +112,4 @@ public class TopBinController : Singleton<TopBinController>
     }
 
     private TopBin PopBin() => _topBinQueue.Dequeue();
-
-    private TrashSortType GetRandomSortType()
-    {
-        var values = Enum.GetValues(typeof(TrashSortType));
-        var randomIndex = Random.Range(0, values.Length);
-        return (TrashSortType)values.GetValue(randomIndex);
-    }
 }

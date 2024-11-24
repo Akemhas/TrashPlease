@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _topBinPool: {fileID: 134546410}
+  _binFrequencyData: {fileID: 11400000, guid: 5effed5528c6442fd8d2c2038a2e5c2b, type: 2}
   _beltController: {fileID: 1930105323}
   _spawnInterval: 1.5
   _startPoint: {fileID: 366735780}
