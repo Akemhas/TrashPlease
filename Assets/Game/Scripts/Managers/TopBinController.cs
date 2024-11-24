@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using SerializableDictionary.Scripts;
 using Random = UnityEngine.Random;
 using PrimeTween;
 
 public class TopBinController : Singleton<TopBinController>
 {
-    public SerializableDictionary<TrashSortType, TopBin> BinDictionary = new();
-
+    [SerializeField] private TopBinPool _topBinPool;
     [SerializeField, ChildGameObjectsOnly] private ConveyorBeltController _beltController;
     [SerializeField, Space] private float _spawnInterval;
     [SerializeField, ChildGameObjectsOnly] private Transform _startPoint, _endPoint;
@@ -38,6 +36,11 @@ public class TopBinController : Singleton<TopBinController>
 
             _playingAnimationCount = value;
         }
+    }
+
+    private void Awake()
+    {
+        _topBinPool.Initialize(_startPoint.position);
     }
 
     private void Start()
@@ -76,7 +79,7 @@ public class TopBinController : Singleton<TopBinController>
             }
 
             float iLerp = Mathf.InverseLerp(0, 4, beltPosition - topBin.transform.position.x);
-            float duration = Mathf.Lerp(.3f, 1.5f, iLerp);
+            float duration = Mathf.Lerp(.8f, 1.5f, iLerp);
             Tween.StopAll(topBin);
             PlayingAnimationCount++;
             Tween.PositionX(topBin.transform, beltPosition, duration).OnComplete(() => PlayingAnimationCount--);
@@ -87,24 +90,22 @@ public class TopBinController : Singleton<TopBinController>
     private void CreateTopBin()
     {
         var sortType = GetRandomSortType();
-        var topBin = InstantiateTopBin(sortType);
+        var topBin = _topBinPool.Get(sortType);
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
         MoveBins();
     }
 
-    private TopBin InstantiateTopBin(TrashSortType sortType)
+    [Button]
+    private void TestBinDestroy()
     {
-        return Instantiate(BinDictionary.Get(sortType), _startPoint.position, Quaternion.identity, transform);
+        var topBin = PopBin();
+        Tween.CompleteAll(topBin);
+        Destroy(topBin.gameObject);
+        MoveBins();
     }
 
-    [Button]
-    private TopBin PopBin()
-    {
-        var bin = _topBinQueue.Dequeue();
-        Destroy(bin.gameObject);
-        return bin;
-    }
+    private TopBin PopBin() => _topBinQueue.Dequeue();
 
     private TrashSortType GetRandomSortType()
     {

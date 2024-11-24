@@ -134,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134546408}
   - component: {fileID: 134546409}
+  - component: {fileID: 134546410}
   m_Layer: 0
   m_Name: TopBinController
   m_TagString: Untagged
@@ -171,26 +172,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c697a820d199f487c94816174318d8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BinDictionary:
-    _pairs:
-    - _key: 0
-      _value: {fileID: 2992786345683384817, guid: 6ff98269f77ad47969eecd9fc3ff8fe2, type: 3}
-    - _key: 3
-      _value: {fileID: 2992786345683384817, guid: c1737c6bf921041adb7453830f3ff231, type: 3}
-    - _key: 2
-      _value: {fileID: 2992786345683384817, guid: dc30c47c2e8194fe982192bbf620a5b4, type: 3}
-    - _key: 1
-      _value: {fileID: 2992786345683384817, guid: 6ff98269f77ad47969eecd9fc3ff8fe2, type: 3}
+  _topBinPool: {fileID: 134546410}
   _beltController: {fileID: 1930105323}
   _spawnInterval: 1.5
   _startPoint: {fileID: 366735780}
   _endPoint: {fileID: 547828901}
-  _conveyorBelts:
-  - {fileID: 1775475284}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+--- !u!114 &134546410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134546407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8026dd14d834593ac33f249196e841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _binPoolObject:
+  - Prefab: {fileID: 2992786345683384817, guid: c1737c6bf921041adb7453830f3ff231, type: 3}
+    DefaultCapacity: 3
+    MaxSize: 6
+    _sortType: 3
+  - Prefab: {fileID: 2992786345683384817, guid: dc30c47c2e8194fe982192bbf620a5b4, type: 3}
+    DefaultCapacity: 3
+    MaxSize: 6
+    _sortType: 2
+  - Prefab: {fileID: 2992786345683384817, guid: a55d5af7d07904d4d832405474549856, type: 3}
+    DefaultCapacity: 3
+    MaxSize: 6
+    _sortType: 0
+  - Prefab: {fileID: 2992786345683384817, guid: 6ff98269f77ad47969eecd9fc3ff8fe2, type: 3}
+    DefaultCapacity: 3
+    MaxSize: 6
+    _sortType: 1
 --- !u!1001 &337724389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,7 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208c1acd908df854388ec55631206285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conveyorBelts:
+  ConveyorBelts:
   - {fileID: 1775475284}
   - {fileID: 648532621}
   - {fileID: 1985413963}
