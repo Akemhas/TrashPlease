@@ -74,7 +74,8 @@ public class TopBinController : MonoBehaviour
 
         try
         {
-            await Tween.PositionX(bin.transform, _scanner.position.x, .4f);
+            var distance = _scanner.position.x - bin.transform.position.x;
+            await Tween.PositionX(bin.transform, _scanner.position.x, distance);
             _topBinPool.Release(bin);
         }
         catch (Exception e)
@@ -94,17 +95,16 @@ public class TopBinController : MonoBehaviour
         {
             var belt = _beltController.ConveyorBelts[^i];
             var beltPosition = belt.transform.position.x;
-            if (beltPosition - topBin.transform.position.x < .0001f)
+            var distance = beltPosition - topBin.transform.position.x;
+            if (distance < .0001f)
             {
                 i++;
                 continue;
             }
 
-            float iLerp = Mathf.InverseLerp(0, 4, beltPosition - topBin.transform.position.x);
-            float duration = Mathf.Lerp(.8f, 1.5f, iLerp);
             Tween.StopAll(topBin);
             PlayingAnimationCount++;
-            Tween.PositionX(topBin.transform, beltPosition, duration).OnComplete(() =>
+            Tween.PositionX(topBin.transform, beltPosition, distance, ease: Ease.Linear).OnComplete(() =>
             {
                 if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
                 {

@@ -10,6 +10,7 @@ public class BinController : MonoBehaviour
 {
     public event Action BinCreated;
     public event Action BinBeforeDestroy;
+    public event Action BinReachedCenter;
 
     [ReadOnly] public Transform CurrentBin;
 
@@ -79,7 +80,7 @@ public class BinController : MonoBehaviour
         t.localPosition = lp;
         CurrentBin = t;
         BinCreated?.Invoke();
-        Tween.LocalPositionX(t, 0, _binEntranceDuration);
+        Tween.LocalPositionX(t, 0, _binEntranceDuration).OnComplete(() => BinReachedCenter?.Invoke());
         ScrollConveyorBelt();
     }
 

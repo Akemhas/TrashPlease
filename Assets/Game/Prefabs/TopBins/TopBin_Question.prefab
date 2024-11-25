@@ -10,16 +10,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 441316173177448722, guid: 203f24765361f984082aaa38f8457fbc, type: 3}
       propertyPath: SortType
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4508378562028239974, guid: 203f24765361f984082aaa38f8457fbc, type: 3}
       propertyPath: m_Name
-      value: TopBin_Brown
+      value: TopBin_Question
       objectReference: {fileID: 0}
     - target: {fileID: 6990451978501555220, guid: 203f24765361f984082aaa38f8457fbc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 015a40ef4f0eb7f40843163a72b7bcc4, type: 3}
+      objectReference: {fileID: 21300000, guid: 21f1cdd03f1e849a08c39344acc8eddc, type: 3}
+    - target: {fileID: 6990451978501555220, guid: 203f24765361f984082aaa38f8457fbc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8472191741852383830, guid: 203f24765361f984082aaa38f8457fbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

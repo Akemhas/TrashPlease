@@ -16,50 +16,60 @@ MonoBehaviour:
   - BinCounter: 8
     TrashProbabilities:
     - SortType: 0
-      Probability: 50
+      Probability: 45
     - SortType: 1
-      Probability: 15
+      Probability: 45
     - SortType: 2
-      Probability: 15
+      Probability: 0
     - SortType: 3
-      Probability: 20
+      Probability: 0
+    - SortType: 7
+      Probability: 10
   - BinCounter: 15
     TrashProbabilities:
     - SortType: 0
-      Probability: 25
+      Probability: 22
     - SortType: 1
-      Probability: 25
+      Probability: 22
     - SortType: 2
-      Probability: 25
+      Probability: 22
     - SortType: 3
-      Probability: 25
+      Probability: 22
+    - SortType: 7
+      Probability: 12
   - BinCounter: 25
     TrashProbabilities:
     - SortType: 0
-      Probability: 25
+      Probability: 22
     - SortType: 1
-      Probability: 25
+      Probability: 22
     - SortType: 2
-      Probability: 25
+      Probability: 22
     - SortType: 3
-      Probability: 25
+      Probability: 22
+    - SortType: 7
+      Probability: 12
   - BinCounter: 50
     TrashProbabilities:
     - SortType: 0
-      Probability: 25
+      Probability: 22
     - SortType: 1
-      Probability: 25
+      Probability: 22
     - SortType: 2
-      Probability: 25
+      Probability: 22
     - SortType: 3
-      Probability: 25
+      Probability: 22
+    - SortType: 7
+      Probability: 12
   - BinCounter: 100
     TrashProbabilities:
     - SortType: 0
-      Probability: 25
+      Probability: 22
     - SortType: 1
-      Probability: 25
+      Probability: 22
     - SortType: 2
-      Probability: 25
+      Probability: 22
     - SortType: 3
-      Probability: 25
+      Probability: 22
+    - SortType: 7
+      Probability: 12

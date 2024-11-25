@@ -20,15 +20,16 @@ public class Trash : MonoBehaviour
     {
         if (Data && string.IsNullOrEmpty(Data.Address))
         {
-            Undo.RecordObject(Data,$"Data {Data} Address Change");
+            Undo.RecordObject(Data, $"Data {Data} Address Change");
             Data.Address = name;
             PrefabUtility.RecordPrefabInstancePropertyModifications(Data);
         }
+
         if (_boxCollider != null && _spriteRenderer != null)
         {
             var size = _spriteRenderer.sprite.bounds.size;
             if (_boxCollider.size == new Vector2(size.x, size.y)) return;
-            
+
             // Update the BoxCollider2D size to match the sprite's bounds
             _boxCollider.size = size;
             _boxCollider.offset = _spriteRenderer.sprite.bounds.center;
@@ -68,8 +69,9 @@ public class Trash : MonoBehaviour
 
 public enum TrashSortType
 {
-    Brown,
-    Yellow,
-    Blue,
-    Black,
+    Brown = 0,
+    Yellow = 1,
+    Blue = 2,
+    Black = 3,
+    Question = 7,
 }

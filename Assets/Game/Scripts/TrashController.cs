@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class TrashController : MonoBehaviour
 {
+    public event Action TrashCreated;
+
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
@@ -89,7 +91,7 @@ public class TrashController : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            int randomValue = Random.Range(0, 2);
+            int randomValue = Random.Range(0, 3);
             string address;
 
             if (randomValue % 2 == 0)
@@ -142,7 +144,7 @@ public class TrashController : MonoBehaviour
         foreach (var value in _trashSortTypes)
         {
             var enumValue = (TrashSortType)value;
-            if (enumValue != sortType)
+            if (enumValue != sortType && enumValue != TrashSortType.Question)
             {
                 wrongSortTypes.Add(enumValue);
             }
@@ -200,5 +202,7 @@ public class TrashController : MonoBehaviour
             var trash = instantiatedTrash.GetComponent<Trash>();
             _instantiatedTrashList.Add(trash);
         }
+
+        TrashCreated?.Invoke();
     }
 }

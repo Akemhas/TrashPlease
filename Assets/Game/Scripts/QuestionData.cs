@@ -16,12 +16,19 @@ public class QuestionData : ScriptableObject
         GUIUtility.systemCopyBuffer = t;
         Debug.Log(t);
     }
+
+    [Button]
+    private void ImportJson(string json)
+    {
+        Questions = JsonConvert.DeserializeObject<List<Question>>(json);
+    }
 }
 
 [Serializable]
 public class Question
 {
     public string QuestionText;
+    [TextArea, FoldoutGroup("Explanation")] public string Explanation;
     public string CorrectAnswer;
     public List<string> WrongAnswers;
 }

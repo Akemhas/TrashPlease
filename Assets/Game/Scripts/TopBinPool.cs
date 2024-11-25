@@ -63,7 +63,7 @@ public class TopBinPool : MonoBehaviour
         return Instantiate(prefab, startPosition, Quaternion.identity, transform);
     }
 
-    public TopBin Get(TrashSortType sortType) => _topBinPools[sortType.ToString()].Get();
+    public TopBin Get(TrashSortType sortType) => _topBinPools.TryGetValue(sortType.ToString(), out ObjectPool<TopBin> result) ? result.Get() : null;
 
     public void Release(TopBin topBin) => _topBinPools[topBin.SortType.ToString()].Release(topBin);
 

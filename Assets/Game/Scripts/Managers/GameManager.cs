@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsScannerEmpty = true;
 
+    private bool _isBinMoving;
+
     private void Awake()
     {
         _currentGameState = GameState.WaitingBin;
@@ -20,15 +22,17 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
-        _topBinController.BinReachedEnd += OnBinReachedEnd;
-        _binController.BinCreated += OnBinCreated;
-        _binController.BinBeforeDestroy += OnBinBeforeDestroy;
+        _topBinController.BinReachedEnd += OnTopBinReachedEnd;
+        _binController.BinCreated += OnCenterBinCreated;
+        _binController.BinBeforeDestroy += OnCenterBinBeforeDestroy;
+        _binController.BinReachedCenter += OnCenterBinReachedCenter;
+        _trashController.TrashCreated += OnTrashCreated;
     }
 
     private void OnDisable()
     {
-        _topBinController.BinReachedEnd -= OnBinReachedEnd;
-        _binController.BinCreated -= OnBinCreated;
+        _topBinController.BinReachedEnd -= OnTopBinReachedEnd;
+        _binController.BinCreated -= OnCenterBinCreated;
     }
 
     private void Start()
@@ -47,8 +51,9 @@ public class GameManager : Singleton<GameManager>
             case GameState.WaitingBin:
                 if (_topBinController.TryPeek(out var topBin))
                 {
-                    OnBinReachedEnd(topBin.SortType);
+                    OnTopBinReachedEnd(topBin.SortType);
                 }
+
                 break;
         }
 
@@ -58,10 +63,14 @@ public class GameManager : Singleton<GameManager>
 
     public void ProgressBin()
     {
-        if (_trashController.CheckTrashSorting(_currentSortType))
-        {
-            _binController.DestroyBin();
-        }
+        if (_isBinMoving) return;
+        if (_currentGameState != GameState.SortingBin) return;
+        if (_binController.CurrentBin == null) return;
+
+        if (!_trashController.CheckTrashSorting(_currentSortType)) return;
+
+        _isBinMoving = true;
+        _binController.DestroyBin();
     }
 
     public void Pause()
@@ -80,17 +89,17 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
     }
 
-    private void OnBinReachedEnd(TrashSortType sortType)
+    private void OnTopBinReachedEnd(TrashSortType sortType)
     {
         if (_currentGameState == GameState.SortingBin) return;
 
         _currentGameState = GameState.SortingBin;
         _currentSortType = sortType;
         IsScannerEmpty = false;
-        _topBinController.SendBinToScanner().GetAwaiter().OnCompleted(OnBinReachedToScanner);
+        _topBinController.SendBinToScanner().GetAwaiter().OnCompleted(OnTopBinReachedToScanner);
     }
 
-    private void OnBinBeforeDestroy()
+    private void OnCenterBinBeforeDestroy()
     {
         IsScannerEmpty = true;
         _currentGameState = GameState.WaitingBin;
@@ -98,15 +107,29 @@ public class GameManager : Singleton<GameManager>
         _trashController.LoadTrash(_currentSortType);
     }
 
-    private void OnBinReachedToScanner()
+    private void OnTopBinReachedToScanner()
     {
-        _binController.StartCreatingBin(_currentSortType);
+        if (_currentSortType != TrashSortType.Question)
+        {
+            _binController.StartCreatingBin(_currentSortType);
+        }
     }
 
-    private void OnBinCreated()
+    private void OnCenterBinCreated()
     {
+        _isBinMoving = true;
         _trashController.InstantiateTrashWhenReady(_binController.CurrentBin);
     }
+
+    private void OnTrashCreated()
+    {
+    }
+
+    private void OnCenterBinReachedCenter()
+    {
+        _isBinMoving = false;
+    }
+
 
     private enum GameState
     {
