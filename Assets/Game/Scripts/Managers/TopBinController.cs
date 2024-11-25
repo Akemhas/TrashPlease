@@ -77,6 +77,7 @@ public class TopBinController : MonoBehaviour
             var distance = _scanner.position.x - bin.transform.position.x;
             await Tween.PositionX(bin.transform, _scanner.position.x, distance);
             _topBinPool.Release(bin);
+            BinCounter++;
         }
         catch (Exception e)
         {
@@ -125,7 +126,6 @@ public class TopBinController : MonoBehaviour
     public TrashSortType CreateTopBin()
     {
         var sortType = _binFrequencyData.GetSortType(BinCounter);
-        BinCounter++;
         var topBin = _topBinPool.Get(sortType);
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;

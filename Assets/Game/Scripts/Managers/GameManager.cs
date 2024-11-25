@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
         _binController.BinBeforeDestroy += OnCenterBinBeforeDestroy;
         _binController.BinReachedCenter += OnCenterBinReachedCenter;
         _trashController.TrashCreated += OnTrashCreated;
+        UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
     }
 
     private void OnDisable()
@@ -113,6 +114,10 @@ public class GameManager : Singleton<GameManager>
         {
             _binController.StartCreatingBin(_currentSortType);
         }
+        else
+        {
+            UIManager.Instance.OpenQuestionPopup();
+        }
     }
 
     private void OnCenterBinCreated()
@@ -130,6 +135,10 @@ public class GameManager : Singleton<GameManager>
         _isBinMoving = false;
     }
 
+    private void OnQuestionPopupClosed()
+    {
+        _currentGameState = GameState.WaitingBin;
+    }
 
     private enum GameState
     {

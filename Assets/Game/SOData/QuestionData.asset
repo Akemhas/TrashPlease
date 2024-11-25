@@ -62,9 +62,6 @@ MonoBehaviour:
     CorrectAnswer: False
     WrongAnswers:
     - True
-    - 
-    - 
-    - 
   - QuestionText: Food-soiled cardboard can only be recycled if the food is dry.
     Explanation: Food-soiled cardboard, whether the food is dry or wet, is generally
       not recyclable because the food residue contaminates the recycling process.

@@ -85,6 +85,8 @@ public class TrashController : MonoBehaviour
 
     public void LoadTrash(TrashSortType sortType, int count = 3)
     {
+        if (sortType == TrashSortType.Question) return;
+        
         _loadedTrashList.Clear();
 
         var wrongTypes = GetWrongSortTypes(sortType);

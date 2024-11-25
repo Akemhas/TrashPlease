@@ -19,7 +19,7 @@ public class ConveyorBeltController : MonoBehaviour
     {
         ConveyorBelts = GetComponentsInChildren<ConveyorBelt>().ToList();
 
-        var startPoint = (ConveyorBelts.Count - 1) / 2f * -_spacing;
+        var startPoint = transform.position.x + (ConveyorBelts.Count - 1) / 2f * -_spacing;
 
         float offset = 0;
         foreach (var stopPoint in ConveyorBelts)
