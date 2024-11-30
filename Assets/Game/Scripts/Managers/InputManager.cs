@@ -27,8 +27,9 @@ public class InputManager : Singleton<InputManager>
     public event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
     public event Action<Trash> TrashDroppedOnEmptySpace;
     public event Action<Trash> TrashDroppedOnTrashArea;
-    public event Action<Trash> TrashDroppedOnInspectArea;
+    public event Action<Trash> TrashDroppedOnInspectTable;
     public event Action<Trash> TrashPicked;
+    public event Action<Trash> TrashPickedFromInspectTable;
 
     [SerializeField] private DragHandler _dragHandler;
     [SerializeField] private PlayerInput _playerInput;
@@ -55,6 +56,13 @@ public class InputManager : Singleton<InputManager>
 
         _trash = hit.collider.GetComponent<Trash>();
         TrashPicked?.Invoke(_trash);
+        
+        var inspectRaycast = RaycastToMousePosition(_inspectionLayerMask);
+        if (inspectRaycast.collider)
+        {
+            TrashPickedFromInspectTable?.Invoke(_trash);
+        }
+
         Tween.Scale(_trash.transform, new Vector3(1.5f, 1.5f, 1), new TweenSettings(.2f, Ease.OutBack));
         _dragHandler.AddDraggable(_trash.transform);
         _inputState = InputState.CarryingObject;
@@ -100,7 +108,7 @@ public class InputManager : Singleton<InputManager>
         if (hit.collider)
         {
             result = true;
-            TrashDroppedOnInspectArea?.Invoke(_trash);
+            TrashDroppedOnInspectTable?.Invoke(_trash);
         }
 
         return result;

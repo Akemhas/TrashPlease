@@ -23,8 +23,8 @@ public class UIManager : Singleton<UIManager>
     {
         _okButton.onClick.AddListener(OnOkButtonClicked);
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
-        InputManager.Instance.TrashDroppedOnInspectArea += OnTrashDroppedOnInspectArea;
-        InputManager.Instance.TrashPicked += OnTrashPicked;
+        InputManager.Instance.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
+        InputManager.Instance.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
     }
 
     private void Start()
@@ -44,14 +44,17 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.ProgressBin();
     }
 
-    private void OnTrashDroppedOnInspectArea(Trash trash)
+    private void OnTrashDroppedOnInspectTable(Trash trash)
     {
         _inspectionController.ActivateInspect(trash.Data);
+        _inspectionController.AddTrashToTable(trash);
+        _okButton.interactable = false;
     }
 
-    private void OnTrashPicked(Trash trash)
+    private void OnTrashPickedFromInspectTable(Trash trash)
     {
-        _inspectionController.DeactivateInspect();
+        _inspectionController.RemoveTrashFromTable(trash);
+        _okButton.interactable = _inspectionController.TrashCount <= 0;
     }
 
     public void IncreaseCounter(int increaseAmount = 1)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using PrimeTween;
 using TMPro;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 public class InspectController : MonoBehaviour
 {
+    public int TrashCount => _trashOnTable.Count;
+    private readonly List<Trash> _trashOnTable = new();
     [SerializeField] private Button _closeButton;
     [SerializeField] private TextMeshProUGUI _itemName;
     [SerializeField] private TextMeshProUGUI _bin;
@@ -35,6 +38,22 @@ public class InspectController : MonoBehaviour
         SetText(data);
         _inspectGo.SetActive(true);
         Tween.ScaleY(_inspectWindowTransform, 0, 1, _duration);
+    }
+
+    public void AddTrashToTable(Trash trash)
+    {
+        if (!_trashOnTable.Contains(trash))
+        {
+            _trashOnTable.Add(trash);
+        }
+    }
+
+    public void RemoveTrashFromTable(Trash trash)
+    {
+        if (_trashOnTable.Contains(trash))
+        {
+            _trashOnTable.Remove(trash);
+        }
     }
 
     public void DeactivateInspect()

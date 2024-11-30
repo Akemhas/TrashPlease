@@ -28,7 +28,7 @@ public class TrashController : MonoBehaviour
         inputManager.TrashDroppedOnPlayerBin += OnTrashDroppedOnPlayerBin;
         inputManager.TrashDroppedOnEmptySpace += OnTrashDroppedOnEmptySpace;
         inputManager.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
-        inputManager.TrashDroppedOnInspectArea += OnTrashDroppedOnInspectArea;
+        inputManager.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
         inputManager.TrashPicked += OnTrashPicked;
     }
 
@@ -62,9 +62,9 @@ public class TrashController : MonoBehaviour
         _closestZPosition = maxZPos;
     }
 
-    private void OnTrashDroppedOnInspectArea(Trash trash)
+    private void OnTrashDroppedOnInspectTable(Trash trash)
     {
-        trash.ReturnToStartPosition();
+        trash.SavePosition();
     }
 
     private void OnTrashDroppedOnTrashArea(Trash trash)
