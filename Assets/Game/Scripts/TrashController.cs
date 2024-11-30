@@ -75,6 +75,7 @@ public class TrashController : MonoBehaviour
     {
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
+            UIManager.Instance.IncreaseCounter();
             DestroyTrash(trash);
         }
         else
@@ -86,7 +87,7 @@ public class TrashController : MonoBehaviour
     public void LoadTrash(TrashSortType sortType, int count = 3)
     {
         if (sortType == TrashSortType.Question) return;
-        
+
         _loadedTrashList.Clear();
 
         var wrongTypes = GetWrongSortTypes(sortType);
@@ -113,12 +114,21 @@ public class TrashController : MonoBehaviour
 
     public bool CheckTrashSorting(TrashSortType binsSortType)
     {
+        bool isSorted = true;
         foreach (var trash in _instantiatedTrashList)
         {
-            if (trash.TrashSortType != binsSortType) return false;
+            if (trash.TrashSortType != binsSortType)
+            {
+                isSorted = false;
+            }
         }
 
-        return true;
+        if (isSorted)
+        {
+            UIManager.Instance.IncreaseCounter(_instantiatedTrashList.Count);
+        }
+
+        return isSorted;
     }
 
     public void ToggleTrashColliders(bool isEnabled)

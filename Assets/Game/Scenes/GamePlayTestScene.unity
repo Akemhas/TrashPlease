@@ -997,7 +997,7 @@ MonoBehaviour:
   CurrentBin: {fileID: 0}
   _beltRenderer: {fileID: 1718630966}
   _targetScrollValue: {x: -1, y: 0}
-  _binEntranceDuration: 0.85
+  _binEntranceDuration: 1
 --- !u!1 &1061512152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,26 +1949,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1888141684515502285, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261398052832245260, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261398052832245260, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261398052832245260, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261398052832245260, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261398052832245260, guid: 016369dbb63444045bbdd5ea54723437, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

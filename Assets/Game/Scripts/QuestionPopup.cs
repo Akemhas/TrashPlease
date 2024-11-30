@@ -23,7 +23,7 @@ public class QuestionPopup : MonoBehaviour
     private Image _overlayImage;
 
     private Question _currentQuestion;
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
+    private readonly WaitForSeconds _waitForSeconds = new(3f);
     private Coroutine _closeCoroutine;
 
     private int QuestionIndex
@@ -45,7 +45,11 @@ public class QuestionPopup : MonoBehaviour
 
     private void OnAnswerClicked(Answer clickedAnswer)
     {
-        if (clickedAnswer.IsCorrect) clickedAnswer.SetCorrect();
+        if (clickedAnswer.IsCorrect)
+        {
+            clickedAnswer.SetCorrect();
+            UIManager.Instance.IncreaseCounter(10);
+        }
         else clickedAnswer.SetWrong();
 
         foreach (var answer in _answers)

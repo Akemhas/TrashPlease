@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 124323771}
   - component: {fileID: 124323773}
   - component: {fileID: 124323772}
-  - component: {fileID: 124323774}
   m_Layer: 5
   m_Name: OutsideOfTheDropArea
   m_TagString: Untagged
@@ -195,18 +194,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124323770}
   m_CullTransparentMesh: 1
---- !u!114 &124323774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124323770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4a746d2c2ea446897da8352b2dabe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe1d0f465efd463bacdb0a578ed8e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questionPopup: {fileID: 0}
+  _okButton: {fileID: 0}
 --- !u!1 &884856200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,10 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208c1acd908df854388ec55631206285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  belt: {fileID: 480367820298125378, guid: e4c420a70acc43348a174963ddee92ac, type: 3}
-  scanner: {fileID: 731186550}
-  startPosX: -55
-  beltList: []
+  ConveyorBelts: []
+  _spacing: 0
 --- !u!1 &1237630705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97423b57a9c798742a294ccaf130146b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animate: 0
+  _spriteRenderer: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &1527039867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,11 +1539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4e013cdf4c49ceb9f57e381e549160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashTypeData: {fileID: 0}
   _trashLoader: {fileID: 2089603645}
   _spawnSpacingAmount: 0.6
-  _dummyAddresses:
-  - RedTrash
-  - BrownTrash
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
