@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         _topBinController.Initialize();
-        var sortType = _topBinController.CreateTopBin();
+        var sortType = _topBinController.CreateTopBin(1);
         _trashController.LoadTrash(sortType);
     }
 

@@ -997,7 +997,7 @@ MonoBehaviour:
   CurrentBin: {fileID: 0}
   _beltRenderer: {fileID: 1718630966}
   _targetScrollValue: {x: -0.5, y: 0}
-  _binEntranceDuration: 0.55
+  _binEntranceDuration: 0.5
 --- !u!1 &1061512152
 GameObject:
   m_ObjectHideFlags: 0

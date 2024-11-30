@@ -132,4 +132,19 @@ public class TopBinController : MonoBehaviour
         MoveBins();
         return sortType;
     }
+
+    public TrashSortType CreateTopBin(int index)
+    {
+        var sortType = _binFrequencyData.GetSortType(BinCounter);
+        var topBin = _topBinPool.Get(sortType);
+
+        var pos = _beltController.ConveyorBelts[^index].transform.position;
+        pos.y = _startPoint.position.y;
+        topBin.transform.position = pos;
+
+        _topBinQueue.Enqueue(topBin);
+        _timeCapped = true;
+        MoveBins();
+        return sortType;
+    }
 }

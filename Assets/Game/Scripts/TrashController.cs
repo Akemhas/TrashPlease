@@ -64,7 +64,7 @@ public class TrashController : MonoBehaviour
 
     private void OnTrashDroppedOnInspectArea(Trash trash)
     {
-        trash.SavePosition();
+        trash.ReturnToStartPosition();
     }
 
     private void OnTrashDroppedOnTrashArea(Trash trash)
