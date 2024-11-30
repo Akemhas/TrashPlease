@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using PrimeTween;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InputManager : Singleton<InputManager>
 {
+    [SerializeField] private GraphicRaycaster _graphicRaycaster;
+    private readonly PointerEventData _clickData = new(EventSystem.current);
+    private readonly List<RaycastResult> _raycastResults = new();
+
     private bool _inputPaused;
 
     public bool InputPaused
@@ -21,12 +27,14 @@ public class InputManager : Singleton<InputManager>
     public event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
     public event Action<Trash> TrashDroppedOnEmptySpace;
     public event Action<Trash> TrashDroppedOnTrashArea;
+    public event Action<Trash> TrashDroppedOnInspectArea;
     public event Action<Trash> TrashPicked;
 
     [SerializeField] private DragHandler _dragHandler;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private LayerMask _trashLayerMask;
     [SerializeField] private LayerMask _binLayerMask;
+    [SerializeField] private LayerMask _inspectionLayerMask;
 
     private Trash _trash;
     private InputState _inputState;
@@ -40,6 +48,8 @@ public class InputManager : Singleton<InputManager>
     private void OnClicked(InputValue value)
     {
         if (InputPaused) return;
+        if (HasClickedOverUI()) return;
+
         var hit = RaycastToMousePosition(_trashLayerMask);
         if (hit.collider == null) return;
 
@@ -53,12 +63,19 @@ public class InputManager : Singleton<InputManager>
     private void OnReleased()
     {
         if (InputPaused) return;
+
         if (_inputState != InputState.CarryingObject) return;
 
         var hit = RaycastToMousePosition(_binLayerMask);
-        if (hit.collider == null)
+
+        if (!hit.collider)
         {
-            TrashDroppedOnEmptySpace?.Invoke(_trash);
+            if (!CheckInspectionTool())
+            {
+                TrashDroppedOnEmptySpace?.Invoke(_trash);
+                ReleaseDrag();
+                return;
+            }
 
             ReleaseDrag();
             return;
@@ -76,6 +93,19 @@ public class InputManager : Singleton<InputManager>
         ReleaseDrag();
     }
 
+    private bool CheckInspectionTool()
+    {
+        bool result = false;
+        var hit = RaycastToMousePosition(_inspectionLayerMask);
+        if (hit.collider)
+        {
+            result = true;
+            TrashDroppedOnInspectArea?.Invoke(_trash);
+        }
+
+        return result;
+    }
+
     private void ReleaseDrag()
     {
         Tween.Scale(_trash.transform, Vector3.one, new TweenSettings(.125f, Ease.Linear));
@@ -91,6 +121,14 @@ public class InputManager : Singleton<InputManager>
         Vector3 mouseWorldPos = _mainCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -_mainCam.transform.position.z));
         var hit = Physics2D.Raycast(new Vector2(mouseWorldPos.x, mouseWorldPos.y), Vector2.up, distance: 0.0001f, layerMask: layerMask);
         return hit;
+    }
+
+    private bool HasClickedOverUI()
+    {
+        _clickData.position = Input.mousePosition;
+        _raycastResults.Clear();
+        _graphicRaycaster.Raycast(_clickData, _raycastResults);
+        return _raycastResults.Count > 0;
     }
 
     private enum InputState

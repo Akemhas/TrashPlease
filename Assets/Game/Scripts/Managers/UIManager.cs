@@ -7,8 +7,10 @@ public class UIManager : Singleton<UIManager>
 {
     public event Action QuestionPopupClosed;
 
-    [SerializeField] private TextMeshProUGUI _counter;
+    [SerializeField] private InspectController _inspectionController;
     [SerializeField] private QuestionPopup _questionPopup;
+
+    [Space, SerializeField] private TextMeshProUGUI _counter;
     [SerializeField] private Button _okButton;
 
     private int Score
@@ -21,6 +23,8 @@ public class UIManager : Singleton<UIManager>
     {
         _okButton.onClick.AddListener(OnOkButtonClicked);
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
+        InputManager.Instance.TrashDroppedOnInspectArea += OnTrashDroppedOnInspectArea;
+        InputManager.Instance.TrashPicked += OnTrashPicked;
     }
 
     private void Start()
@@ -38,6 +42,16 @@ public class UIManager : Singleton<UIManager>
     private void OnOkButtonClicked()
     {
         GameManager.Instance.ProgressBin();
+    }
+
+    private void OnTrashDroppedOnInspectArea(Trash trash)
+    {
+        _inspectionController.ActivateInspect(trash.Data);
+    }
+
+    private void OnTrashPicked(Trash trash)
+    {
+        _inspectionController.DeactivateInspect();
     }
 
     public void IncreaseCounter(int increaseAmount = 1)

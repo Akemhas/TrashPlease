@@ -128,8 +128,6 @@ MonoBehaviour:
     CorrectAnswer: True
     WrongAnswers:
     - False
-    - 
-    - 
   - QuestionText: Hazardous waste like batteries can harm wildlife.
     Explanation: If these chemicals enter waterways or soil, they can harm wildlife
       by contaminating their habitat and food sources. Wildlife that comes into contact
@@ -138,9 +136,6 @@ MonoBehaviour:
     CorrectAnswer: True
     WrongAnswers:
     - False
-    - 
-    - 
-    - 
   - QuestionText: 'Hazardous substance (e.g. Cadmium) from electronics are sorted
       out manually '
     Explanation: ' Manual sorting is a crucial step to ensure that these dangerous
@@ -154,9 +149,7 @@ MonoBehaviour:
       of municipal waste and reducing municipal waste by one-third
     CorrectAnswer: False
     WrongAnswers:
-    - 
-    - 
-    - 
+    - True
   - QuestionText: Large amount of cooking oil is disposed of by putting it in a sealed
       plastic bottle and throwing into the black bin.
     Explanation: Small amounts of cooking oil can be absorbed in paper and placed
@@ -166,8 +159,6 @@ MonoBehaviour:
     WrongAnswers:
     - False
     - Pour it in the yellow bin, as it's organic material
-    - 
-    - 
   - QuestionText: Greasy paper can go into blue bin
     Explanation: Greasy paper, such as pizza boxes or used paper towels, should not
       go into the blue bin for paper recycling. The oils and food residues contaminate
@@ -182,8 +173,6 @@ MonoBehaviour:
     CorrectAnswer: True
     WrongAnswers:
     - False
-    - 
-    - 
   - QuestionText: Sorting glass by colors helps reducing contamination from different
       glass types.
     Explanation: Sorting glass by color is essential because different glass colors
@@ -192,9 +181,6 @@ MonoBehaviour:
     CorrectAnswer: True
     WrongAnswers:
     - False
-    - 
-    - 
-    - 
   - QuestionText: Composting food waste creates nutrient-rich soil for agriculture.
     Explanation: Composting food waste reduces greenhouse gas emissions because it
       prevents organic waste from decomposing in landfills, where it produces methane
@@ -210,8 +196,6 @@ MonoBehaviour:
     CorrectAnswer: False
     WrongAnswers:
     - True
-    - 
-    - 
   - QuestionText: The average German generated more than 500 kg of waste in 2021
     Explanation: In 2021, the average German generated approximately 483 kilograms
       of municipal waste, which is slightly under 500 kg. This data highlights the
@@ -219,9 +203,6 @@ MonoBehaviour:
     CorrectAnswer: False
     WrongAnswers:
     - True
-    - 
-    - 
-    - 
   - QuestionText: By achieving both a 60% recycling rate and reducing municipal waste
       by one-third, the target of halving  residual municipal waste will be achieved
     Explanation: The target will be attained by achieving both a 60% recycling rate
@@ -237,8 +218,6 @@ MonoBehaviour:
     CorrectAnswer: True
     WrongAnswers:
     - False
-    - 
-    - 
   - QuestionText: Electronic waste is incinerated after collection
     Explanation: Incineration is not commonly used for e-waste because it can release
       harmful toxins into the air. Instead, e-waste is often disassembled manually
@@ -246,9 +225,6 @@ MonoBehaviour:
     CorrectAnswer: False
     WrongAnswers:
     - True
-    - 
-    - 
-    - 
   - QuestionText: ' Hazardous electronic waste like batteries can harm human health'
     Explanation: When improperly disposed of, the chemicals in batteries can leak
       into the soil and contaminate groundwater, posing serious environmental and

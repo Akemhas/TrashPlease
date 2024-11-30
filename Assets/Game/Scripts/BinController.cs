@@ -80,13 +80,13 @@ public class BinController : MonoBehaviour
         t.localPosition = lp;
         CurrentBin = t;
         BinCreated?.Invoke();
-        Tween.LocalPositionX(t, 0, _binEntranceDuration).OnComplete(() => BinReachedCenter?.Invoke());
+        Tween.LocalPositionX(t, 0, _binEntranceDuration, Ease.Linear).OnComplete(() => BinReachedCenter?.Invoke());
         ScrollConveyorBelt();
     }
 
     private void ScrollConveyorBelt()
     {
-        Tween.MaterialProperty(_beltRenderer.material, _offsetId, _targetScrollValue, _binEntranceDuration)
+        Tween.MaterialProperty(_beltRenderer.material, _offsetId, _targetScrollValue, _binEntranceDuration, Ease.Linear)
             .OnComplete(() => _beltRenderer.material.SetVector(_offsetId, Vector2.zero));
     }
 

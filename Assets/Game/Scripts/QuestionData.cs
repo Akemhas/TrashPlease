@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Create QuestionData", fileName = "QuestionData", order = 0)]
 public class QuestionData : ScriptableObject
 {
-    public List<Question> Questions = new();
+    [Searchable] public List<Question> Questions = new();
 
     [Button]
     private void PrintJson()

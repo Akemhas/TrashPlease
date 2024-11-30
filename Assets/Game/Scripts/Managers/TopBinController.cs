@@ -75,7 +75,7 @@ public class TopBinController : MonoBehaviour
         try
         {
             var distance = _scanner.position.x - bin.transform.position.x;
-            await Tween.PositionX(bin.transform, _scanner.position.x, distance);
+            await Tween.PositionX(bin.transform, _scanner.position.x, distance / 2);
             _topBinPool.Release(bin);
             BinCounter++;
         }
@@ -105,7 +105,7 @@ public class TopBinController : MonoBehaviour
 
             Tween.StopAll(topBin);
             PlayingAnimationCount++;
-            Tween.PositionX(topBin.transform, beltPosition, distance, ease: Ease.Linear).OnComplete(() =>
+            Tween.PositionX(topBin.transform, beltPosition, distance / 2, ease: Ease.Linear).OnComplete(() =>
             {
                 if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
                 {
