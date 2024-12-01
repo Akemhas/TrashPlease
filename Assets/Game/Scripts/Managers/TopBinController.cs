@@ -6,7 +6,7 @@ using PrimeTween;
 
 public class TopBinController : MonoBehaviour
 {
-    public event Action<TrashSortType> BinReachedEnd;
+    public event Action<TopBin> BinReachedEnd;
 
     [SerializeField] private TopBinPool _topBinPool;
     [SerializeField] private BinFrequencyData _binFrequencyData;
@@ -109,7 +109,7 @@ public class TopBinController : MonoBehaviour
             {
                 if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
                 {
-                    BinReachedEnd?.Invoke(topBin.SortType);
+                    BinReachedEnd?.Invoke(topBin);
                 }
 
                 PlayingAnimationCount--;
@@ -123,20 +123,21 @@ public class TopBinController : MonoBehaviour
     public bool TryPeek(out TopBin result) => _topBinQueue.TryPeek(out result);
 
 
-    public TrashSortType CreateTopBin()
+    public void CreateTopBin()
     {
-        var sortType = _binFrequencyData.GetSortType(BinCounter);
-        var topBin = _topBinPool.Get(sortType);
+        var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
+        var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
+        topBin.TrashCount = sortTypeTrashCount.Item2;
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
         MoveBins();
-        return sortType;
     }
 
-    public TrashSortType CreateTopBin(int index)
+    public (TrashSortType, int) CreateTopBin(int index)
     {
-        var sortType = _binFrequencyData.GetSortType(BinCounter);
-        var topBin = _topBinPool.Get(sortType);
+        var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
+        var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
+        topBin.TrashCount = sortTypeTrashCount.Item2;
 
         var pos = _beltController.ConveyorBelts[^index].transform.position;
         pos.y = _startPoint.position.y;
@@ -145,6 +146,7 @@ public class TopBinController : MonoBehaviour
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
         MoveBins();
-        return sortType;
+
+        return new(topBin.SortType, topBin.TrashCount);
     }
 }

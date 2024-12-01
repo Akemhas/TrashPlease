@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TrashController _trashController;
 
     private TrashSortType _currentSortType;
+    private int _currentTrashCount;
 
     public bool IsScannerEmpty = true;
 
@@ -39,8 +40,10 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         _topBinController.Initialize();
-        var sortType = _topBinController.CreateTopBin(1);
-        _trashController.LoadTrash(sortType);
+        var topBinData = _topBinController.CreateTopBin(1);
+        _currentSortType = topBinData.Item1;
+        _currentTrashCount = topBinData.Item2;
+        _trashController.LoadTrash(_currentSortType, _currentTrashCount);
     }
 
     private void Update()
@@ -52,7 +55,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.WaitingBin:
                 if (_topBinController.TryPeek(out var topBin))
                 {
-                    OnTopBinReachedEnd(topBin.SortType);
+                    OnTopBinReachedEnd(topBin);
                 }
 
                 break;
@@ -90,12 +93,13 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
     }
 
-    private void OnTopBinReachedEnd(TrashSortType sortType)
+    private void OnTopBinReachedEnd(TopBin topBin)
     {
         if (_currentGameState == GameState.SortingBin) return;
 
         _currentGameState = GameState.SortingBin;
-        _currentSortType = sortType;
+        _currentSortType = topBin.SortType;
+        _currentTrashCount = topBin.TrashCount;
         IsScannerEmpty = false;
         _topBinController.SendBinToScanner().GetAwaiter().OnCompleted(OnTopBinReachedToScanner);
     }
@@ -105,7 +109,7 @@ public class GameManager : Singleton<GameManager>
         IsScannerEmpty = true;
         _currentGameState = GameState.WaitingBin;
         _trashController.DestroyAllTrash();
-        _trashController.LoadTrash(_currentSortType);
+        _trashController.LoadTrash(_currentSortType, _currentTrashCount);
     }
 
     private void OnTopBinReachedToScanner()

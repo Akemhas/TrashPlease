@@ -10,12 +10,15 @@ public class BinFrequencyData : ScriptableObject
     public int LoopCounterNumber => _difficultyIntervals[^1].BinCounter;
     [SerializeField, DelayedProperty, ValidateInput("Validate")] private List<DifficultyInterval> _difficultyIntervals;
 
-    public TrashSortType GetSortType(int binCounter)
+    public (TrashSortType, int) GetSortType(int binCounter)
     {
-        if (_difficultyIntervals.Count <= 0) return TrashSortType.Black;
+        (TrashSortType, int) result = new(TrashSortType.Black, 3);
+        if (_difficultyIntervals.Count <= 0) return result;
         if (_difficultyIntervals.Count == 1)
         {
-            return _difficultyIntervals[0].GetRandomSortType();
+            result.Item1 = _difficultyIntervals[0].GetRandomSortType();
+            result.Item2 = _difficultyIntervals[0].TrashCount;
+            return result;
         }
 
         int underLimit = 0;
@@ -26,14 +29,16 @@ public class BinFrequencyData : ScriptableObject
 
             if (binCounter >= underLimit && binCounter < difficultyInterval.BinCounter)
             {
-                return difficultyInterval.GetRandomSortType();
+                result.Item1 = difficultyInterval.GetRandomSortType();
+                result.Item2 = difficultyInterval.TrashCount;
+                return result;
             }
 
             underLimit = difficultyInterval.BinCounter;
         }
 
         Debug.LogError($"Couldn't Get Random Probability");
-        return TrashSortType.Black;
+        return result;
     }
 
     private bool Validate()
@@ -65,6 +70,7 @@ public class BinFrequencyData : ScriptableObject
     private class DifficultyInterval
     {
         public int BinCounter;
+        public int TrashCount = 3;
         [Delayed] public List<TrashProbability> TrashProbabilities;
 
         public TrashSortType GetRandomSortType()

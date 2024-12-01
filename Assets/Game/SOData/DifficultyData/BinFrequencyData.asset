@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficultyIntervals:
   - BinCounter: 8
+    TrashCount: 3
     TrashProbabilities:
     - SortType: 0
       Probability: 45
@@ -26,6 +27,7 @@ MonoBehaviour:
     - SortType: 7
       Probability: 10
   - BinCounter: 15
+    TrashCount: 4
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -38,6 +40,7 @@ MonoBehaviour:
     - SortType: 7
       Probability: 12
   - BinCounter: 25
+    TrashCount: 5
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -50,6 +53,7 @@ MonoBehaviour:
     - SortType: 7
       Probability: 12
   - BinCounter: 50
+    TrashCount: 6
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -62,6 +66,7 @@ MonoBehaviour:
     - SortType: 7
       Probability: 12
   - BinCounter: 100
+    TrashCount: 8
     TrashProbabilities:
     - SortType: 0
       Probability: 22
