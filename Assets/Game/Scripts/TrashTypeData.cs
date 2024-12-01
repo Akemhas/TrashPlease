@@ -21,6 +21,12 @@ public class TrashTypeData : ScriptableObject
     }
 
 #if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        ValueChanged();
+    }
+
     private void ValueChanged()
     {
         Undo.RecordObject(this, "DictionaryChange");
@@ -31,6 +37,9 @@ public class TrashTypeData : ScriptableObject
             Debug.Log($"No Data");
             return;
         }
+
+        _trashData.Sort((x, y) => String.Compare(x.name, y.name, StringComparison.Ordinal));
+        ClearDuplicates();
 
         foreach (var data in _trashData)
         {
@@ -43,6 +52,21 @@ public class TrashTypeData : ScriptableObject
         }
 
         PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+    }
+
+    private void ClearDuplicates()
+    {
+        List<TrashData> newList = new List<TrashData>();
+        for (int i = _trashData.Count - 1; i >= 0; i--)
+        {
+            if (newList.Contains(_trashData[i]))
+            {
+                _trashData.Remove(_trashData[i]);
+                continue;
+            }
+
+            newList.Add(_trashData[i]);
+        }
     }
 #endif
 }

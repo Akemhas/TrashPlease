@@ -9,6 +9,7 @@ public class BinFrequencyData : ScriptableObject
 {
     public int LoopCounterNumber => _difficultyIntervals[^1].BinCounter;
     [SerializeField, DelayedProperty, ValidateInput("Validate")] private List<DifficultyInterval> _difficultyIntervals;
+    [NonSerialized] private readonly Dictionary<int, DifficultyInterval> _difficultyIntervalLookupTable = new();
 
     public (TrashSortType, int) GetSortType(int binCounter)
     {
@@ -21,24 +22,41 @@ public class BinFrequencyData : ScriptableObject
             return result;
         }
 
+        var difficultyInterval = GetDifficultyInterval(binCounter);
+        result.Item1 = difficultyInterval.GetRandomSortType();
+        result.Item2 = difficultyInterval.TrashCount;
+
+        return result;
+    }
+
+    public float GetSpawnInterval(int binCounter)
+    {
+        var difficultyInterval = GetDifficultyInterval(binCounter);
+        return difficultyInterval.SpawnInterval;
+    }
+
+    private DifficultyInterval GetDifficultyInterval(int binCounter)
+    {
+        if (_difficultyIntervalLookupTable.ContainsKey(binCounter))
+        {
+            return _difficultyIntervalLookupTable[binCounter];
+        }
+
         int underLimit = 0;
 
-        for (var i = 0; i < _difficultyIntervals.Count; i++)
+        foreach (var difficultyInterval in _difficultyIntervals)
         {
-            var difficultyInterval = _difficultyIntervals[i];
-
             if (binCounter >= underLimit && binCounter < difficultyInterval.BinCounter)
             {
-                result.Item1 = difficultyInterval.GetRandomSortType();
-                result.Item2 = difficultyInterval.TrashCount;
-                return result;
+                _difficultyIntervalLookupTable.TryAdd(binCounter, difficultyInterval);
+                return difficultyInterval;
             }
 
             underLimit = difficultyInterval.BinCounter;
         }
 
-        Debug.LogError($"Couldn't Get Random Probability");
-        return result;
+        Debug.LogError($"Couldn't find the Difficulty interval for {binCounter}");
+        return null;
     }
 
     private bool Validate()
@@ -71,6 +89,8 @@ public class BinFrequencyData : ScriptableObject
     {
         public int BinCounter;
         public int TrashCount = 3;
+        public float SpawnInterval = 1.5f;
+
         [Delayed] public List<TrashProbability> TrashProbabilities;
 
         public TrashSortType GetRandomSortType()

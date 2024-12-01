@@ -8,18 +8,17 @@ public class TrashController : MonoBehaviour
 {
     public event Action TrashCreated;
 
+    [SerializeField] private List<TrashSortType> _includedSortTypes;
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
-
 
     private List<string> _loadedTrashList = new();
     private List<Trash> _instantiatedTrashList = new();
 
     private Bounds _trashSpawnBounds;
     private float _closestZPosition = 1;
-    private readonly Array _trashSortTypes = Enum.GetValues(typeof(TrashSortType));
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(.02f);
+    private readonly WaitForSeconds _waitForSeconds = new(.02f);
 
 
     private void Awake()
@@ -159,9 +158,9 @@ public class TrashController : MonoBehaviour
     private List<TrashSortType> GetWrongSortTypes(TrashSortType sortType)
     {
         List<TrashSortType> wrongSortTypes = new List<TrashSortType>();
-        foreach (var value in _trashSortTypes)
+        foreach (var value in _includedSortTypes)
         {
-            var enumValue = (TrashSortType)value;
+            var enumValue = value;
             if (enumValue != sortType && enumValue != TrashSortType.Question)
             {
                 wrongSortTypes.Add(enumValue);

@@ -210,7 +210,7 @@ MonoBehaviour:
   - Prefab: {fileID: 2992786345683384817, guid: 8ea40ee4b942f4261b0fb4ef00d1473b, type: 3}
     DefaultCapacity: 3
     MaxSize: 6
-    _sortType: 7
+    _sortType: 8
 --- !u!1001 &337724389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1709,6 +1709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4e013cdf4c49ceb9f57e381e549160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _includedSortTypes: 0000000001000000020000000300000008000000
   _trashTypeData: {fileID: 11400000, guid: a53a6f3d06f204227830e39191827d4d, type: 2}
   _trashLoader: {fileID: 2089603645}
   _spawnSpacingAmount: 0.4

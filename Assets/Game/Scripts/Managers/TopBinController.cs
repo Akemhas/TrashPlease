@@ -11,7 +11,6 @@ public class TopBinController : MonoBehaviour
     [SerializeField] private TopBinPool _topBinPool;
     [SerializeField] private BinFrequencyData _binFrequencyData;
     [SerializeField, ChildGameObjectsOnly] private ConveyorBeltController _beltController;
-    [SerializeField, Space] private float _spawnInterval;
     [SerializeField, ChildGameObjectsOnly] private Transform _startPoint;
     [SerializeField, ChildGameObjectsOnly] private Transform _scanner;
 
@@ -23,6 +22,7 @@ public class TopBinController : MonoBehaviour
 
     private readonly Queue<TopBin> _topBinQueue = new();
 
+    private float _spawnInterval;
     private float _elapsedTime;
     private bool _timeCapped;
 
@@ -126,6 +126,8 @@ public class TopBinController : MonoBehaviour
     public void CreateTopBin()
     {
         var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
+        _spawnInterval = _binFrequencyData.GetSpawnInterval(BinCounter);
+
         var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
         topBin.TrashCount = sortTypeTrashCount.Item2;
         _topBinQueue.Enqueue(topBin);
@@ -138,6 +140,7 @@ public class TopBinController : MonoBehaviour
         var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
         var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
         topBin.TrashCount = sortTypeTrashCount.Item2;
+        _spawnInterval = _binFrequencyData.GetSpawnInterval(BinCounter);
 
         var pos = _beltController.ConveyorBelts[^index].transform.position;
         pos.y = _startPoint.position.y;

@@ -61,9 +61,9 @@ public class Trash : MonoBehaviour
         Tween.LocalPosition(transform, _startPosition, _ts).OnComplete(() => _boxCollider.enabled = true);
     }
 
-    public void ToggleCollider2D(bool enabled)
+    public void ToggleCollider2D(bool isEnabled)
     {
-        _boxCollider.enabled = enabled;
+        _boxCollider.enabled = isEnabled;
     }
 }
 
@@ -73,5 +73,9 @@ public enum TrashSortType
     Yellow = 1,
     Blue = 2,
     Black = 3,
-    Question = 7,
+    SpecialWaste = 4,
+    WhiteGlass = 5,
+    BrownGlass = 6,
+    GreenGlass = 7,
+    Question = 8,
 }

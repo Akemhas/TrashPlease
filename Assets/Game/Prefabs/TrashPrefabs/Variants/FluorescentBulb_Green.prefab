@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5145905559317894510
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 701505924228393946, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 992822cc55b4942a0b2b4ed9476601ba, type: 3}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.7111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822255981220771088, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.7111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827267231866907148, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_Name
+      value: FluorescentBulb_Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8965c30dc9e9e426e924aeb2dbfd7ed7, type: 2}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: _trashData
+      value: 
+      objectReference: {fileID: 11400000, guid: 15311f35c77b14354907f4bfebda65bc, type: 2}
+    - target: {fileID: 7474947191457472168, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: TrashSortType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806816765880552638, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806816765880552638, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806816765880552638, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6396d52a5885c49759de9c32d9ee9882, type: 3}
