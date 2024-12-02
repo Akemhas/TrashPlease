@@ -36,10 +36,13 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private LayerMask _trashLayerMask;
     [SerializeField] private LayerMask _binLayerMask;
     [SerializeField] private LayerMask _inspectionLayerMask;
+    [SerializeField] private LayerMask _binSwipeLayerMask;
 
     private Trash _trash;
     private InputState _inputState;
     private Camera _mainCam;
+
+    public Transform _swipe;
 
     private void Awake()
     {
@@ -50,6 +53,14 @@ public class InputManager : Singleton<InputManager>
     {
         if (InputPaused) return;
         if (HasClickedOverUI()) return;
+
+        var hitBin = RaycastToMousePosition(_binSwipeLayerMask);
+        if(hitBin.collider != null)
+        {
+            _inputState = InputState.Swipe;
+            _dragHandler.AddSwipe(_swipe);
+            return;
+        }
 
         var hit = RaycastToMousePosition(_trashLayerMask);
         if (hit.collider == null) return;
@@ -71,6 +82,13 @@ public class InputManager : Singleton<InputManager>
     private void OnReleased()
     {
         if (InputPaused) return;
+
+        if(_inputState == InputState.Swipe)
+        {
+            _inputState = InputState.Idle;
+            _dragHandler.RemoveSwipe();
+            return;
+        }
 
         if (_inputState != InputState.CarryingObject) return;
 
@@ -143,5 +161,6 @@ public class InputManager : Singleton<InputManager>
     {
         Idle,
         CarryingObject,
+        Swipe,
     }
 }

@@ -12,6 +12,7 @@ public class Trash : MonoBehaviour
 
     public TrashSortType TrashSortType => Data.SortType;
     private Vector3 _startPosition;
+    public bool inspect = false;
 
     private readonly TweenSettings _ts = new(.2f, Ease.InOutCubic);
 
@@ -40,6 +41,7 @@ public class Trash : MonoBehaviour
     private void Awake()
     {
         _startPosition = transform.localPosition;
+        inspect = false;
     }
 
     public void SavePosition()

@@ -15,8 +15,8 @@ TagManager:
   - Bin
   - TrashArea
   - InspectArea
-  - 
-  - 
+  - InspectWindow
+  - BinSwipeArea
   - 
   - 
   - 

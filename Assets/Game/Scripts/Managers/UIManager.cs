@@ -23,7 +23,7 @@ public class UIManager : Singleton<UIManager>
     {
         _okButton.onClick.AddListener(OnOkButtonClicked);
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
-        InputManager.Instance.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
+        //InputManager.Instance.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
         InputManager.Instance.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
     }
 
@@ -44,8 +44,9 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.ProgressBin();
     }
 
-    private void OnTrashDroppedOnInspectTable(Trash trash)
+    public void OnTrashDroppedOnInspectTable(Trash trash)
     {
+        if (!trash.inspect) return;
         _inspectionController.ActivateInspect(trash.Data);
         _inspectionController.AddTrashToTable(trash);
         _okButton.interactable = false;

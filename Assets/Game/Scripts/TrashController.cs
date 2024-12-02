@@ -63,17 +63,21 @@ public class TrashController : MonoBehaviour
 
     private void OnTrashDroppedOnInspectTable(Trash trash)
     {
+        trash.inspect = true;
         trash.SavePosition();
+        UIManager.Instance.OnTrashDroppedOnInspectTable(trash);
     }
 
     private void OnTrashDroppedOnTrashArea(Trash trash)
     {
+        trash.inspect = false;
         trash.SavePosition();
     }
 
     private void OnTrashDroppedOnEmptySpace(Trash trash)
     {
         trash.ReturnToStartPosition();
+        UIManager.Instance.OnTrashDroppedOnInspectTable(trash);
     }
 
     private void OnTrashDroppedOnPlayerBin(Trash trash, PlayerBin playerBin)
@@ -86,6 +90,7 @@ public class TrashController : MonoBehaviour
         else
         {
             trash.ReturnToStartPosition();
+            UIManager.Instance.OnTrashDroppedOnInspectTable(trash);
         }
     }
 

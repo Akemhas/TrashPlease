@@ -278,8 +278,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d130cc44237224fc6ac2499df1bb918b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _graphicRaycaster: {fileID: 0}
   _dragHandler: {fileID: 1257172579}
   _playerInput: {fileID: 1257172577}
   _trashLayerMask:
@@ -1448,6 +1449,9 @@ MonoBehaviour:
   _binLayerMask:
     serializedVersion: 2
     m_Bits: 896
+  _inspectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1257172579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,8 +2067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 230}
-  m_SizeDelta: {x: 900, y: 1200}
+  m_AnchoredPosition: {x: 0, y: 310}
+  m_SizeDelta: {x: 900, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1859155368236411610
 PrefabInstance:
