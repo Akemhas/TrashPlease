@@ -1,11 +1,15 @@
 using PrimeTween;
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DragHandler : MonoBehaviour
 {
-    public bool InputPaused;
+    [ReadOnly] public bool InputPaused;
+    
+    [SerializeField] private BinScroll _binScroller;
+    
     private InputAction _dragAction;
     private InputAction _swipeAction;
     private Transform _draggable;
@@ -17,10 +21,6 @@ public class DragHandler : MonoBehaviour
     private float mouseStartX;
 
     private Vector3 _worldPos;
-
-    public BinScoll _binScroller;
-
-
 
     public void Awake()
     {
@@ -49,6 +49,7 @@ public class DragHandler : MonoBehaviour
         {
             _binScroller.tween.Stop();
         }
+
         _draggable = t;
         swipeStartX = t.position.x;
         mouseStartX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
@@ -67,20 +68,22 @@ public class DragHandler : MonoBehaviour
         if (!_draggable) return;
         _swipeAction.Disable();
         float swipeDistance = _draggable.position.x - swipeStartX;
-        if(swipeDistance < -_swipeThreshold)
+        if (swipeDistance < -_swipeThreshold)
         {
             Debug.Log("SWIPE LEFT");
             _binScroller.swipeRight();
         }
+
         if (swipeDistance > _swipeThreshold)
         {
             _binScroller.swipeLeft();
-            
         }
+
         if (Math.Abs(swipeDistance) <= _swipeThreshold && Math.Abs(swipeDistance) > 0)
         {
             _binScroller.moveBack();
         }
+
         _draggable = null;
     }
 
@@ -101,7 +104,7 @@ public class DragHandler : MonoBehaviour
     {
         if (InputPaused) return;
 
-        var mouseScreenPos = context.ReadValue<Vector2>();        
+        var mouseScreenPos = context.ReadValue<Vector2>();
         _worldPos.x = mouseScreenPos.x;
 
         var newPosition = _mainCam.ScreenToWorldPoint(_worldPos);

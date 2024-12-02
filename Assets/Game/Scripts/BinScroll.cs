@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using PrimeTween;
 using static UnityEditor.PlayerSettings;
 
-public class BinScoll : MonoBehaviour
+public class BinScroll : MonoBehaviour
 {
     public Image left;
     public Image center;
