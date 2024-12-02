@@ -53,6 +53,7 @@ public class InspectController : MonoBehaviour
         if (_trashOnTable.Contains(trash))
         {
             _trashOnTable.Remove(trash);
+            DeactivateInspect();
         }
     }
 
