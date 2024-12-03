@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using PrimeTween;
-using static UnityEditor.PlayerSettings;
 
 public class BinScroll : MonoBehaviour
 {

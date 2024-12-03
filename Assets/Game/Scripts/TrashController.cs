@@ -141,6 +141,26 @@ public class TrashController : MonoBehaviour
         return isSorted;
     }
 
+    public void CheckTrashSortingV2(TrashSortType binsSortType)
+    {
+        int i = 0;
+        foreach (var trash in _instantiatedTrashList)
+        {
+            if (trash.TrashSortType == binsSortType)
+            {
+                i++;
+                trash.playParticle(true);
+            }
+            else
+            {
+                i--;
+                trash.playParticle(false);
+            }
+        }
+
+        UIManager.Instance.IncreaseCounter(i);
+    }
+
     public void ToggleTrashColliders(bool isEnabled)
     {
         foreach (var trash in _instantiatedTrashList) trash.ToggleCollider2D(isEnabled);
@@ -222,6 +242,7 @@ public class TrashController : MonoBehaviour
             instantiatedTrash.transform.localPosition = new Vector3(randomXPos, randomYPos, _closestZPosition);
             instantiatedTrash.transform.rotation = randomQuaternion;
             var trash = instantiatedTrash.GetComponent<Trash>();
+            trash.setParticleRotation(randomQuaternion.eulerAngles.z);
             _instantiatedTrashList.Add(trash);
         }
 

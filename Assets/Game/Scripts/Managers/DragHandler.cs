@@ -70,7 +70,6 @@ public class DragHandler : MonoBehaviour
         float swipeDistance = _draggable.position.x - swipeStartX;
         if (swipeDistance < -_swipeThreshold)
         {
-            Debug.Log("SWIPE LEFT");
             _binScroller.swipeRight();
         }
 

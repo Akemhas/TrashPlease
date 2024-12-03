@@ -14,6 +14,11 @@ public class Trash : MonoBehaviour
     private Vector3 _startPosition;
     public bool inspect = false;
 
+    private ParticleSystem _ps;
+    private ParticleSystemRenderer _pr;
+    [SerializeField] private Material _plusParticle;
+    [SerializeField] private Material _minusParticle;
+
     private readonly TweenSettings _ts = new(.2f, Ease.InOutCubic);
 
 #if UNITY_EDITOR
@@ -42,6 +47,20 @@ public class Trash : MonoBehaviour
     {
         _startPosition = transform.localPosition;
         inspect = false;
+        _ps = gameObject.GetComponent<ParticleSystem>();
+        _pr = gameObject.GetComponent<ParticleSystemRenderer>();
+    }
+
+    public void setParticleRotation(float rotation)
+    {
+        var sh = _ps.shape;
+        sh.rotation = new Vector3(0, 0, 70f - rotation);
+    }
+
+    public void playParticle(bool plus)
+    {
+        _pr.material = plus ? _plusParticle : _minusParticle;
+        _ps.Play();
     }
 
     public void SavePosition()

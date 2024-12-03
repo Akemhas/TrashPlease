@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -71,8 +72,17 @@ public class GameManager : Singleton<GameManager>
         if (_currentGameState != GameState.SortingBin) return;
         if (_binController.CurrentBin == null) return;
 
-        if (!_trashController.CheckTrashSorting(_currentSortType)) return;
+        //if (!_trashController.CheckTrashSorting(_currentSortType)) return;
+        //_isBinMoving = true;
+        //_binController.DestroyBin();
 
+        StartCoroutine(CheckTrash());
+    }
+
+    IEnumerator CheckTrash()
+    {
+        _trashController.CheckTrashSortingV2(_currentSortType);
+        yield return new WaitForSeconds(1);
         _isBinMoving = true;
         _binController.DestroyBin();
     }

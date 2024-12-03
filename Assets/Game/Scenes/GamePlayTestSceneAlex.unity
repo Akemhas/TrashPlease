@@ -1705,7 +1705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8463398814910879535, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.45
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8463398814910879535, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2724,6 +2724,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BinScroll, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2407210680429874507, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -320
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407210680429874507, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -340
+      objectReference: {fileID: 0}
     - target: {fileID: 4954791951138681556, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2808,10 +2816,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: -8984174494225732007, guid: 84ca362d89be5124a8edc9c29980bcec, type: 3}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 5231182945055019020, guid: dd33e9f13355fe34e92370f53c7cb912, type: 3}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024473648814981146, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6238285555063246177, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6838031073184950602, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cdc94c57723485439c7b9c4d4b2dc47, type: 3}
     - target: {fileID: 7059786211720865703, guid: 7beb7e834a44d4800bf14f4b94e5b535, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
