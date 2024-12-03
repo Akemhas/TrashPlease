@@ -2635,6 +2635,7 @@ MonoBehaviour:
   _includedSortTypes: 0000000001000000020000000300000008000000
   _trashTypeData: {fileID: 11400000, guid: a53a6f3d06f204227830e39191827d4d, type: 2}
   _trashLoader: {fileID: 2089603645}
+  _particlePrefab: {fileID: 5110908477789175737, guid: 297195aba1eeee9498c1a223b411de63, type: 3}
   _spawnSpacingAmount: 0.4
 --- !u!1001 &620888123818607803
 PrefabInstance:

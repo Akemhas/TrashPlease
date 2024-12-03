@@ -11,6 +11,7 @@ public class TrashController : MonoBehaviour
     [SerializeField] private List<TrashSortType> _includedSortTypes;
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
+    [SerializeField] private GameObject _particlePrefab;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
 
     private List<string> _loadedTrashList = new();
@@ -29,6 +30,12 @@ public class TrashController : MonoBehaviour
         inputManager.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
         inputManager.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
         inputManager.TrashPicked += OnTrashPicked;
+    }
+
+    private void createParticle(Trash trash, bool _plus)
+    {
+        var particle = Instantiate(_particlePrefab, trash.transform.position, Quaternion.identity);
+        particle.GetComponent<ParticleController>().playParticle(_plus);
     }
 
     private void OnTrashPicked(Trash trash)
@@ -85,6 +92,7 @@ public class TrashController : MonoBehaviour
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
             UIManager.Instance.IncreaseCounter();
+            createParticle(trash, true);
             DestroyTrash(trash);
         }
         else
@@ -149,12 +157,12 @@ public class TrashController : MonoBehaviour
             if (trash.TrashSortType == binsSortType)
             {
                 i++;
-                trash.playParticle(true);
+                createParticle(trash, true);
             }
             else
             {
                 i--;
-                trash.playParticle(false);
+                createParticle(trash, false);
             }
         }
 
@@ -242,7 +250,6 @@ public class TrashController : MonoBehaviour
             instantiatedTrash.transform.localPosition = new Vector3(randomXPos, randomYPos, _closestZPosition);
             instantiatedTrash.transform.rotation = randomQuaternion;
             var trash = instantiatedTrash.GetComponent<Trash>();
-            trash.setParticleRotation(randomQuaternion.eulerAngles.z);
             _instantiatedTrashList.Add(trash);
         }
 
