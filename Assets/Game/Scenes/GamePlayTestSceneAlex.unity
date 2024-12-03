@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentBin: {fileID: 0}
   _beltRenderer: {fileID: 1718630966}
-  _targetScrollValue: {x: -0.5, y: 0}
+  _targetScrollValue: {x: -1, y: 0}
   _binEntranceDuration: 0.5
 --- !u!1001 &989634511
 PrefabInstance:
