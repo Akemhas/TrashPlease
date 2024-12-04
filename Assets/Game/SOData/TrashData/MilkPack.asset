@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MilkPack
   m_EditorClassIdentifier: 
   Address: MilkPack
-  SortType: 2
+  SortType: 1
   Name: Milk Pack
   Information: 

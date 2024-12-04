@@ -55,7 +55,7 @@ public class InputManager : Singleton<InputManager>
         if (HasClickedOverUI()) return;
 
         var hitBin = RaycastToMousePosition(_binSwipeLayerMask);
-        if(hitBin.collider != null)
+        if (hitBin.collider != null)
         {
             _inputState = InputState.Swipe;
             _dragHandler.AddSwipe(_swipe);
@@ -67,7 +67,7 @@ public class InputManager : Singleton<InputManager>
 
         _trash = hit.collider.GetComponent<Trash>();
         TrashPicked?.Invoke(_trash);
-        
+
         var inspectRaycast = RaycastToMousePosition(_inspectionLayerMask);
         if (inspectRaycast.collider)
         {
@@ -83,7 +83,7 @@ public class InputManager : Singleton<InputManager>
     {
         if (InputPaused) return;
 
-        if(_inputState == InputState.Swipe)
+        if (_inputState == InputState.Swipe)
         {
             _inputState = InputState.Idle;
             _dragHandler.RemoveSwipe();

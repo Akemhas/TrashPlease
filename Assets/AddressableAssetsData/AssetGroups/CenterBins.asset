@@ -16,22 +16,37 @@ MonoBehaviour:
   m_GUID: 4a610f0bb44d44d989a81b336aa03702
   m_SerializeEntries:
   - m_GUID: 2be8dda4095a04af9a4171c3c9024110
-    m_Address: Bin_Black
+    m_Address: Bin_Residual
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3903374e796c34560856dd88b932ed8c
-    m_Address: Bin_Brown
+    m_Address: Bin_Bio
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72704736d0fc943d49e4346bb0c69a99
+    m_Address: Bin_BrownGlass
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7488454f21c3649219dc75cb310db8ed
-    m_Address: Bin_Blue
+    m_Address: Bin_Paper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92a6d95dc5b2c482a8285cae9c31468e
+    m_Address: Bin_WhiteGlass
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca382f93f87264bff8f5e0a7980c026b
+    m_Address: Bin_GreenGlass
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fff8870d3b55a42d3b31f55417f5bf09
-    m_Address: Bin_Yellow
+    m_Address: Bin_Plastic
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -72,10 +72,10 @@ public class Trash : MonoBehaviour
 
 public enum TrashSortType
 {
-    Brown = 0,
-    Yellow = 1,
-    Blue = 2,
-    Black = 3,
+    Bio = 0,
+    Plastic = 1,
+    Paper = 2,
+    Residual = 3,
     SpecialWaste = 4,
     WhiteGlass = 5,
     BrownGlass = 6,

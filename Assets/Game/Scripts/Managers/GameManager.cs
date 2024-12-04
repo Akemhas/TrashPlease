@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public bool IsScannerEmpty = true;
 
     private bool _isBinMoving;
+    private bool _checking;
 
     private void Awake()
     {
@@ -71,20 +72,21 @@ public class GameManager : Singleton<GameManager>
         if (_isBinMoving) return;
         if (_currentGameState != GameState.SortingBin) return;
         if (_binController.CurrentBin == null) return;
-
-        //if (!_trashController.CheckTrashSorting(_currentSortType)) return;
-        //_isBinMoving = true;
-        //_binController.DestroyBin();
+        if (_checking) return;
 
         StartCoroutine(CheckTrash());
     }
 
     IEnumerator CheckTrash()
     {
-        _trashController.CheckTrashSortingV2(_currentSortType);
-        yield return new WaitForSeconds(1);
+        _checking = true;
+
+        _trashController.CheckTrashSorting(_currentSortType);
+        yield return new WaitForSeconds(.6f);
         _isBinMoving = true;
         _binController.DestroyBin();
+
+        _checking = false;
     }
 
     public void Pause()

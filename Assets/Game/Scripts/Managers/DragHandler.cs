@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class DragHandler : MonoBehaviour
 {
     [ReadOnly] public bool InputPaused;
-    
+
     [SerializeField] private BinScroll _binScroller;
-    
+
     private InputAction _dragAction;
     private InputAction _swipeAction;
     private Transform _draggable;
@@ -45,14 +45,14 @@ public class DragHandler : MonoBehaviour
 
     public void AddSwipe(Transform t)
     {
-        if (_binScroller.tween.isAlive)
+        if (_binScroller.Tween.isAlive)
         {
-            _binScroller.tween.Stop();
+            _binScroller.Tween.Stop();
         }
 
         _draggable = t;
         swipeStartX = t.position.x;
-        mouseStartX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        mouseStartX = _mainCam.ScreenToWorldPoint(Input.mousePosition).x;
         _swipeAction.Enable();
     }
 
@@ -68,19 +68,20 @@ public class DragHandler : MonoBehaviour
         if (!_draggable) return;
         _swipeAction.Disable();
         float swipeDistance = _draggable.position.x - swipeStartX;
+
         if (swipeDistance < -_swipeThreshold)
         {
-            _binScroller.swipeRight();
+            _binScroller.Swipe(1);
         }
 
         if (swipeDistance > _swipeThreshold)
         {
-            _binScroller.swipeLeft();
+            _binScroller.Swipe(0);
         }
 
         if (Math.Abs(swipeDistance) <= _swipeThreshold && Math.Abs(swipeDistance) > 0)
         {
-            _binScroller.moveBack();
+            _binScroller.MoveBack();
         }
 
         _draggable = null;

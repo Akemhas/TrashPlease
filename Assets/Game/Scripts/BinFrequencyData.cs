@@ -13,7 +13,7 @@ public class BinFrequencyData : ScriptableObject
 
     public (TrashSortType, int) GetSortType(int binCounter)
     {
-        (TrashSortType, int) result = new(TrashSortType.Black, 3);
+        (TrashSortType, int) result = new(TrashSortType.Residual, 3);
         if (_difficultyIntervals.Count <= 0) return result;
         if (_difficultyIntervals.Count == 1)
         {
@@ -109,7 +109,7 @@ public class BinFrequencyData : ScriptableObject
             }
 
             Debug.LogError($"Couldn't Get Random Probability");
-            return TrashSortType.Black;
+            return TrashSortType.Residual;
         }
 
 #if UNITY_EDITOR

@@ -1,94 +1,56 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 using PrimeTween;
 
 public class BinScroll : MonoBehaviour
 {
-    public Image left;
-    public Image center;
-    public Image right;
-    public Tween tween;
+    public Tween Tween;
 
+    private int _pos; //-1 = left, 0 = center, 1 = right
 
-    private int pos; //-1 = left, 0 = center, 1 = right
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        centerDot();
+        UIManager.Instance.SwipeButtonClicked += OnSwipeButtonClicked;
     }
 
-    public void swipeLeft()
+    private void OnSwipeButtonClicked(int posIndex)
     {
-        if (pos == 0)
-        {
-            leftDot();
-            return;
-        }
-        if (pos == 1)
-        {
-            centerDot();
-            return;
-        }
-        moveBack();
+        Swipe(posIndex);
     }
 
-    public void swipeRight()
+    private void Start() => CenterDot();
+
+    public void Swipe(int posIndex)
     {
-        if (pos == -1)
+        switch (posIndex)
         {
-            centerDot();
-            return;
+            case 0:
+                CenterDot();
+                return;
+            case 1:
+                RightDot();
+                return;
         }
-        if (pos == 0)
-        {
-            rightDot();
-            return;
-        }
-        moveBack();
-    }
-    public void moveBack()
-    {
-        if (pos == -1)
-        {
-            leftDot();
-            return;
-        }
-        if (pos == 0)
-        {
-            centerDot();
-            return;
-        }
-        if(pos == 1)
-        {
-            rightDot();
-            return;
-        }
+
+        UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
     }
 
-    public void leftDot()
+    public void MoveBack()
     {
-        pos = -1;
-        left.color = Color.white;
-        center.color = Color.gray;
-        right.color = Color.gray;
-        tween = Tween.LocalPositionX(transform, endValue: 6f, 1f, Ease.OutCubic);
+        Swipe(_pos);
     }
 
-    public void centerDot()
+    private void CenterDot()
     {
-        pos = 0;
-        left.color = Color.gray;
-        center.color = Color.white;
-        right.color = Color.gray;
-        tween = Tween.LocalPositionX(transform, endValue: 0f, 1f, Ease.OutCubic);
+        _pos = 0;
+        Tween = Tween.LocalPositionX(transform, endValue: 0f, 1f, Ease.OutCubic);
+        UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
     }
 
-    public void rightDot()
+    private void RightDot()
     {
-        pos = 1;
-        left.color = Color.gray;
-        center.color = Color.gray;
-        right.color = Color.white;
-        tween = Tween.LocalPositionX(transform, endValue: -6f, 1f, Ease.OutCubic);
+        _pos = 1;
+        Tween = Tween.LocalPositionX(transform, endValue: -6f, 1f, Ease.OutCubic);
+        UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
     }
 }

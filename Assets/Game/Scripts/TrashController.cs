@@ -32,10 +32,10 @@ public class TrashController : MonoBehaviour
         inputManager.TrashPicked += OnTrashPicked;
     }
 
-    private void createParticle(Trash trash, bool _plus)
+    private void CreateParticle(Trash trash, bool plus)
     {
         var particle = Instantiate(_particlePrefab, trash.transform.position, Quaternion.identity);
-        particle.GetComponent<ParticleController>().playParticle(_plus);
+        particle.GetComponent<ParticleController>().PlayParticle(plus);
     }
 
     private void OnTrashPicked(Trash trash)
@@ -92,13 +92,14 @@ public class TrashController : MonoBehaviour
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
             UIManager.Instance.IncreaseCounter();
-            createParticle(trash, true);
+            CreateParticle(trash, true);
             DestroyTrash(trash);
         }
         else
         {
-            trash.ReturnToStartPosition();
-            UIManager.Instance.OnTrashDroppedOnInspectTable(trash);
+            CreateParticle(trash, false);
+            UIManager.Instance.IncreaseCounter(-1);
+            DestroyTrash(trash);
         }
     }
 
@@ -130,26 +131,7 @@ public class TrashController : MonoBehaviour
         }
     }
 
-    public bool CheckTrashSorting(TrashSortType binsSortType)
-    {
-        bool isSorted = true;
-        foreach (var trash in _instantiatedTrashList)
-        {
-            if (trash.TrashSortType != binsSortType)
-            {
-                isSorted = false;
-            }
-        }
-
-        if (isSorted)
-        {
-            UIManager.Instance.IncreaseCounter(_instantiatedTrashList.Count);
-        }
-
-        return isSorted;
-    }
-
-    public void CheckTrashSortingV2(TrashSortType binsSortType)
+    public void CheckTrashSorting(TrashSortType binsSortType)
     {
         int i = 0;
         foreach (var trash in _instantiatedTrashList)
@@ -157,12 +139,12 @@ public class TrashController : MonoBehaviour
             if (trash.TrashSortType == binsSortType)
             {
                 i++;
-                createParticle(trash, true);
+                CreateParticle(trash, true);
             }
             else
             {
                 i--;
-                createParticle(trash, false);
+                CreateParticle(trash, false);
             }
         }
 
