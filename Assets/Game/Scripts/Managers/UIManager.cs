@@ -16,9 +16,11 @@ public class UIManager : Singleton<UIManager>
     [Space, SerializeField] private TextMeshProUGUI _counter;
     [SerializeField] private Button _okButton;
 
-    [SerializeField] private Button _rightSwipeButton;
+    [SerializeField] private Button _leftSwipeButton;
     [SerializeField] private Button _centerSwipeButton;
+    [SerializeField] private Button _rightSwipeButton;
 
+    [SerializeField] private Image _leftSwipe;
     [SerializeField] private Image _centerSwipe;
     [SerializeField] private Image _rightSwipe;
 
@@ -35,7 +37,8 @@ public class UIManager : Singleton<UIManager>
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
         TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
         InputManager.Instance.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
-        
+
+        _leftSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(-1));
         _rightSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(1));
         _centerSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(0));
     }
@@ -84,7 +87,25 @@ public class UIManager : Singleton<UIManager>
 
     public void ChangeSwipeIndicatorVisual(int posIndex)
     {
-        _centerSwipe.color = posIndex == 0 ? Color.gray : Color.white;
-        _rightSwipe.color = posIndex == 1 ? Color.gray : Color.white;
+        switch (posIndex)
+        {
+            case -1:
+                _leftSwipe.color = Color.white;
+                _centerSwipe.color = Color.gray;
+                _rightSwipe.color = Color.gray;
+                return;
+            case 0:
+                _leftSwipe.color = Color.gray;
+                _centerSwipe.color = Color.white;
+                _rightSwipe.color = Color.gray;
+                return;
+            case 1:
+                _leftSwipe.color = Color.gray;
+                _centerSwipe.color = Color.gray;
+                _rightSwipe.color = Color.white;
+                return;
+        }
+        //_centerSwipe.color = posIndex == 0 ? Color.gray : Color.white;
+        //_rightSwipe.color = posIndex == 1 ? Color.gray : Color.white;
     }
 }
