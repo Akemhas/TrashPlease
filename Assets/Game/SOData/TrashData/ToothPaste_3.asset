@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ToothPaste_3
   m_EditorClassIdentifier: 
   Address: ToothPaste_3
-  SortType: 3
+  SortType: 1
   Name: Toothpaste
-  Information: 
+  Information: Dispose of empty toothpaste tubes in the yellow recycling bin.

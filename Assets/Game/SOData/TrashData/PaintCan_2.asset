@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: PaintCan_2
   SortType: 4
   Name: Paint Can
-  Information: 
+  Information: Paint cans with residues are hazardous waste and should go to a special
+    disposal site.

@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: FluorescentBulb_Blue
   SortType: 4
   Name: Blue Bulb
-  Information: 
+  Information: Light bulbs, depending on the type, should be disposed of at special
+    recycling points.

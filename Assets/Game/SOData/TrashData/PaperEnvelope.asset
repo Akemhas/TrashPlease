@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: PaperEnvelope
   SortType: 2
   Name: Paper Envelope
-  Information: 
+  Information: Paper evelopes belong in the paper recycling bin. If the envelope
+    has a plastic window you can try nto remove it.

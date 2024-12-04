@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: BrownBeer
   SortType: 6
   Name: Beer
-  Information: 
+  Information: Brown glass bottles should be placed in the brown glass recycling
+    container to maintain glass purity.

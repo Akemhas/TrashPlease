@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: StrawberryJam_1
   SortType: 5
   Name: Strawberry Jam Jar
-  Information: 
+  Information: Empty and clean jam jars belong in the correct glass recycling container
+    based on color.

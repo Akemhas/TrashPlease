@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: Battery_1
   SortType: 4
   Name: Battery
-  Information: 
+  Information: Batteries contain hazardous materials and must be disposed of at designated
+    collection points or in battery recycling boxes.
