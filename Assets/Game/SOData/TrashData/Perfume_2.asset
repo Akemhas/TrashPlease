@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: Perfume_2
   SortType: 5
   Name: Perfume
-  Information: 
+  Information: Empty perfume bottles go in the appropriate glass recycling container
+    based on color.

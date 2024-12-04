@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: CardboardBox
   SortType: 2
   Name: Box
-  Information: 
+  Information: Flatten cardboard boxes before disposing of them in the paper recycling
+    bin.

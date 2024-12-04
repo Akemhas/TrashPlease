@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: CrushedCan
   SortType: 1
   Name: Crushed Can
-  Information: 
+  Information: Non pfand-marked cans belong in the yellow recycling bin; Pfand-marked
+    cans should be returned to collection points for a deposit refund even when crushed.

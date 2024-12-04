@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: Pen
   SortType: 3
   Name: Old Pen
-  Information: 
+  Information: Pens typically go in general waste unless part of a special recycling
+    program.

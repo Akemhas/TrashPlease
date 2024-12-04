@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TeaBag
   m_EditorClassIdentifier: 
   Address: TeaBag
-  SortType: 0
+  SortType: 3
   Name: Tea Bag
-  Information: 
+  Information: Most tea bags are made of a synthetic material and belong in the general
+    waste.

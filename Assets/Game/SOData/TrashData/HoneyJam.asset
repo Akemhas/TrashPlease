@@ -15,4 +15,5 @@ MonoBehaviour:
   Address: HoneyJam
   SortType: 5
   Name: Honay Jam Jar
-  Information: 
+  Information: Empty and clean honey jars go in the appropriate glass container based
+    on their color.
