@@ -20,10 +20,18 @@ public class BinScroll : MonoBehaviour
 
     private void Start() => CenterDot();
 
+    public void SwipeDir(int dir)
+    {
+        Swipe(_pos + dir);
+    }
+
     public void Swipe(int posIndex)
     {
         switch (posIndex)
         {
+            case -1:
+                LeftDot();
+                return;
             case 0:
                 CenterDot();
                 return;
@@ -38,6 +46,13 @@ public class BinScroll : MonoBehaviour
     public void MoveBack()
     {
         Swipe(_pos);
+    }
+
+    private void LeftDot()
+    {
+        _pos = -1;
+        Tween = Tween.LocalPositionX(transform, endValue: 6f, 1f, Ease.OutCubic);
+        UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
     }
 
     private void CenterDot()

@@ -71,12 +71,12 @@ public class DragHandler : MonoBehaviour
 
         if (swipeDistance < -_swipeThreshold)
         {
-            _binScroller.Swipe(1);
+            _binScroller.SwipeDir(1);
         }
 
         if (swipeDistance > _swipeThreshold)
         {
-            _binScroller.Swipe(0);
+            _binScroller.SwipeDir(-1);
         }
 
         if (Math.Abs(swipeDistance) <= _swipeThreshold && Math.Abs(swipeDistance) > 0)
