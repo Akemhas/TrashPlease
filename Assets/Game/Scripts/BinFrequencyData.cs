@@ -132,6 +132,6 @@ public class BinFrequencyData : ScriptableObject
     private class TrashProbability
     {
         public TrashSortType SortType;
-        [PropertyRange(0, 100)] public int Probability;
+        [PropertyRange(0, 100), Delayed] public int Probability;
     }
 }

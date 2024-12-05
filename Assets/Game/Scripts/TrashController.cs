@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 public class TrashController : MonoBehaviour
@@ -21,6 +22,9 @@ public class TrashController : MonoBehaviour
     private float _closestZPosition = 1;
     private readonly WaitForSeconds _waitForSeconds = new(.02f);
 
+    private const string ScoreParticleId = "Score";
+
+    [SerializeField] private ParticlePool _particlePool;
 
     private void Awake()
     {
@@ -34,8 +38,8 @@ public class TrashController : MonoBehaviour
 
     private void CreateParticle(Trash trash, bool plus)
     {
-        var particle = Instantiate(_particlePrefab, trash.transform.position, Quaternion.identity);
-        particle.GetComponent<ParticleController>().PlayParticle(plus);
+        var particle = _particlePool.Get(ScoreParticleId, trash.transform.position);
+        particle.PlayParticle(plus, () => _particlePool.Release(ScoreParticleId, particle));
     }
 
     private void OnTrashPicked(Trash trash)
@@ -92,8 +96,20 @@ public class TrashController : MonoBehaviour
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
             UIManager.Instance.IncreaseCounter();
-            CreateParticle(trash, true);
             DestroyTrash(trash);
+            CreateParticle(trash, true);
+        }
+        else if (playerBin.BinTrashSortType == TrashSortType.Deposit && trash.Data.DepositValue > 0)
+        {
+            var particleAmount = Mathf.Sqrt(trash.Data.DepositValue) * 2;
+            for (int j = 0; j < particleAmount; j++)
+            {
+                CreateParticle(trash, true);
+            }
+
+            DestroyTrash(trash);
+
+            UIManager.Instance.IncreaseCounter(trash.Data.DepositValue);
         }
         else
         {

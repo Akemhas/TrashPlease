@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Address: SodaCan
   SortType: 1
+  DepositValue: 15
   Name: Soda Can
   Information: Return Pfand-marked soda cans for a deposit refund.

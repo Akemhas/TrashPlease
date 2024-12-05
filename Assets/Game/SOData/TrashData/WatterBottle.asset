@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Address: WaterBottle
   SortType: 1
+  DepositValue: 5
   Name: Bottle of Water
   Information: Pfand-marked plastic bottles should be returned for a deposit refund.

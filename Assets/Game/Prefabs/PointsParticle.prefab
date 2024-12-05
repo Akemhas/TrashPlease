@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5616388136290775968}
   - component: {fileID: 5841735343185362240}
   m_Layer: 0
-  m_Name: ParticlePrefab
+  m_Name: PointsParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,7 +365,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.35
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -682,7 +682,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 1
-    maxNumParticles: 1000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -2982,7 +2982,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 1
-    frequency: 0.5
+    frequency: 0.75
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5

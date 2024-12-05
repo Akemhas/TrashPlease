@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Address: PlasticSodaBottle
   SortType: 1
+  DepositValue: 5
   Name: Soda Bottle
   Information: Pfand-marked plastic bottles should be returned for a deposit refund.

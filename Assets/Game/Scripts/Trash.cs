@@ -42,7 +42,6 @@ public class Trash : MonoBehaviour
     {
         _startPosition = transform.localPosition;
         inspect = false;
-        
     }
 
     public void SavePosition()
@@ -81,4 +80,6 @@ public enum TrashSortType
     BrownGlass = 6,
     GreenGlass = 7,
     Question = 8,
+    Deposit = 9,
+    Battery = 10,
 }

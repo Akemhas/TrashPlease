@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using UnityEngine.Pool;
 
 public class TopBinPool : MonoBehaviour
@@ -73,13 +72,4 @@ public class TopBinPool : MonoBehaviour
         [SerializeField] private TrashSortType _sortType;
         public override string ID() => _sortType.ToString();
     }
-}
-
-[Serializable]
-public abstract class PoolObject<T> where T : MonoBehaviour
-{
-    public abstract string ID();
-    [AssetsOnly] public T Prefab;
-    public int DefaultCapacity;
-    public int MaxSize;
 }

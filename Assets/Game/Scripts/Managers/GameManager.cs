@@ -42,7 +42,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         _topBinController.Initialize();
-        var topBinData = _topBinController.CreateTopBin(1);
+        var topBinData = _topBinController.CreateTopBin(3);
         _currentSortType = topBinData.Item1;
         _currentTrashCount = topBinData.Item2;
         _trashController.LoadTrash(_currentSortType, _currentTrashCount);
@@ -84,6 +84,7 @@ public class GameManager : Singleton<GameManager>
         _trashController.CheckTrashSorting(_currentSortType);
         yield return new WaitForSeconds(.6f);
         _isBinMoving = true;
+
         _binController.DestroyBin();
 
         _checking = false;
@@ -113,6 +114,7 @@ public class GameManager : Singleton<GameManager>
         _currentSortType = topBin.SortType;
         _currentTrashCount = topBin.TrashCount;
         IsScannerEmpty = false;
+        _trashController.LoadTrash(_currentSortType, _currentTrashCount);
         _topBinController.SendBinToScanner().GetAwaiter().OnCompleted(OnTopBinReachedToScanner);
     }
 
@@ -121,7 +123,6 @@ public class GameManager : Singleton<GameManager>
         IsScannerEmpty = true;
         _currentGameState = GameState.WaitingBin;
         _trashController.DestroyAllTrash();
-        _trashController.LoadTrash(_currentSortType, _currentTrashCount);
     }
 
     private void OnTopBinReachedToScanner()

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Battery_3
   m_EditorClassIdentifier: 
   Address: Battery_3
-  SortType: 4
+  SortType: 10
+  DepositValue: 0
   Name: Battery
   Information: Batteries contain hazardous materials and must be disposed of at designated
     collection points or in battery recycling boxes.
