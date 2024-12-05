@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "Press(behavior=1)",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Drag",
+                    "type": "Value",
+                    "id": "e0023d89-1dee-4f8d-916d-60572e91b784",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Swipe",
+                    "type": "Value",
+                    "id": "7c5e3b22-3b25-4e42-b9d7-994671cade21",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -69,8 +87,8 @@
                 },
                 {
                     "name": "",
-                    "id": "110ed801-a656-4ae0-8198-00643f5cafea",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "id": "77d7055d-b443-46cb-b055-aaebd74ffdfb",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
@@ -91,12 +109,56 @@
                 },
                 {
                     "name": "",
-                    "id": "762c5e84-22cb-422a-bb1d-530b1ef7888f",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "id": "ad148dd9-b818-4e62-b2a0-5335acc7baee",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
                     "action": "Released",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "381c9e20-dde3-4c37-b9e8-e881cc316991",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c734669-fdbb-4d1c-b96f-79687e8e20f6",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3589d6b-3888-4051-b4ff-7d35129e49ca",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6617cb22-125a-4cf8-9ceb-426653471a5f",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

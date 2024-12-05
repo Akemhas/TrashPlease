@@ -25,16 +25,22 @@ public class DragHandler : MonoBehaviour
     public void Awake()
     {
         _mainCam = Camera.main;
-        _dragAction = new InputAction("Dragging", InputActionType.Value, "<Mouse>/position");
-        _dragAction.performed += OnDrag;
-        _swipeAction = new InputAction("Dragging", InputActionType.Value, "<Mouse>/position");
-        _swipeAction.performed += OnSwipe;
+
+        _dragAction = InputSystem.actions.FindAction("Drag");
+        _dragAction.performed += OnDragPerformed;
+        _swipeAction = InputSystem.actions.FindAction("Swipe");
+        _swipeAction.performed += OnSwipePerformed;
+    }
+
+    private void OnEnable()
+    {
+        _dragAction.Disable();
+        _swipeAction.Disable();
     }
 
     private void Start()
     {
         _worldPos.z = -_mainCam.transform.position.z;
-        _dragAction.Disable();
     }
 
     public void AddDraggable(Transform t)
@@ -66,6 +72,7 @@ public class DragHandler : MonoBehaviour
     public void RemoveSwipe()
     {
         if (!_draggable) return;
+
         _swipeAction.Disable();
         float swipeDistance = _draggable.position.x - swipeStartX;
 
@@ -87,11 +94,13 @@ public class DragHandler : MonoBehaviour
         _draggable = null;
     }
 
-    private void OnDrag(InputAction.CallbackContext context)
+    private void OnDragPerformed(InputAction.CallbackContext callbackContext)
     {
         if (InputPaused) return;
+        if (!_draggable) return;
+        if (!InputManager.Instance.HasTrash) return;
 
-        var mouseScreenPos = context.ReadValue<Vector2>();
+        var mouseScreenPos = callbackContext.ReadValue<Vector2>();
         _worldPos.x = mouseScreenPos.x;
         _worldPos.y = mouseScreenPos.y;
 
@@ -100,17 +109,20 @@ public class DragHandler : MonoBehaviour
         _draggable.position = newPosition;
     }
 
-    private void OnSwipe(InputAction.CallbackContext context)
+    private void OnSwipePerformed(InputAction.CallbackContext callbackContext)
     {
         if (InputPaused) return;
 
-        var mouseScreenPos = context.ReadValue<Vector2>();
+        if (InputManager.Instance.HasTrash) return;
+        if (!_draggable) return;
+
+        var mouseScreenPos = callbackContext.ReadValue<Vector2>();
         _worldPos.x = mouseScreenPos.x;
 
         var newPosition = _mainCam.ScreenToWorldPoint(_worldPos);
 
         float finalPos = Mathf.Clamp(swipeStartX - (mouseStartX - newPosition.x), -6, 6);
 
-        _draggable.position = new Vector3(finalPos, _draggable.position.y, _draggable.position.z);
+        _draggable.localPosition = new Vector3(finalPos, 0, 0);
     }
 }

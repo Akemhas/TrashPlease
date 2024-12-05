@@ -18,15 +18,15 @@ MonoBehaviour:
     SpawnInterval: 8
     TrashProbabilities:
     - SortType: 0
-      Probability: 20
+      Probability: 50
     - SortType: 1
-      Probability: 20
+      Probability: 50
     - SortType: 2
       Probability: 0
     - SortType: 3
       Probability: 0
     - SortType: 8
-      Probability: 60
+      Probability: 0
   - BinCounter: 4
     TrashCount: 3
     SpawnInterval: 7

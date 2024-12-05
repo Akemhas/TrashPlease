@@ -86,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6813201254793155616
@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BinTrashSortType: 0
+  _collider: {fileID: 7004914962356259073}
+  _lid: {fileID: 0}
+  _openedRotation: {x: 0, y: 0, z: 0}
 --- !u!61 &7004914962356259073
 BoxCollider2D:
   m_ObjectHideFlags: 0

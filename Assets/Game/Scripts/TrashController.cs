@@ -96,6 +96,7 @@ public class TrashController : MonoBehaviour
         if (trash.TrashSortType == playerBin.BinTrashSortType)
         {
             UIManager.Instance.IncreaseCounter();
+            playerBin.ScaleUpDown();
             DestroyTrash(trash);
             CreateParticle(trash, true);
         }
@@ -107,6 +108,7 @@ public class TrashController : MonoBehaviour
                 CreateParticle(trash, true);
             }
 
+            playerBin.ScaleUpDown();
             DestroyTrash(trash);
 
             UIManager.Instance.IncreaseCounter(trash.Data.DepositValue);
@@ -115,6 +117,7 @@ public class TrashController : MonoBehaviour
         {
             CreateParticle(trash, false);
             UIManager.Instance.IncreaseCounter(-1);
+            playerBin.ScaleUpDown();
             DestroyTrash(trash);
         }
     }

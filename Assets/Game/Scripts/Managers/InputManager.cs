@@ -44,12 +44,21 @@ public class InputManager : Singleton<InputManager>
 
     public Transform _swipe;
 
+    public bool HasTrash;
+
+    private InputAction _clickAction;
+    private InputAction _releaseAction;
+
     private void Awake()
     {
+        _clickAction = InputSystem.actions.FindAction("Clicked");
+        _clickAction.performed += OnClicked;
+        _releaseAction = InputSystem.actions.FindAction("Released");
+        _releaseAction.performed += OnReleased;
         _mainCam = Camera.main;
     }
 
-    private void OnClicked(InputValue value)
+    private void OnClicked(InputAction.CallbackContext callbackContext)
     {
         if (InputPaused) return;
         if (HasClickedOverUI()) return;
@@ -66,6 +75,7 @@ public class InputManager : Singleton<InputManager>
         if (hit.collider == null) return;
 
         _trash = hit.collider.GetComponent<Trash>();
+        HasTrash = true;
         TrashPicked?.Invoke(_trash);
 
         var inspectRaycast = RaycastToMousePosition(_inspectionLayerMask);
@@ -79,7 +89,7 @@ public class InputManager : Singleton<InputManager>
         _inputState = InputState.CarryingObject;
     }
 
-    private void OnReleased()
+    private void OnReleased(InputAction.CallbackContext callbackContext)
     {
         if (InputPaused) return;
 
@@ -137,6 +147,7 @@ public class InputManager : Singleton<InputManager>
         Tween.Scale(_trash.transform, Vector3.one, new TweenSettings(.125f, Ease.Linear));
 
         _trash = null;
+        HasTrash = false;
         _dragHandler.RemoveDraggable();
         _inputState = InputState.Idle;
     }

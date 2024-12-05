@@ -112,7 +112,6 @@ public class BinFrequencyData : ScriptableObject
             return TrashSortType.Residual;
         }
 
-#if UNITY_EDITOR
         public bool Validate()
         {
             int totalProbability = 0;
@@ -125,7 +124,6 @@ public class BinFrequencyData : ScriptableObject
 
             return totalProbability == 100;
         }
-#endif
     }
 
     [Serializable]
