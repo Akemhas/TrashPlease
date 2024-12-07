@@ -8,10 +8,13 @@ public class PostProcessManager : Singleton<PostProcessManager>
 {
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _temperatureChangeSpeed = 25f;
-    [SerializeField, Min(1)] private float _oscillationSpeed = 2f;
-    [SerializeField, Range(1, 8)] private float _oscillationSize = 2f;
+
+    [SerializeField] private float _minWaveEffect = 0.5f;
+    [SerializeField] private float _maxWaveEffect = 1f;
+
     [SerializeField] private float _minTemperature;
     [SerializeField] private int _maxTemperature;
+
     [SerializeField] private TemperatureEffectData _minTemperatureData;
     [SerializeField] private TemperatureEffectData _maxTemperatureData;
 
@@ -19,6 +22,9 @@ public class PostProcessManager : Singleton<PostProcessManager>
     private TemperatureEffect _temperatureEffect;
     private readonly TemperatureEffectData _lerpEffectData = new();
 
+    private const float LerpThreshold = 0.01f;
+
+    private float _oscillationSpeed;
     private float _lerpValue;
     private float _targetTemperature;
 
@@ -27,22 +33,21 @@ public class PostProcessManager : Singleton<PostProcessManager>
         _volumeProfile = _globalVolume.profile;
         _volumeProfile.TryGet(out Bloom bloom);
         _volumeProfile.TryGet(out Vignette vignette);
-        _volumeProfile.TryGet(out FilmGrain filmGrain);
-        _temperatureEffect = new TemperatureEffect(bloom, vignette, filmGrain);
+        _temperatureEffect = new TemperatureEffect(bloom, vignette);
         TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
     }
 
     private void Update()
     {
-        if (_targetTemperature - _lerpValue > .01f)
+        if (Mathf.Abs(_targetTemperature - _lerpValue) > LerpThreshold)
         {
             _lerpValue = Mathf.Lerp(_lerpValue, _targetTemperature, Time.deltaTime * _temperatureChangeSpeed);
-            LerpEffectData(_lerpValue);
         }
-        else
-        {
-            LerpEffectData(_lerpValue * (_oscillationSize + Mathf.Sin(Time.time * _oscillationSpeed) / 10));
-        }
+
+        var sinWave = Mathf.Abs(Mathf.Sin(Time.time * _oscillationSpeed));
+        var waveEffect = Mathf.Lerp(_minWaveEffect, _maxWaveEffect, sinWave);
+        var oscillationValue = _lerpValue * waveEffect;
+        LerpEffectData(oscillationValue);
 
         _temperatureEffect.ChangeTemperature(_lerpEffectData);
     }
@@ -64,20 +69,17 @@ public class PostProcessManager : Singleton<PostProcessManager>
     {
         private readonly Bloom _bloom;
         private readonly Vignette _vignette;
-        private readonly FilmGrain _filmGrain;
 
-        public TemperatureEffect(Bloom bloom, Vignette vignette, FilmGrain filmGrain)
+        public TemperatureEffect(Bloom bloom, Vignette vignette)
         {
             _bloom = bloom;
             _vignette = vignette;
-            _filmGrain = filmGrain;
         }
 
         public void ChangeTemperature(TemperatureEffectData temperatureEffectData)
         {
             _bloom.intensity.value = temperatureEffectData.BloomIntensity;
             _vignette.intensity.value = temperatureEffectData.VignetteIntensity;
-            _filmGrain.intensity.value = temperatureEffectData.FilmGrainIntensity;
         }
     }
 

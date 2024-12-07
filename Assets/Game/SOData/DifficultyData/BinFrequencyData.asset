@@ -15,21 +15,21 @@ MonoBehaviour:
   _difficultyIntervals:
   - BinCounter: 2
     TrashCount: 3
-    SpawnInterval: 8
+    SpawnInterval: 6
     TrashProbabilities:
     - SortType: 0
-      Probability: 50
+      Probability: 0
     - SortType: 1
-      Probability: 50
+      Probability: 0
     - SortType: 2
       Probability: 0
     - SortType: 3
       Probability: 0
     - SortType: 8
-      Probability: 0
+      Probability: 100
   - BinCounter: 4
     TrashCount: 3
-    SpawnInterval: 7
+    SpawnInterval: 5
     TrashProbabilities:
     - SortType: 0
       Probability: 20
@@ -43,7 +43,7 @@ MonoBehaviour:
       Probability: 20
   - BinCounter: 8
     TrashCount: 3
-    SpawnInterval: 6.5
+    SpawnInterval: 4.5
     TrashProbabilities:
     - SortType: 0
       Probability: 20
@@ -57,7 +57,7 @@ MonoBehaviour:
       Probability: 20
   - BinCounter: 10
     TrashCount: 4
-    SpawnInterval: 6
+    SpawnInterval: 4
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -71,7 +71,7 @@ MonoBehaviour:
       Probability: 12
   - BinCounter: 22
     TrashCount: 4
-    SpawnInterval: 5.5
+    SpawnInterval: 4
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -85,7 +85,7 @@ MonoBehaviour:
       Probability: 12
   - BinCounter: 25
     TrashCount: 5
-    SpawnInterval: 5
+    SpawnInterval: 4
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -99,7 +99,7 @@ MonoBehaviour:
       Probability: 12
   - BinCounter: 50
     TrashCount: 6
-    SpawnInterval: 4.5
+    SpawnInterval: 3.5
     TrashProbabilities:
     - SortType: 0
       Probability: 22
@@ -127,7 +127,7 @@ MonoBehaviour:
       Probability: 12
   - BinCounter: 100
     TrashCount: 8
-    SpawnInterval: 3.75
+    SpawnInterval: 3.25
     TrashProbabilities:
     - SortType: 0
       Probability: 22

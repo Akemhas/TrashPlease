@@ -21,14 +21,14 @@ namespace Managers
 #if UNITY_EDITOR
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T)) IncreaseTemperature(Temperature + 5f);
-            if (Input.GetKeyDown(KeyCode.Y)) IncreaseTemperature(Temperature - 5f);
+            if (Input.GetKeyDown(KeyCode.T)) IncreaseTemperature(5f);
+            if (Input.GetKeyDown(KeyCode.Y)) IncreaseTemperature(-5f);
         }
 #endif
 
         public void IncreaseTemperature(float temp)
         {
-            Temperature = temp;
+            Temperature = Mathf.Clamp(Temperature + temp, -8, 100);
             TemperatureChanged?.Invoke(Temperature);
         }
     }

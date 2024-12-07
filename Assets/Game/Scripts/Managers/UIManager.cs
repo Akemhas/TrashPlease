@@ -45,7 +45,8 @@ public class UIManager : Singleton<UIManager>
 
     private void OnTemperatureChanged(float temp)
     {
-        _temperatureTMP.SetText($"{temp:00.0}°C");
+        float tempToShow = temp + 18f;
+        _temperatureTMP.SetText($"{tempToShow:0.0}°C");
     }
 
     private void Start()

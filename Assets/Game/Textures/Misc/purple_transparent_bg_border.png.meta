@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1748e841bf72c485d85c2cc8812c4d37
+guid: d99597b3a99844d2eae59d4cc4da1339
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7781820313659362939
-    second: battery2_0
+      213: -3010130395283284319
+    second: purple_transparent_bg_border_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,9 +98,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 65
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -111,9 +111,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: iOS
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 65
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: battery2_0
+      name: purple_transparent_bg_border_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 0
-        width: 30
-        height: 47
+        x: 1
+        y: 1
+        width: 143
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5813a6297ab610490800000000000000
-      internalID: -7781820313659362939
+      spriteID: 1ae98859a5ed936d0800000000000000
+      internalID: -3010130395283284319
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      battery2_0: -7781820313659362939
+      purple_transparent_bg_border_0: -3010130395283284319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

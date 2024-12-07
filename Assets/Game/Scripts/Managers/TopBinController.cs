@@ -76,6 +76,7 @@ public class TopBinController : MonoBehaviour
         {
             var distance = _scanner.position.x - bin.transform.position.x;
             await Tween.PositionX(bin.transform, _scanner.position.x, distance / 2, Ease.Linear);
+            MoveBins();
             _topBinPool.Release(bin);
             BinCounter++;
         }

@@ -1,19 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
-using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 public class TrashController : MonoBehaviour
 {
     public event Action TrashCreated;
+    public event Action AllTrashDestroyed;
 
     [SerializeField] private List<TrashSortType> _includedSortTypes;
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
-    [SerializeField] private GameObject _particlePrefab;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
+    [SerializeField] private float _temperatureChangeForEveryTrash = .2f;
 
     private List<string> _loadedTrashList = new();
     private List<Trash> _instantiatedTrashList = new();
@@ -98,16 +99,19 @@ public class TrashController : MonoBehaviour
             UIManager.Instance.IncreaseCounter();
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
+            TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash);
             CreateParticle(trash, true);
         }
         else if (playerBin.BinTrashSortType == TrashSortType.Deposit && trash.Data.DepositValue > 0)
         {
             var particleAmount = Mathf.Sqrt(trash.Data.DepositValue) * 2;
+
             for (int j = 0; j < particleAmount; j++)
             {
                 CreateParticle(trash, true);
             }
 
+            TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash * 2);
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
 
@@ -115,10 +119,16 @@ public class TrashController : MonoBehaviour
         }
         else
         {
+            TemperatureManager.Instance.IncreaseTemperature(_temperatureChangeForEveryTrash * 2);
             CreateParticle(trash, false);
-            UIManager.Instance.IncreaseCounter(-1);
+            UIManager.Instance.IncreaseCounter(-3);
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
+        }
+
+        if (_instantiatedTrashList.Count == 0)
+        {
+            AllTrashDestroyed?.Invoke();
         }
     }
 
@@ -158,12 +168,19 @@ public class TrashController : MonoBehaviour
             if (trash.TrashSortType == binsSortType)
             {
                 i++;
+                TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash);
                 CreateParticle(trash, true);
             }
             else
             {
-                i--;
-                CreateParticle(trash, false);
+                int pointDeductionAmount = 5;
+                i -= pointDeductionAmount;
+                TemperatureManager.Instance.IncreaseTemperature(_temperatureChangeForEveryTrash * pointDeductionAmount);
+                
+                for (int j = 0; j < pointDeductionAmount; j++)
+                {
+                    CreateParticle(trash, false);
+                }
             }
         }
 

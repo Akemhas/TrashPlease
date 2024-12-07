@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
         _binController.BinBeforeDestroy += OnCenterBinBeforeDestroy;
         _binController.BinReachedCenter += OnCenterBinReachedCenter;
         _trashController.TrashCreated += OnTrashCreated;
+        _trashController.AllTrashDestroyed += OnAllTrashDestroyed;
         UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
     }
 
@@ -141,6 +142,11 @@ public class GameManager : Singleton<GameManager>
     {
         _isBinMoving = true;
         _trashController.InstantiateTrashWhenReady(_binController.CurrentBin);
+    }
+
+    private void OnAllTrashDestroyed()
+    {
+        ProgressBin();
     }
 
     private void OnTrashCreated()
