@@ -8,6 +8,11 @@ public class PlayerBin : MonoBehaviour
     [SerializeField] private Transform _lid;
     [SerializeField] private Vector3 _openedRotation;
 
+    [SerializeField] private Sprite _closedSprite;
+    [SerializeField] private Sprite _openSprite;
+
+    [SerializeField] private SpriteRenderer _renderer;
+
     private readonly Vector3 _scaleUpTarget = new Vector3(1.3f, 1.3f, 1.3f);
 
     private bool _isLidOpen;
@@ -21,6 +26,11 @@ public class PlayerBin : MonoBehaviour
 
     public void OpenLid()
     {
+        if (_openSprite != null)
+        {
+            _renderer.sprite = _openSprite;
+        }
+
         if (!_hasLid) return;
 
         if (_isLidOpen) return;
@@ -32,6 +42,11 @@ public class PlayerBin : MonoBehaviour
 
     public void CloseLid()
     {
+        if (_closedSprite != null)
+        {
+            _renderer.sprite = _closedSprite;
+        }
+
         if (!_hasLid) return;
 
         if (!_isLidOpen) return;

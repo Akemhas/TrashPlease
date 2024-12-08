@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: dabc8050097564d6abc42938bca4bc4c
   m_SerializeEntries:
+  - m_GUID: 0cf131b4a8869e14db01e5b9e1d43767
+    m_Address: greasyPizza
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a5574abf332b0640950fc14a1f63071
     m_Address: BinSide_Yellow
     m_ReadOnly: 0
@@ -25,13 +30,43 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45d6e474e47752f41a9015c29f4b26b1
+    m_Address: CD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 64b20cf00345b754cbf09eddfc723e21
     m_Address: BinSide_Blue
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ef4223953875604b8c40173c39a6b5d
+    m_Address: cleanPizza
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78d03eecdf43ee54c964c4d62d3f31bc
+    m_Address: receipt1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88b9fd2e25225284991e277bbac035d0
+    m_Address: receipt2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a09ff12014fa24e4b8128739ef5846c1
+    m_Address: cleanKFC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b8ce8312475c95747b08bcb75c54c6c6
     m_Address: BinSide_Brown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2f128d0ab2068b48a44cae531d85e39
+    m_Address: greasyKFC
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
