@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cf131b4a8869e14db01e5b9e1d43767
+    m_Address: greasyPizza
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0e3d360fdf6a94e2bb797ddf55a6955c
     m_Address: PlasticSodaBottle
     m_ReadOnly: 0
@@ -82,6 +87,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 413159905491443208f3aedd68c59efb
     m_Address: ClearGlassJar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45d6e474e47752f41a9015c29f4b26b1
+    m_Address: CD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -140,6 +150,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ef4223953875604b8c40173c39a6b5d
+    m_Address: cleanPizza
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7476f97f9a0bd42ce87174616b943b8b
     m_Address: PaintCan_1
     m_ReadOnly: 0
@@ -147,6 +162,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74cc5f30848534ec684742852f5a23ce
     m_Address: ToothPaste_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78d03eecdf43ee54c964c4d62d3f31bc
+    m_Address: receipt1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -180,6 +200,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88b9fd2e25225284991e277bbac035d0
+    m_Address: receipt2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99c1c57363cb749bf90d6fc65eabb8d5
     m_Address: Perfume_1
     m_ReadOnly: 0
@@ -192,6 +217,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ecb421e06ae847efa94c793a270b5db
     m_Address: Battery_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a09ff12014fa24e4b8128739ef5846c1
+    m_Address: cleanKFC
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -227,6 +257,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7422e0f23da34369ac3b0ac0a8df15c
     m_Address: Shampoo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2f128d0ab2068b48a44cae531d85e39
+    m_Address: greasyKFC
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
