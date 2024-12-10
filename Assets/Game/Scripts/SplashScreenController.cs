@@ -23,11 +23,16 @@ public class SplashScreenController : MonoBehaviour
     {
         _playButton.gameObject.SetActive(false);
         _fillImage.fillAmount = 0;
-        _playButton.onClick.AddListener(() => _loadOperation.allowSceneActivation = true);
+        _playButton.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.PlaySoundEffect(SoundEffectType.Click);
+            _loadOperation.allowSceneActivation = true;
+        });
     }
 
     private void Start()
     {
+        AudioManager.Instance.PlaySoundTrack(SoundTrackType.MainMenu);
         StartLoadingGameplayScene();
     }
 
@@ -53,7 +58,13 @@ public class SplashScreenController : MonoBehaviour
 
         UpdateFillVisuals(1);
         _playButton.gameObject.SetActive(true);
-        Tween.Scale(_playButton.transform, Vector3.zero, Vector3.one, .4f, Ease.OutBack);
+
+        void OnComplete()
+        {
+            Tween.Scale(_playButton.transform, Vector3.one * 1.1f, .6f, Ease.InOutSine, -1, CycleMode.Yoyo);
+        }
+
+        Tween.Scale(_playButton.transform, Vector3.zero, Vector3.one, .4f, Ease.OutBack).OnComplete(OnComplete);
     }
 
     private void UpdateFillVisuals(float progress)

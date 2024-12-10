@@ -54,6 +54,8 @@ public class TopBinController : MonoBehaviour
 
     public void Tick()
     {
+        if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count) return;
+
         if (_timeCapped && _elapsedTime < _spawnInterval)
         {
             _elapsedTime += Time.deltaTime;
@@ -63,14 +65,13 @@ public class TopBinController : MonoBehaviour
         _timeCapped = false;
         _elapsedTime = 0;
 
-        if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count) return;
-
         CreateTopBin();
     }
 
     public async Awaitable SendBinToScanner()
     {
         var bin = _topBinQueue.Dequeue();
+        UIManager.Instance.Timer.StopTimer();
 
         try
         {
@@ -133,6 +134,12 @@ public class TopBinController : MonoBehaviour
         topBin.TrashCount = sortTypeTrashCount.Item2;
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
+
+        if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count)
+        {
+            UIManager.Instance.Timer.StartTimer();
+        }
+
         MoveBins();
     }
 

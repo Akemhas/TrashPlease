@@ -27,14 +27,22 @@ public class TrashController : MonoBehaviour
 
     [SerializeField] private ParticlePool _particlePool;
 
-    private void Awake()
+    private void OnEnable()
     {
-        var inputManager = InputManager.Instance;
-        inputManager.TrashDroppedOnPlayerBin += OnTrashDroppedOnPlayerBin;
-        inputManager.TrashDroppedOnEmptySpace += OnTrashDroppedOnEmptySpace;
-        inputManager.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
-        inputManager.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
-        inputManager.TrashPicked += OnTrashPicked;
+        InputManager.TrashDroppedOnPlayerBin += OnTrashDroppedOnPlayerBin;
+        InputManager.TrashDroppedOnEmptySpace += OnTrashDroppedOnEmptySpace;
+        InputManager.TrashDroppedOnTrashArea += OnTrashDroppedOnTrashArea;
+        InputManager.TrashDroppedOnInspectTable += OnTrashDroppedOnInspectTable;
+        InputManager.TrashPicked += OnTrashPicked;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.TrashDroppedOnPlayerBin -= OnTrashDroppedOnPlayerBin;
+        InputManager.TrashDroppedOnEmptySpace -= OnTrashDroppedOnEmptySpace;
+        InputManager.TrashDroppedOnTrashArea -= OnTrashDroppedOnTrashArea;
+        InputManager.TrashDroppedOnInspectTable -= OnTrashDroppedOnInspectTable;
+        InputManager.TrashPicked -= OnTrashPicked;
     }
 
     private void CreateParticle(Trash trash, bool plus)
@@ -176,7 +184,7 @@ public class TrashController : MonoBehaviour
                 int pointDeductionAmount = 5;
                 i -= pointDeductionAmount;
                 TemperatureManager.Instance.IncreaseTemperature(_temperatureChangeForEveryTrash * pointDeductionAmount);
-                
+
                 for (int j = 0; j < pointDeductionAmount; j++)
                 {
                     CreateParticle(trash, false);

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using PrimeTween;
@@ -67,7 +66,6 @@ public class InspectController : MonoBehaviour
     private void SetText(TrashData trashData)
     {
         _itemName.SetText(trashData.Name);
-        _bin.SetText(trashData.SortType.ToString());
         _text.SetText(trashData.Information);
     }
 }

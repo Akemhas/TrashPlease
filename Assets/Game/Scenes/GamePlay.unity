@@ -1621,6 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a8554e51f24adea8c0ed28d44b06d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _failTemperature: 100
 --- !u!114 &1176973026 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 605838029908008469, guid: eeddb73c388e9e44f8556749634914ed, type: 3}
@@ -1824,7 +1825,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _swipe: {fileID: 1244775419}
-  HasTrash: 0
 --- !u!114 &1257172579
 MonoBehaviour:
   m_ObjectHideFlags: 0

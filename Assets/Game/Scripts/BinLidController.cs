@@ -21,7 +21,7 @@ public class BinLidController : MonoBehaviour
         {
             var dist = Vector3.Distance(playerBin.transform.position, mouseWorldPos);
 
-            if (dist <= _range && InputManager.Instance.HasTrash)
+            if (dist <= _range && InputManager.HasTrash)
             {
                 playerBin.OpenLid();
             }

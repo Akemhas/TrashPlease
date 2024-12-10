@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     public event Action QuestionPopupClosed;
     public event Action<int> SwipeButtonClicked;
+
+    public Timer Timer;
 
     [SerializeField] private TextMeshProUGUI _temperatureTMP;
     [SerializeField] private InspectController _inspectionController;
     [SerializeField] private QuestionPopup _questionPopup;
+    [SerializeField] private FailScreen _failScreen;
 
     [Space, SerializeField] private TextMeshProUGUI _counter;
     [SerializeField] private Button _okButton;
@@ -24,7 +28,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image _centerSwipe;
     [SerializeField] private Image _rightSwipe;
 
-
     private int Score
     {
         get => PlayerPrefs.GetInt(nameof(Score), 0);
@@ -33,14 +36,44 @@ public class UIManager : Singleton<UIManager>
 
     private void Awake()
     {
-        _okButton.onClick.AddListener(OnOkButtonClicked);
-        _questionPopup.PopupClosed += OnQuestionPopupClosed;
-        TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
-        InputManager.Instance.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
+        Instance = this;
+    }
 
-        _leftSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(-1));
-        _rightSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(1));
-        _centerSwipeButton.onClick.AddListener(() => SwipeButtonClicked?.Invoke(0));
+    private void OnEnable()
+    {
+        _questionPopup.PopupClosed += OnQuestionPopupClosed;
+        _okButton.onClick.AddListener(OnOkButtonClicked);
+        _leftSwipeButton.onClick.AddListener(OnLeftSwipe);
+        _rightSwipeButton.onClick.AddListener(OnRightSwipe);
+        _centerSwipeButton.onClick.AddListener(OnCenterSwipe);
+        InputManager.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
+        TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
+    }
+
+    private void OnDisable()
+    {
+        _questionPopup.PopupClosed -= OnQuestionPopupClosed;
+        _okButton.onClick.RemoveListener(OnOkButtonClicked);
+        _leftSwipeButton.onClick.RemoveListener(OnLeftSwipe);
+        _rightSwipeButton.onClick.RemoveListener(OnRightSwipe);
+        _centerSwipeButton.onClick.RemoveListener(OnCenterSwipe);
+        InputManager.TrashPickedFromInspectTable -= OnTrashPickedFromInspectTable;
+        TemperatureManager.Instance.TemperatureChanged -= OnTemperatureChanged;
+    }
+
+    private void OnLeftSwipe()
+    {
+        SwipeButtonClicked?.Invoke(-1);
+    }
+
+    private void OnRightSwipe()
+    {
+        SwipeButtonClicked?.Invoke(1);
+    }
+
+    private void OnCenterSwipe()
+    {
+        SwipeButtonClicked?.Invoke(0);
     }
 
     private void OnTemperatureChanged(float temp)
@@ -58,12 +91,13 @@ public class UIManager : Singleton<UIManager>
 
     public void OpenQuestionPopup()
     {
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.QuizPopup);
         _questionPopup.Open();
     }
 
     private void OnOkButtonClicked()
     {
-        GameManager.Instance.ProgressBin();
+        GameManager.Instance.ProgressBin(false);
     }
 
     public void OnTrashDroppedOnInspectTable(Trash trash)
@@ -84,6 +118,11 @@ public class UIManager : Singleton<UIManager>
     {
         Score += increaseAmount;
         _counter.SetText(Score.ToString());
+    }
+
+    public void Fail()
+    {
+        _failScreen.Open();
     }
 
     public void ChangeSwipeIndicatorVisual(int posIndex)

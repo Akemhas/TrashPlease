@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cde4bc90b3f4b32b76e97ee17db2d1, type: 3}
   m_Name: receipt2
   m_EditorClassIdentifier: 
-  Address: recepit2
+  Address: receipt2
   SortType: 3
   DepositValue: 0
   Name: Paper Receipt

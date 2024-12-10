@@ -5,6 +5,7 @@ namespace Managers
 {
     public class TemperatureManager : Singleton<TemperatureManager>
     {
+        [SerializeField] private float _failTemperature = 100;
         public event Action<float> TemperatureChanged;
 
         public float Temperature
@@ -28,8 +29,10 @@ namespace Managers
 
         public void IncreaseTemperature(float temp)
         {
-            Temperature = Mathf.Clamp(Temperature + temp, -8, 100);
-            TemperatureChanged?.Invoke(Temperature);
+            var newTemperature = Temperature + temp;
+            Temperature = Mathf.Clamp(newTemperature, -8, 100);
+            TemperatureChanged?.Invoke(newTemperature);
+            if(newTemperature > _failTemperature) GameManager.Instance.Fail();
         }
     }
 }

@@ -48,7 +48,7 @@ public class QuestionPopup : MonoBehaviour
         if (clickedAnswer.IsCorrect)
         {
             clickedAnswer.SetCorrect();
-            UIManager.Instance.IncreaseCounter(10);
+            UIManager.Instance.IncreaseCounter(5);
         }
         else clickedAnswer.SetWrong();
 

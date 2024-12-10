@@ -42,5 +42,9 @@ public class Answer : MonoBehaviour
         NeutralBackground.SetActive(false);
     }
 
-    private void OnButtonClicked() => Clicked?.Invoke(this);
+    private void OnButtonClicked()
+    {
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.Click);
+        Clicked?.Invoke(this);
+    }
 }

@@ -2,8 +2,9 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [ReadOnly] private GameState _currentGameState;
 
     [SerializeField] private BinController _binController;
@@ -20,6 +21,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        Instance = this;
         _currentGameState = GameState.WaitingBin;
     }
 
@@ -42,6 +44,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        AudioManager.Instance.PlaySoundTrack(SoundTrackType.Gameplay);
         _topBinController.Initialize();
         var topBinData = _topBinController.CreateTopBin(3);
         _currentSortType = topBinData.Item1;
@@ -64,16 +67,17 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-
         _topBinController.Tick();
     }
 
-    public void ProgressBin()
+    public void ProgressBin(bool auto)
     {
         if (_isBinMoving) return;
         if (_currentGameState != GameState.SortingBin) return;
         if (_binController.CurrentBin == null) return;
         if (_checking) return;
+
+        if (!auto) AudioManager.Instance.PlaySoundEffect(SoundEffectType.SendButton);
 
         StartCoroutine(CheckTrash());
     }
@@ -146,7 +150,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnAllTrashDestroyed()
     {
-        ProgressBin();
+        ProgressBin(true);
     }
 
     private void OnTrashCreated()
@@ -168,5 +172,10 @@ public class GameManager : Singleton<GameManager>
         WaitingBin,
         SortingBin,
         Paused,
+    }
+
+    public void Fail()
+    {
+        UIManager.Instance.Fail();
     }
 }

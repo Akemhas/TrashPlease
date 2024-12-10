@@ -6,7 +6,7 @@ using PrimeTween;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InputManager : Singleton<InputManager>
+public class InputManager : MonoBehaviour
 {
     [SerializeField] private GraphicRaycaster _graphicRaycaster;
     private readonly PointerEventData _clickData = new(EventSystem.current);
@@ -24,12 +24,12 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
-    public event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
-    public event Action<Trash> TrashDroppedOnEmptySpace;
-    public event Action<Trash> TrashDroppedOnTrashArea;
-    public event Action<Trash> TrashDroppedOnInspectTable;
-    public event Action<Trash> TrashPicked;
-    public event Action<Trash> TrashPickedFromInspectTable;
+    public static event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
+    public static event Action<Trash> TrashDroppedOnEmptySpace;
+    public static event Action<Trash> TrashDroppedOnTrashArea;
+    public static event Action<Trash> TrashDroppedOnInspectTable;
+    public static event Action<Trash> TrashPicked;
+    public static event Action<Trash> TrashPickedFromInspectTable;
 
     [SerializeField] private DragHandler _dragHandler;
     [SerializeField] private PlayerInput _playerInput;
@@ -44,18 +44,34 @@ public class InputManager : Singleton<InputManager>
 
     public Transform _swipe;
 
-    public bool HasTrash;
+    public static bool HasTrash;
 
     private InputAction _clickAction;
     private InputAction _releaseAction;
 
     private void Awake()
     {
-        _clickAction = InputSystem.actions.FindAction("Clicked");
-        _clickAction.performed += OnClicked;
-        _releaseAction = InputSystem.actions.FindAction("Released");
-        _releaseAction.performed += OnReleased;
+        HasTrash = false;
         _mainCam = Camera.main;
+        _clickAction = InputSystem.actions.FindAction("Clicked");
+        _releaseAction = InputSystem.actions.FindAction("Released");
+    }
+
+    private void OnEnable()
+    {
+        _clickAction.performed += OnClicked;
+        _releaseAction.performed += OnReleased;
+    }
+
+    private void OnDisable()
+    {
+        _clickAction.performed -= OnClicked;
+        _releaseAction.performed -= OnReleased;
+    }
+
+    private void OnDestroy()
+    {
+        HasTrash = false;
     }
 
     private void OnClicked(InputAction.CallbackContext callbackContext)
@@ -75,6 +91,7 @@ public class InputManager : Singleton<InputManager>
         if (hit.collider == null) return;
 
         _trash = hit.collider.GetComponent<Trash>();
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.PickAndDrop, 1.5f);
         HasTrash = true;
         TrashPicked?.Invoke(_trash);
 
@@ -144,6 +161,7 @@ public class InputManager : Singleton<InputManager>
 
     private void ReleaseDrag()
     {
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.PickAndDrop, .5f);
         Tween.Scale(_trash.transform, Vector3.one, new TweenSettings(.125f, Ease.Linear));
 
         _trash = null;

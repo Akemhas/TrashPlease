@@ -98,7 +98,7 @@ public class DragHandler : MonoBehaviour
     {
         if (InputPaused) return;
         if (!_draggable) return;
-        if (!InputManager.Instance.HasTrash) return;
+        if (!InputManager.HasTrash) return;
 
         var mouseScreenPos = callbackContext.ReadValue<Vector2>();
         _worldPos.x = mouseScreenPos.x;
@@ -113,7 +113,7 @@ public class DragHandler : MonoBehaviour
     {
         if (InputPaused) return;
 
-        if (InputManager.Instance.HasTrash) return;
+        if (InputManager.HasTrash) return;
         if (!_draggable) return;
 
         var mouseScreenPos = callbackContext.ReadValue<Vector2>();
