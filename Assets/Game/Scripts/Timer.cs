@@ -40,8 +40,11 @@ public class Timer : MonoBehaviour
             StopCoroutine(_timerRoutine);
         }
 
-        _fillTween.Stop();
-        _timerRoutine = StartCoroutine(CountUpRoutine());
+        if (_panel.gameObject.activeSelf)
+        {
+            _fillTween.Stop();
+            _timerRoutine = StartCoroutine(CountUpRoutine());
+        }
     }
 
     private void OnDestroy()
