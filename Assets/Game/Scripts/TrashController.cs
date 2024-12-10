@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -107,7 +106,7 @@ public class TrashController : MonoBehaviour
             UIManager.Instance.IncreaseCounter();
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
-            TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash);
+            TemperatureManager.IncreaseTemperature(-_temperatureChangeForEveryTrash);
             CreateParticle(trash, true);
         }
         else if (playerBin.BinTrashSortType == TrashSortType.Deposit && trash.Data.DepositValue > 0)
@@ -119,7 +118,7 @@ public class TrashController : MonoBehaviour
                 CreateParticle(trash, true);
             }
 
-            TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash * 2);
+            TemperatureManager.IncreaseTemperature(-_temperatureChangeForEveryTrash * 2);
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
 
@@ -127,7 +126,8 @@ public class TrashController : MonoBehaviour
         }
         else
         {
-            TemperatureManager.Instance.IncreaseTemperature(_temperatureChangeForEveryTrash * 2);
+            CameraShaker.Instance.Shake();
+            TemperatureManager.IncreaseTemperature(_temperatureChangeForEveryTrash * 2);
             CreateParticle(trash, false);
             UIManager.Instance.IncreaseCounter(-3);
             playerBin.ScaleUpDown();
@@ -176,14 +176,15 @@ public class TrashController : MonoBehaviour
             if (trash.TrashSortType == binsSortType)
             {
                 i++;
-                TemperatureManager.Instance.IncreaseTemperature(-_temperatureChangeForEveryTrash);
+                TemperatureManager.IncreaseTemperature(-_temperatureChangeForEveryTrash);
                 CreateParticle(trash, true);
             }
             else
             {
                 int pointDeductionAmount = 5;
                 i -= pointDeductionAmount;
-                TemperatureManager.Instance.IncreaseTemperature(_temperatureChangeForEveryTrash * pointDeductionAmount);
+                CameraShaker.Instance.Shake(2);
+                TemperatureManager.IncreaseTemperature(_temperatureChangeForEveryTrash * pointDeductionAmount);
 
                 for (int j = 0; j < pointDeductionAmount; j++)
                 {

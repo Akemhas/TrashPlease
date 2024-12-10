@@ -1,5 +1,4 @@
 using System;
-using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -47,7 +46,7 @@ public class UIManager : MonoBehaviour
         _rightSwipeButton.onClick.AddListener(OnRightSwipe);
         _centerSwipeButton.onClick.AddListener(OnCenterSwipe);
         InputManager.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
-        TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
+        TemperatureManager.TemperatureChanged += OnTemperatureChanged;
     }
 
     private void OnDisable()
@@ -58,7 +57,7 @@ public class UIManager : MonoBehaviour
         _rightSwipeButton.onClick.RemoveListener(OnRightSwipe);
         _centerSwipeButton.onClick.RemoveListener(OnCenterSwipe);
         InputManager.TrashPickedFromInspectTable -= OnTrashPickedFromInspectTable;
-        TemperatureManager.Instance.TemperatureChanged -= OnTemperatureChanged;
+        TemperatureManager.TemperatureChanged -= OnTemperatureChanged;
     }
 
     private void OnLeftSwipe()
@@ -97,7 +96,7 @@ public class UIManager : MonoBehaviour
 
     private void OnOkButtonClicked()
     {
-        GameManager.Instance.ProgressBin(false);
+        GameManager.Instance.ProgressBin();
     }
 
     public void OnTrashDroppedOnInspectTable(Trash trash)
@@ -145,7 +144,5 @@ public class UIManager : MonoBehaviour
                 _rightSwipe.color = Color.white;
                 return;
         }
-        //_centerSwipe.color = posIndex == 0 ? Color.gray : Color.white;
-        //_rightSwipe.color = posIndex == 1 ? Color.gray : Color.white;
     }
 }

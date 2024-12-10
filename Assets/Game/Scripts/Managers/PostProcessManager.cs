@@ -1,10 +1,9 @@
 using System;
-using Managers;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class PostProcessManager : Singleton<PostProcessManager>
+public class PostProcessManager : MonoBehaviour
 {
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _temperatureChangeSpeed = 25f;
@@ -34,7 +33,16 @@ public class PostProcessManager : Singleton<PostProcessManager>
         _volumeProfile.TryGet(out Bloom bloom);
         _volumeProfile.TryGet(out Vignette vignette);
         _temperatureEffect = new TemperatureEffect(bloom, vignette);
-        TemperatureManager.Instance.TemperatureChanged += OnTemperatureChanged;
+    }
+
+    private void OnEnable()
+    {
+        TemperatureManager.TemperatureChanged += OnTemperatureChanged;
+    }
+
+    private void OnDisable()
+    {
+        TemperatureManager.TemperatureChanged -= OnTemperatureChanged;
     }
 
     private void Update()

@@ -37,9 +37,21 @@ public class QuestionPopup : MonoBehaviour
         _overlayImage = _overlay.GetComponent<Image>();
 
         _closeButton.onClick.AddListener(Close);
+    }
+
+    private void OnEnable()
+    {
         foreach (var answer in _answers)
         {
             answer.Clicked += OnAnswerClicked;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var answer in _answers)
+        {
+            answer.Clicked -= OnAnswerClicked;
         }
     }
 

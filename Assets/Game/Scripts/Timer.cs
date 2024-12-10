@@ -84,7 +84,7 @@ public class Timer : MonoBehaviour
         UpdateTimerText(TimeSpan.FromSeconds(_countdownTime - _elapsedTime));
         while (_elapsedTime > 0)
         {
-            _elapsedTime -= 1;
+            _elapsedTime -= 2;
             _fillTween = Tween.UIFillAmount(_fillImage, _fillImage.fillAmount, _elapsedTime / _countdownTime, 1, Ease.Linear);
             yield return _oneSecondWait;
             if (_elapsedTime <= 0)

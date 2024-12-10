@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 20f1cce4de6be4482af6e22cc6c6b307
+guid: 3f35ce313bf68498ba76c9ac31a1a217
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -147311792999440398
-    second: bananapeel18_0
+      213: -4471942124943546531
+    second: item info_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,11 +48,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
-  spriteBorder: {x: 8, y: 8, z: 7, w: 7}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 5, y: 3, z: 6, w: 6}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -98,11 +98,11 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 65
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 100
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -111,7 +111,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: iOS
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 65
     textureCompression: 1
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bananapeel_0
+      name: item info_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
-        width: 47
-        height: 31
+        x: 4
+        y: 2
+        width: 55
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3313dd788fd164c2692d2bed1d60743c
-      internalID: -111407648
+      spriteID: d5762aaa45870f1c0800000000000000
+      internalID: -4471942124943546531
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bananapeel_0: -111407648
+      item info_0: -4471942124943546531
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

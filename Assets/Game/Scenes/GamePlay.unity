@@ -1570,7 +1570,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1155814726}
   - component: {fileID: 1155814725}
-  - component: {fileID: 1155814727}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1609,30 +1608,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1155814727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155814724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a8554e51f24adea8c0ed28d44b06d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _failTemperature: 100
---- !u!114 &1176973026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 605838029908008469, guid: eeddb73c388e9e44f8556749634914ed, type: 3}
-  m_PrefabInstance: {fileID: 6670359187586403428}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce09519ffb2e44a6b4039eefa531834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1176973027 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 9143342609852344991, guid: eeddb73c388e9e44f8556749634914ed, type: 3}
@@ -1731,7 +1706,6 @@ MonoBehaviour:
   - {fileID: 2020777024}
   - {fileID: 1940508974}
   - {fileID: 1087411074}
-  - {fileID: 1176973026}
   _range: 0.55
 --- !u!1 &1257172575
 GameObject:
@@ -1971,6 +1945,7 @@ GameObject:
   - component: {fileID: 1747203507}
   - component: {fileID: 1747203506}
   - component: {fileID: 1747203505}
+  - component: {fileID: 1747203509}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2096,6 +2071,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1747203509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747203504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a0f364698614c28b16c2ea0f7fad28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeStrength: 0.2
+  _shakeDuration: 0.3
 --- !u!114 &1759435104
 MonoBehaviour:
   m_ObjectHideFlags: 0

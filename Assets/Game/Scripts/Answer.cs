@@ -14,9 +14,14 @@ public class Answer : MonoBehaviour
     public GameObject NeutralBackground;
     public TextMeshProUGUI AnswerTMP;
 
-    private void Awake()
+    private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClicked);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(OnButtonClicked);
     }
 
     public void ToggleButtonActiveness(bool active) => _button.interactable = active;

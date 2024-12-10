@@ -9,9 +9,12 @@ using Random = UnityEngine.Random;
 
 public class SplashScreenController : MonoBehaviour
 {
+    [SerializeField] private RectTransform _titleHolder;
     [SerializeField] private TextMeshProUGUI _fillTMP;
     [SerializeField] private Image _fillImage;
     [SerializeField] private Button _playButton;
+    [SerializeField] private Vector2 _titleHolderStartPos;
+    [SerializeField] private Vector2 _titleHolderEndPos;
 
     private const int GameplaySceneIndex = 1;
     private const float FakeWaitTimer = 1.2f;
@@ -33,6 +36,7 @@ public class SplashScreenController : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlaySoundTrack(SoundTrackType.MainMenu);
+        Tween.UIAnchoredPosition(_titleHolder, _titleHolderStartPos, _titleHolderEndPos, .5f, Ease.OutBack);
         StartLoadingGameplayScene();
     }
 

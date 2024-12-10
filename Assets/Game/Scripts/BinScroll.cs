@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using PrimeTween;
 
@@ -8,9 +7,14 @@ public class BinScroll : MonoBehaviour
 
     private int _pos; //-1 = left, 0 = center, 1 = right
 
-    private void Awake()
+    private void OnEnable()
     {
         UIManager.Instance.SwipeButtonClicked += OnSwipeButtonClicked;
+    }
+
+    private void OnDisable()
+    {
+        UIManager.Instance.SwipeButtonClicked -= OnSwipeButtonClicked;
     }
 
     private void OnSwipeButtonClicked(int posIndex)
@@ -51,21 +55,24 @@ public class BinScroll : MonoBehaviour
     private void LeftDot()
     {
         _pos = -1;
-        Tween = Tween.LocalPositionX(transform, endValue: 6f, 1f, Ease.OutCubic);
         UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
+        if (Mathf.Approximately(transform.position.x, 6f)) return;
+        Tween = Tween.LocalPositionX(transform, endValue: 6f, 1f, Ease.OutCubic);
     }
 
     private void CenterDot()
     {
         _pos = 0;
-        Tween = Tween.LocalPositionX(transform, endValue: 0f, 1f, Ease.OutCubic);
         UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
+        if (Mathf.Approximately(transform.position.x, 0f)) return;
+        Tween = Tween.LocalPositionX(transform, endValue: 0f, 1f, Ease.OutCubic);
     }
 
     private void RightDot()
     {
         _pos = 1;
-        Tween = Tween.LocalPositionX(transform, endValue: -6f, 1f, Ease.OutCubic);
         UIManager.Instance.ChangeSwipeIndicatorVisual(_pos);
+        if (Mathf.Approximately(transform.position.x, -6f)) return;
+        Tween = Tween.LocalPositionX(transform, endValue: -6f, 1f, Ease.OutCubic);
     }
 }

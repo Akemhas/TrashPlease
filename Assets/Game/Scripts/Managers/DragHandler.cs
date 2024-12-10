@@ -27,15 +27,21 @@ public class DragHandler : MonoBehaviour
         _mainCam = Camera.main;
 
         _dragAction = InputSystem.actions.FindAction("Drag");
-        _dragAction.performed += OnDragPerformed;
         _swipeAction = InputSystem.actions.FindAction("Swipe");
-        _swipeAction.performed += OnSwipePerformed;
     }
 
     private void OnEnable()
     {
+        _dragAction.performed += OnDragPerformed;
+        _swipeAction.performed += OnSwipePerformed;
         _dragAction.Disable();
         _swipeAction.Disable();
+    }
+
+    private void OnDisable()
+    {
+        _dragAction.performed -= OnDragPerformed;
+        _swipeAction.performed -= OnSwipePerformed;
     }
 
     private void Start()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using PrimeTween;
@@ -18,9 +19,14 @@ public class InspectController : MonoBehaviour
     private GameObject _inspectGo;
     private readonly Vector3 _defaultScale = Vector3.one;
 
-    private void Awake()
+    private void OnEnable()
     {
         _closeButton.onClick.AddListener(DeactivateInspect);
+    }
+
+    private void OnDisable()
+    {
+        _closeButton.onClick.RemoveListener(DeactivateInspect);
     }
 
     private void Start()

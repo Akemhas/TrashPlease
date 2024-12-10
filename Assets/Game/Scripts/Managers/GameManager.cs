@@ -5,6 +5,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
     [ReadOnly] private GameState _currentGameState;
 
     [SerializeField] private BinController _binController;
@@ -21,6 +22,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
         Instance = this;
         _currentGameState = GameState.WaitingBin;
     }
@@ -40,20 +46,37 @@ public class GameManager : MonoBehaviour
     {
         _topBinController.BinReachedEnd -= OnTopBinReachedEnd;
         _binController.BinCreated -= OnCenterBinCreated;
+        _binController.BinBeforeDestroy -= OnCenterBinBeforeDestroy;
+        _binController.BinReachedCenter -= OnCenterBinReachedCenter;
+        _trashController.TrashCreated -= OnTrashCreated;
+        _trashController.AllTrashDestroyed -= OnAllTrashDestroyed;
+        UIManager.Instance.QuestionPopupClosed -= OnQuestionPopupClosed;
     }
 
     private void Start()
     {
         AudioManager.Instance.PlaySoundTrack(SoundTrackType.Gameplay);
         _topBinController.Initialize();
-        var topBinData = _topBinController.CreateTopBin(3);
+        var topBinData = _topBinController.CreateTopBin(5);
         _currentSortType = topBinData.Item1;
         _currentTrashCount = topBinData.Item2;
         _trashController.LoadTrash(_currentSortType, _currentTrashCount);
+        _topBinController.CreateTopBin(7);
     }
 
     private void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TemperatureManager.IncreaseTemperature(5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            TemperatureManager.IncreaseTemperature(-5);
+        }
+#endif
         switch (_currentGameState)
         {
             case GameState.Paused:
@@ -70,15 +93,14 @@ public class GameManager : MonoBehaviour
         _topBinController.Tick();
     }
 
-    public void ProgressBin(bool auto)
+    public void ProgressBin()
     {
         if (_isBinMoving) return;
         if (_currentGameState != GameState.SortingBin) return;
         if (_binController.CurrentBin == null) return;
         if (_checking) return;
 
-        if (!auto) AudioManager.Instance.PlaySoundEffect(SoundEffectType.SendButton);
-
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.SendButton);
         StartCoroutine(CheckTrash());
     }
 
@@ -150,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     private void OnAllTrashDestroyed()
     {
-        ProgressBin(true);
+        ProgressBin();
     }
 
     private void OnTrashCreated()

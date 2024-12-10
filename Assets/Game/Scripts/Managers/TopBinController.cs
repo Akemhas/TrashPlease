@@ -92,7 +92,10 @@ public class TopBinController : MonoBehaviour
     {
         int i = 1;
 
-        var topMostBin = _topBinQueue.Peek();
+        if (!_topBinQueue.TryPeek(out var topMostBin))
+        {
+            return;
+        }
 
         foreach (var topBin in _topBinQueue)
         {
@@ -109,7 +112,7 @@ public class TopBinController : MonoBehaviour
             PlayingAnimationCount++;
             Tween.PositionX(topBin.transform, beltPosition, distance / 2, ease: Ease.Linear).OnComplete(() =>
             {
-                if (topBin.GetInstanceID() == topMostBin.GetInstanceID())
+                if (topBin == topMostBin)
                 {
                     BinReachedEnd?.Invoke(topBin);
                 }
