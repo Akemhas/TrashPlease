@@ -92,7 +92,8 @@ public class Timer : MonoBehaviour
                 _elapsedTime = 0;
             }
 
-            UpdateTimerText(TimeSpan.FromSeconds(_countdownTime - _elapsedTime));
+            var seconds = TimeSpan.FromSeconds(Mathf.Clamp(_countdownTime - _elapsedTime,0,_countdownTime)); 
+            UpdateTimerText(seconds);
         }
 
         CloseTimer();

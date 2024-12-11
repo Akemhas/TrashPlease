@@ -2611,7 +2611,7 @@ GameObject:
   - component: {fileID: 2089603645}
   - component: {fileID: 2089603647}
   m_Layer: 0
-  m_Name: TrashManager
+  m_Name: TrashController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   _trashTypeData: {fileID: 11400000, guid: a53a6f3d06f204227830e39191827d4d, type: 2}
   _trashLoader: {fileID: 2089603645}
   _spawnSpacingAmount: 0.4
-  _temperatureChangeForEveryTrash: 1
+  _temperatureChangeForEveryTrash: 2
   _particlePool: {fileID: 2089603647}
 --- !u!114 &2089603647
 MonoBehaviour:

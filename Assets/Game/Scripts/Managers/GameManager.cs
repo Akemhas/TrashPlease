@@ -19,6 +19,26 @@ public class GameManager : MonoBehaviour
         private set => _instance = value;
     }
 
+    public static int HighestScore
+    {
+        get => PlayerPrefs.GetInt(nameof(HighestScore), 0);
+        set => PlayerPrefs.SetInt(nameof(HighestScore), value);
+    }
+
+    public static int Score
+    {
+        get => PlayerPrefs.GetInt(nameof(Score), 0);
+        set
+        {
+            if (value > HighestScore)
+            {
+                HighestScore = value;
+            }
+
+            PlayerPrefs.SetInt(nameof(Score), value);
+        }
+    }
+
     [ReadOnly] private GameState _currentGameState;
 
     [SerializeField] private BinController _binController;

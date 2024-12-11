@@ -13,7 +13,7 @@ public class TrashController : MonoBehaviour
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
-    [SerializeField] private float _temperatureChangeForEveryTrash = .2f;
+    [SerializeField] private float _temperatureChangeForEveryTrash = 1f;
 
     private List<string> _loadedTrashList = new();
     private List<Trash> _instantiatedTrashList = new();

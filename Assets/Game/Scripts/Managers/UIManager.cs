@@ -41,11 +41,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _centerSwipe;
     [SerializeField] private Image _rightSwipe;
 
-    private int Score
-    {
-        get => PlayerPrefs.GetInt(nameof(Score), 0);
-        set => PlayerPrefs.SetInt(nameof(Score), value);
-    }
 
     private void Awake()
     {
@@ -97,7 +92,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _counter.SetText(Score.ToString());
+        _counter.SetText(GameManager.Score.ToString());
     }
 
     private void OnQuestionPopupClosed() => QuestionPopupClosed?.Invoke();
@@ -129,8 +124,9 @@ public class UIManager : MonoBehaviour
 
     public void IncreaseCounter(int increaseAmount = 1)
     {
-        Score += increaseAmount;
-        _counter.SetText(Score.ToString());
+        var score = GameManager.Score + increaseAmount;
+        GameManager.Score = score;
+        _counter.SetText(score.ToString());
     }
 
     public void Fail()

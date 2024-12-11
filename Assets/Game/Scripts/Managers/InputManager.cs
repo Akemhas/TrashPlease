@@ -49,17 +49,11 @@ public class InputManager : MonoBehaviour
     private InputAction _clickAction;
     private InputAction _releaseAction;
 
-    public static Vector2 MousePosition
-    {
-        get
-        {
-#if UNITY_ANDROID || UNITY_IOS
-            return Touchscreen.current.position.ReadValue();
+#if UNITY_EDITOR
+    public static Vector2 MousePosition => Touchscreen.current != null ? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
 #else
-            return Mouse.current.position.ReadValue();
+    public static Vector2 MousePosition => Touchscreen.current.position.ReadValue();
 #endif
-        }
-    }
 
     private void Awake()
     {

@@ -96,9 +96,9 @@ public class TopBinController : MonoBehaviour
 
         if (!_topBinQueue.TryPeek(out var topMostBin))
         {
-            if (_spawnInterval - _elapsedTime > 1)
+            if (_spawnInterval - _elapsedTime > 3)
             {
-                _elapsedTime = _spawnInterval - 1;
+                _elapsedTime = _spawnInterval - 3;
             }
 
             return;
