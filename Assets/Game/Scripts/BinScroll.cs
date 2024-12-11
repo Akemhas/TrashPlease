@@ -9,12 +9,18 @@ public class BinScroll : MonoBehaviour
 
     private void OnEnable()
     {
-        UIManager.Instance.SwipeButtonClicked += OnSwipeButtonClicked;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.SwipeButtonClicked += OnSwipeButtonClicked;
+        }
     }
 
     private void OnDisable()
     {
-        UIManager.Instance.SwipeButtonClicked -= OnSwipeButtonClicked;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.SwipeButtonClicked -= OnSwipeButtonClicked;
+        }
     }
 
     private void OnSwipeButtonClicked(int posIndex)

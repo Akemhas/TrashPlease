@@ -52,7 +52,10 @@ public class GameManager : MonoBehaviour
         _binController.BinReachedCenter += OnCenterBinReachedCenter;
         _trashController.TrashCreated += OnTrashCreated;
         _trashController.AllTrashDestroyed += OnAllTrashDestroyed;
-        UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
+        }
     }
 
     private void OnDisable()
@@ -63,7 +66,10 @@ public class GameManager : MonoBehaviour
         _binController.BinReachedCenter -= OnCenterBinReachedCenter;
         _trashController.TrashCreated -= OnTrashCreated;
         _trashController.AllTrashDestroyed -= OnAllTrashDestroyed;
-        UIManager.Instance.QuestionPopupClosed -= OnQuestionPopupClosed;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.QuestionPopupClosed -= OnQuestionPopupClosed;
+        }
     }
 
     private void Start()

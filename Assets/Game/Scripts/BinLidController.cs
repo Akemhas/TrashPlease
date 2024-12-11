@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BinLidController : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class BinLidController : MonoBehaviour
 
     private Camera _mainCam;
 
-    private void Awake()
+    private void Start()
     {
         _mainCam = Camera.main;
     }
