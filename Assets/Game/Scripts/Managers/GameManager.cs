@@ -4,7 +4,20 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance != null) return _instance;
+
+            _instance = FindFirstObjectByType<GameManager>();
+            return _instance;
+        }
+
+        private set => _instance = value;
+    }
 
     [ReadOnly] private GameState _currentGameState;
 

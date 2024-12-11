@@ -5,7 +5,21 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
+    private static UIManager _instance;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance != null) return _instance;
+
+            _instance = FindFirstObjectByType<UIManager>();
+            return _instance;
+        }
+
+        private set => _instance = value;
+    }
+
     public event Action QuestionPopupClosed;
     public event Action<int> SwipeButtonClicked;
 

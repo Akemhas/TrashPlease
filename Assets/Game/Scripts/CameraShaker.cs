@@ -3,7 +3,20 @@ using UnityEngine;
 
 public class CameraShaker : MonoBehaviour
 {
-    public static CameraShaker Instance;
+    private static CameraShaker _instance;
+
+    public static CameraShaker Instance
+    {
+        get
+        {
+            if (_instance != null) return _instance;
+
+            _instance = FindFirstObjectByType<CameraShaker>();
+            return _instance;
+        }
+
+        private set => _instance = value;
+    }
 
     [SerializeField] private float _shakeStrength = 0.2f;
     [SerializeField] private float _shakeDuration = 0.15f;
