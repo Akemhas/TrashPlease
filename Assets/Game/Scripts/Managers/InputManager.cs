@@ -49,6 +49,18 @@ public class InputManager : MonoBehaviour
     private InputAction _clickAction;
     private InputAction _releaseAction;
 
+    public static Vector2 MousePosition
+    {
+        get
+        {
+#if UNITY_ANDROID || UNITY_IOS
+            return Touchscreen.current.position.ReadValue();
+#else
+            return Mouse.current.position.ReadValue();
+#endif
+        }
+    }
+
     private void Awake()
     {
         HasTrash = false;
@@ -59,6 +71,9 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
+        _clickAction.Enable();
+        _releaseAction.Enable();
+
         _clickAction.performed += OnClicked;
         _releaseAction.performed += OnReleased;
     }
@@ -83,7 +98,7 @@ public class InputManager : MonoBehaviour
         if (hitBin.collider != null)
         {
             _inputState = InputState.Swipe;
-            _dragHandler.AddSwipe(_swipe);
+            _dragHandler.AddSwipe(_swipe, MousePosition);
             return;
         }
 
@@ -108,6 +123,8 @@ public class InputManager : MonoBehaviour
 
     private void OnReleased(InputAction.CallbackContext callbackContext)
     {
+        // _mousePosition = _mousePositionAction.ReadValue<Vector2>();
+
         if (InputPaused) return;
 
         if (_inputState == InputState.Swipe)
@@ -161,7 +178,7 @@ public class InputManager : MonoBehaviour
 
     private void ReleaseDrag()
     {
-        AudioManager.Instance.PlaySoundEffect(SoundEffectType.PickAndDrop, .5f);
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.PickAndDrop);
         Tween.Scale(_trash.transform, Vector3.one, new TweenSettings(.125f, Ease.Linear));
 
         _trash = null;
@@ -172,7 +189,7 @@ public class InputManager : MonoBehaviour
 
     private RaycastHit2D RaycastToMousePosition(LayerMask layerMask)
     {
-        var mousePos = Input.mousePosition;
+        var mousePos = MousePosition;
         Vector3 mouseWorldPos = _mainCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -_mainCam.transform.position.z));
         var hit = Physics2D.Raycast(new Vector2(mouseWorldPos.x, mouseWorldPos.y), Vector2.up, distance: 0.0001f, layerMask: layerMask);
         return hit;
@@ -180,7 +197,7 @@ public class InputManager : MonoBehaviour
 
     private bool HasClickedOverUI()
     {
-        _clickData.position = Input.mousePosition;
+        _clickData.position = MousePosition;
         _raycastResults.Clear();
         _graphicRaycaster.Raycast(_clickData, _raycastResults);
         return _raycastResults.Count > 0;

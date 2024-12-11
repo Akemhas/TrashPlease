@@ -14,10 +14,12 @@ public class TopBinController : MonoBehaviour
     [SerializeField, ChildGameObjectsOnly] private Transform _startPoint;
     [SerializeField, ChildGameObjectsOnly] private Transform _scanner;
 
-    private int BinCounter
+    private static int LoopCounterNumber;
+
+    public static int BinCounter
     {
         get => PlayerPrefs.GetInt(nameof(BinCounter), 0);
-        set => PlayerPrefs.SetInt(nameof(BinCounter), value % _binFrequencyData.LoopCounterNumber);
+        set => PlayerPrefs.SetInt(nameof(BinCounter), value % LoopCounterNumber);
     }
 
     private readonly Queue<TopBin> _topBinQueue = new();
@@ -49,6 +51,7 @@ public class TopBinController : MonoBehaviour
 
     public void Initialize()
     {
+        LoopCounterNumber = _binFrequencyData.LoopCounterNumber;
         _topBinPool.Initialize(_startPoint.position);
     }
 
@@ -79,7 +82,6 @@ public class TopBinController : MonoBehaviour
             await Tween.PositionX(bin.transform, _scanner.position.x, distance / 2, Ease.Linear);
             MoveBins();
             _topBinPool.Release(bin);
-            BinCounter++;
         }
         catch (Exception e)
         {
@@ -94,6 +96,11 @@ public class TopBinController : MonoBehaviour
 
         if (!_topBinQueue.TryPeek(out var topMostBin))
         {
+            if (_spawnInterval - _elapsedTime > 1)
+            {
+                _elapsedTime = _spawnInterval - 1;
+            }
+
             return;
         }
 
@@ -137,6 +144,7 @@ public class TopBinController : MonoBehaviour
         topBin.TrashCount = sortTypeTrashCount.Item2;
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
+        _elapsedTime = 0;
 
         if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count)
         {

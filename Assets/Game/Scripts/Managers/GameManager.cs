@@ -66,17 +66,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TemperatureManager.IncreaseTemperature(5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            TemperatureManager.IncreaseTemperature(-5);
-        }
-#endif
         switch (_currentGameState)
         {
             case GameState.Paused:

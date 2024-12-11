@@ -12,13 +12,14 @@ public class DragHandler : MonoBehaviour
 
     private InputAction _dragAction;
     private InputAction _swipeAction;
+
     private Transform _draggable;
     private bool _enabled;
     private Camera _mainCam;
     private float _swipeThreshold = 1;
 
-    private float swipeStartX;
-    private float mouseStartX;
+    private float _swipeStartX;
+    private float _mouseStartX;
 
     private Vector3 _worldPos;
 
@@ -55,7 +56,7 @@ public class DragHandler : MonoBehaviour
         _dragAction.Enable();
     }
 
-    public void AddSwipe(Transform t)
+    public void AddSwipe(Transform t, Vector2 mousePosition)
     {
         if (_binScroller.Tween.isAlive)
         {
@@ -63,8 +64,9 @@ public class DragHandler : MonoBehaviour
         }
 
         _draggable = t;
-        swipeStartX = t.position.x;
-        mouseStartX = _mainCam.ScreenToWorldPoint(Input.mousePosition).x;
+        _swipeStartX = t.position.x;
+        _worldPos.x = mousePosition.x;
+        _mouseStartX = _mainCam.ScreenToWorldPoint(_worldPos).x;
         _swipeAction.Enable();
     }
 
@@ -80,7 +82,7 @@ public class DragHandler : MonoBehaviour
         if (!_draggable) return;
 
         _swipeAction.Disable();
-        float swipeDistance = _draggable.position.x - swipeStartX;
+        float swipeDistance = _draggable.position.x - _swipeStartX;
 
         if (swipeDistance < -_swipeThreshold)
         {
@@ -118,16 +120,15 @@ public class DragHandler : MonoBehaviour
     private void OnSwipePerformed(InputAction.CallbackContext callbackContext)
     {
         if (InputPaused) return;
-
-        if (InputManager.HasTrash) return;
         if (!_draggable) return;
+        if (InputManager.HasTrash) return;
 
         var mouseScreenPos = callbackContext.ReadValue<Vector2>();
         _worldPos.x = mouseScreenPos.x;
 
         var newPosition = _mainCam.ScreenToWorldPoint(_worldPos);
 
-        float finalPos = Mathf.Clamp(swipeStartX - (mouseStartX - newPosition.x), -6, 6);
+        float finalPos = Mathf.Clamp(_swipeStartX - (_mouseStartX - newPosition.x), -6, 6);
 
         _draggable.localPosition = new Vector3(finalPos, 0, 0);
     }

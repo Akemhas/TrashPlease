@@ -55,6 +55,7 @@ public class BinController : MonoBehaviour
             .OnComplete(() =>
             {
                 BinBeforeDestroy?.Invoke();
+                TopBinController.BinCounter++;
                 CurrentBin = null;
                 Addressables.ReleaseInstance(_binHandle);
             });

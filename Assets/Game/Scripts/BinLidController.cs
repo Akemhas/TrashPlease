@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BinLidController : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class BinLidController : MonoBehaviour
 
     private Vector3 GetMouseWorldPos()
     {
-        var mousePos = Input.mousePosition;
+        var mousePos = InputManager.MousePosition;
         Vector3 mouseWorldPos = _mainCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -_mainCam.transform.position.z));
         return mouseWorldPos;
     }

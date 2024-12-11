@@ -25,6 +25,8 @@ public class QuestionPopup : MonoBehaviour
     private Question _currentQuestion;
     private readonly WaitForSeconds _waitForSeconds = new(3f);
     private Coroutine _closeCoroutine;
+    [SerializeField] private Vector2 _closeButtonDisabledPosition;
+    [SerializeField] private Vector2 _closeButtonEnabledPosition;
 
     private int QuestionIndex
     {
@@ -35,12 +37,11 @@ public class QuestionPopup : MonoBehaviour
     private void Awake()
     {
         _overlayImage = _overlay.GetComponent<Image>();
-
-        _closeButton.onClick.AddListener(Close);
     }
 
     private void OnEnable()
     {
+        _closeButton.onClick.AddListener(OnCloseClicked);
         foreach (var answer in _answers)
         {
             answer.Clicked += OnAnswerClicked;
@@ -49,10 +50,17 @@ public class QuestionPopup : MonoBehaviour
 
     private void OnDisable()
     {
+        _closeButton.onClick.RemoveListener(OnCloseClicked);
         foreach (var answer in _answers)
         {
             answer.Clicked -= OnAnswerClicked;
         }
+    }
+
+    private void OnCloseClicked()
+    {
+        AudioManager.Instance.PlaySoundEffect(SoundEffectType.Click);
+        Close();
     }
 
     private void OnAnswerClicked(Answer clickedAnswer)
@@ -80,6 +88,8 @@ public class QuestionPopup : MonoBehaviour
             _explanationTMP.SetText(_currentQuestion.Explanation);
         }
 
+        Tween.UIAnchoredPosition((RectTransform)_closeButton.transform, _closeButtonDisabledPosition, _closeButtonEnabledPosition, .2f, Ease.OutBack);
+
         if (_closeCoroutine != null) StopCoroutine(_closeCoroutine);
         _closeCoroutine = StartCoroutine(CloseTimer());
     }
@@ -92,6 +102,7 @@ public class QuestionPopup : MonoBehaviour
 
     public void Open()
     {
+        ((RectTransform)_closeButton.transform).anchoredPosition = _closeButtonDisabledPosition;
         SetupQuestion(GetQuestion());
         _overlay.SetActive(true);
         _panelHolder.SetActive(true);
