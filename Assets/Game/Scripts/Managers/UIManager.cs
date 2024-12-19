@@ -47,6 +47,13 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        OnTemperatureChanged(TemperatureManager.Temperature);
+        _counter.SetText(GameManager.Score.ToString());
+    }
+
+
     private void OnEnable()
     {
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
@@ -88,11 +95,6 @@ public class UIManager : MonoBehaviour
     {
         float tempToShow = temp + 18f;
         _temperatureTMP.SetText($"{tempToShow:0.0}°C");
-    }
-
-    private void Start()
-    {
-        _counter.SetText(GameManager.Score.ToString());
     }
 
     private void OnQuestionPopupClosed() => QuestionPopupClosed?.Invoke();
