@@ -12,11 +12,13 @@ namespace Managers
         [SerializeField] private TextMeshProUGUI _titleTmp;
         [SerializeField] private GameObject _overlayPanel;
         [SerializeField] private GameObject _settingsPanel;
+        [SerializeField] private GameObject _howToPlayPanel;
 
         [SerializeField] private Button _exitButton;
         [SerializeField] private Toggle _audioToggleButton;
         [SerializeField] private Button _deLanguageButton;
         [SerializeField] private Button _enLanguageButton;
+        [SerializeField] private Button _howToPlayButton;
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace Managers
             _deLanguageButton.onClick.AddListener(OnDeLanguageButtonClicked);
             _enLanguageButton.onClick.AddListener(OnEnLanguageButtonClicked);
             _exitButton.onClick.AddListener(CloseSettingsMenu);
+            _howToPlayButton.onClick.AddListener(OpenHowToPlayPanel);
             LanguageChanged += OnLanguageChanged;
         }
 
@@ -39,6 +42,8 @@ namespace Managers
         private void OnDeLanguageButtonClicked() => LanguageChanged?.Invoke("de");
 
         private void OnAudioButtonClicked(bool isAudioOn) => AudioManager.Instance.ToggleMute();
+
+        private void OpenHowToPlayPanel() => _howToPlayPanel.SetActive(true);
 
         public void OpenSettingsMenu()
         {
