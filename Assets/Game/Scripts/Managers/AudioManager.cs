@@ -13,9 +13,30 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private SoundTrackDictionary _soundTracks;
     [SerializeField] private SoundEffectDictionary _soundEffects;
 
+    public bool MuteStatus
+    {
+        get => PlayerPrefs.GetInt("MuteStatus", 0) == 1;
+        private set => PlayerPrefs.SetInt("MuteStatus", value ? 1 : 0);
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        SetMute(MuteStatus);
+    }
+
+    public void ToggleMute()
+    {
+        bool newMuteStatus = !MuteStatus;
+        MuteStatus = newMuteStatus;
+        _soundTrackSource.mute = newMuteStatus;
+        _soundEffectSource.mute = newMuteStatus;
+    }
+
+    private void SetMute(bool isMute)
+    {
+        _soundTrackSource.mute = isMute;
+        _soundEffectSource.mute = isMute;
     }
 
     public void PlaySoundTrack(SoundTrackType soundTrackType)
@@ -47,24 +68,16 @@ public class AudioManager : Singleton<AudioManager>
 }
 
 [Serializable]
-public class SoundTrackDictionary : SerializableDictionary<SoundTrackType, AudioClip, SoundTrackStorage>
-{
-}
+public class SoundTrackDictionary : SerializableDictionary<SoundTrackType, AudioClip, SoundTrackStorage> { }
 
 [Serializable]
-public class SoundTrackStorage : SerializableDictionary.Storage<AudioClip>
-{
-}
+public class SoundTrackStorage : SerializableDictionary.Storage<AudioClip> { }
 
 [Serializable]
-public class SoundEffectDictionary : SerializableDictionary<SoundEffectType, AudioClip, SoundEffectStorage>
-{
-}
+public class SoundEffectDictionary : SerializableDictionary<SoundEffectType, AudioClip, SoundEffectStorage> { }
 
 [Serializable]
-public class SoundEffectStorage : SerializableDictionary.Storage<AudioClip>
-{
-}
+public class SoundEffectStorage : SerializableDictionary.Storage<AudioClip> { }
 
 public enum SoundTrackType
 {
