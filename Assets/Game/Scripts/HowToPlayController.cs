@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +10,6 @@ public class HowToPlayController : MonoBehaviour
     private void Awake()
     {
         _exitButton.onClick.AddListener(OnExitButtonClicked);
-    }
-
-    private void OnEnable()
-    {
     }
 
     private void OnExitButtonClicked()
