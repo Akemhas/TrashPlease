@@ -16,7 +16,8 @@ public class QuestionPopup : MonoBehaviour
     [SerializeField] private GameObject _overlay;
     [SerializeField] private Button _closeButton;
 
-    [Header("Question")] [SerializeField] private TextMeshProUGUI _questionTMP;
+    [Header("Question")]
+    [SerializeField] private TextMeshProUGUI _questionTMP;
     [SerializeField] private TextMeshProUGUI _explanationTMP;
     [SerializeField] private List<Answer> _answers;
 
@@ -65,18 +66,19 @@ public class QuestionPopup : MonoBehaviour
 
     private void OnAnswerClicked(Answer clickedAnswer)
     {
+        foreach (var answer in _answers)
+        {
+            answer.ToggleButtonActiveness(false);
+            if (answer.IsCorrect) answer.SetCorrect();
+            else if (!clickedAnswer.IsCorrect) answer.SetWrong();
+        }
+
         if (clickedAnswer.IsCorrect)
         {
             clickedAnswer.SetCorrect();
             UIManager.Instance.IncreaseCounter(5);
         }
         else clickedAnswer.SetWrong();
-
-        foreach (var answer in _answers)
-        {
-            answer.ToggleButtonActiveness(false);
-            if (!clickedAnswer.IsCorrect && answer.IsCorrect) answer.SetCorrect();
-        }
 
         if (string.IsNullOrEmpty(_currentQuestion.Explanation))
         {
@@ -121,12 +123,13 @@ public class QuestionPopup : MonoBehaviour
     {
         if (_closeCoroutine != null) StopCoroutine(_closeCoroutine);
         Tween.Alpha(_overlayImage, .6f, 0, .2f, Ease.InBack);
-        Tween.Scale(_panelHolder.transform, Vector3.one, Vector3.zero, .2f, Ease.InBack).OnComplete(() =>
-        {
-            _panelHolder.SetActive(false);
-            _overlay.SetActive(false);
-            PopupClosed?.Invoke();
-        });
+        Tween.Scale(_panelHolder.transform, Vector3.one, Vector3.zero, .2f, Ease.InBack)
+            .OnComplete(() =>
+            {
+                _panelHolder.SetActive(false);
+                _overlay.SetActive(false);
+                PopupClosed?.Invoke();
+            });
     }
 
     private void SetupQuestion(Question question)
