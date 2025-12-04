@@ -34,6 +34,22 @@ MonoBehaviour:
     m_Localized: How to play?
     m_Metadata:
       m_Items: []
+  - m_Id: 53957878603776
+    m_Localized: 'Drag each piece of trash into the correct bin.
+
+
+      When you
+      believe everything is sorted correctly, press the green button to confirm.
+
+
+      If
+      you''re unsure about an item, use the inspection button to learn more about
+      it.
+
+
+      Remember: you can swipe the bins to view all available bin types.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

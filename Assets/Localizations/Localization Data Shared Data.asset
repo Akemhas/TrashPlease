@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: howToPlay
     m_Metadata:
       m_Items: []
+  - m_Id: 53957878603776
+    m_Key: htpText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

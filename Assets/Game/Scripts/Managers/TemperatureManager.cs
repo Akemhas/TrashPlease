@@ -12,14 +12,17 @@ public static class TemperatureManager
         private set => PlayerPrefs.SetFloat(nameof(Temperature), value);
     }
 
-    private static void Start()
-    {
-        TemperatureChanged?.Invoke(Temperature);
-    }
-
     public static void IncreaseTemperature(float temp)
     {
         var newTemperature = Temperature + temp;
+        Temperature = Mathf.Clamp(newTemperature, -8, 100);
+        TemperatureChanged?.Invoke(newTemperature);
+        if (newTemperature > FailTemperature) GameManager.Instance.Fail();
+    }
+
+    public static void SetTemperature(float temp)
+    {
+        var newTemperature = temp;
         Temperature = Mathf.Clamp(newTemperature, -8, 100);
         TemperatureChanged?.Invoke(newTemperature);
         if (newTemperature > FailTemperature) GameManager.Instance.Fail();

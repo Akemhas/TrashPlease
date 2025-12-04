@@ -1,11 +1,12 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Managers
 {
-    public class SettingsManager : Singleton<SettingsManager>
+    public class SettingsManager : MonoBehaviour
     {
         public static event Action<string> LanguageChanged;
 
@@ -31,10 +32,14 @@ namespace Managers
             LanguageChanged += OnLanguageChanged;
         }
 
-        protected override void OnDestroy()
+        private void OnDestroy()
         {
-            base.OnDestroy();
             LanguageChanged -= OnLanguageChanged;
+            _audioToggleButton.onValueChanged.RemoveListener(OnAudioButtonClicked);
+            _deLanguageButton.onClick.RemoveListener(OnDeLanguageButtonClicked);
+            _enLanguageButton.onClick.RemoveListener(OnEnLanguageButtonClicked);
+            _exitButton.onClick.RemoveListener(CloseSettingsMenu);
+            _howToPlayButton.onClick.RemoveListener(OpenHowToPlayPanel);
         }
 
         private void OnEnLanguageButtonClicked() => LanguageChanged?.Invoke("en");
@@ -50,6 +55,7 @@ namespace Managers
             Time.timeScale = 0;
             _overlayPanel.SetActive(true);
             _settingsPanel.SetActive(true);
+            InputManager.SetInputPaused?.Invoke(true);
         }
 
         private void CloseSettingsMenu()
@@ -57,8 +63,13 @@ namespace Managers
             Time.timeScale = 1;
             _overlayPanel.SetActive(false);
             _settingsPanel.SetActive(false);
+            InputManager.SetInputPaused?.Invoke(false);
         }
 
-        private void OnLanguageChanged(string languageCode) { }
+        private void OnLanguageChanged(string languageCode)
+        {
+            var locale = LocalizationSettings.AvailableLocales.Locales.Find(r => r.CustomFormatterCode == languageCode);
+            LocalizationSettings.SelectedLocale = locale;
+        }
     }
 }

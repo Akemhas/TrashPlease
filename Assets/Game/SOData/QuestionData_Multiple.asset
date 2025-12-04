@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788901760637a4497b8dc019131d5183, type: 3}
+  m_Name: QuestionData_Multiple
+  m_EditorClassIdentifier: 
+  Questions:
+  - QuestionText: The plastic bottle belongs in the blue bin
+    Explanation: In Germany, plastic packaging like bottles goes into the yellow
+      bin, known for recycling plastics and other packaging materials.
+    CorrectAnswer: False
+    WrongAnswers:
+    - True
+    - Yes
+  - QuestionText: Pouring used cooking oil into the yellow bin is the correct way
+      to dispose of it.
+    Explanation: Small amounts of cooking oil can be absorbed in paper and placed
+      in general waste; larger amounts should be sealed in a plastic bottle and thrown
+      in the black bin
+    CorrectAnswer: False
+    WrongAnswers:
+    - True
+    - Correct

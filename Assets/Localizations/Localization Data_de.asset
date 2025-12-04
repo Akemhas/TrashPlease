@@ -34,6 +34,15 @@ MonoBehaviour:
     m_Localized: Wie spielt man?
     m_Metadata:
       m_Items: []
+  - m_Id: 53957878603776
+    m_Localized: "Ziehe jeden M\xFCllgegenstand in den passenden M\xFClleimer.\n\nWenn
+      du glaubst, dass alles richtig sortiert ist, dr\xFCcke den gr\xFCnen Knopf,
+      um zu best\xE4tigen.\n\nWenn du dir bei einem Gegenstand unsicher bist, nutze
+      den Inspektionsknopf, um mehr Informationen zu erhalten.\n\nVergiss nicht:
+      Du kannst die M\xFClleimer nach links und rechts wischen, um alle verf\xFCgbaren
+      Typen zu sehen."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

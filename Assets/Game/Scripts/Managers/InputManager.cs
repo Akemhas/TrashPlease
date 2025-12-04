@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public static Action<bool> SetInputPaused;
+
     public static event Action<Trash, PlayerBin> TrashDroppedOnPlayerBin;
     public static event Action<Trash> TrashDroppedOnEmptySpace;
     public static event Action<Trash> TrashDroppedOnTrashArea;
@@ -61,6 +63,7 @@ public class InputManager : MonoBehaviour
         _mainCam = Camera.main;
         _clickAction = InputSystem.actions.FindAction("Clicked");
         _releaseAction = InputSystem.actions.FindAction("Released");
+        SetInputPaused = status => InputPaused = status;
     }
 
     private void OnEnable()
@@ -117,8 +120,6 @@ public class InputManager : MonoBehaviour
 
     private void OnReleased(InputAction.CallbackContext callbackContext)
     {
-        // _mousePosition = _mousePositionAction.ReadValue<Vector2>();
-
         if (InputPaused) return;
 
         if (_inputState == InputState.Swipe)
@@ -137,8 +138,6 @@ public class InputManager : MonoBehaviour
             if (!CheckInspectionTool())
             {
                 TrashDroppedOnEmptySpace?.Invoke(_trash);
-                ReleaseDrag();
-                return;
             }
 
             ReleaseDrag();

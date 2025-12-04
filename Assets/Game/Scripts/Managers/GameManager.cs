@@ -1,6 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
+using PrimeTween;
 
 public class GameManager : MonoBehaviour
 {
@@ -101,6 +102,7 @@ public class GameManager : MonoBehaviour
         _currentTrashCount = topBinData.Item2;
         _trashController.LoadTrash(_currentSortType, _currentTrashCount);
         _topBinController.CreateTopBin(7);
+        TemperatureManager.SetTemperature(0);
     }
 
     private void Update()
@@ -224,8 +226,11 @@ public class GameManager : MonoBehaviour
         Paused,
     }
 
+    [Button]
     public void Fail()
     {
+        Tween.StopAll();
+        Time.timeScale = 0;
         UIManager.Instance.Fail();
     }
 }

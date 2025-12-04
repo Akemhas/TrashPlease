@@ -33,6 +33,7 @@ public class FailScreen : MonoBehaviour
         PlayerPrefs.DeleteAll();
         GameManager.HighestScore = highestScore;
 
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        var a = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        a!.completed += _ => { Time.timeScale = 1; };
     }
 }
