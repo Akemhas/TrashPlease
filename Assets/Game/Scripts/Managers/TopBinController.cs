@@ -10,16 +10,15 @@ public class TopBinController : MonoBehaviour
 
     [SerializeField] private TopBinPool _topBinPool;
     [SerializeField] private BinFrequencyData _binFrequencyData;
+    [SerializeField, Required] private LevelManager _levelManager;
     [SerializeField, ChildGameObjectsOnly] private ConveyorBeltController _beltController;
     [SerializeField, ChildGameObjectsOnly] private Transform _startPoint;
     [SerializeField, ChildGameObjectsOnly] private Transform _scanner;
 
-    private static int LoopCounterNumber;
-
     public static int BinCounter
     {
         get => PlayerPrefs.GetInt(nameof(BinCounter), 0);
-        set => PlayerPrefs.SetInt(nameof(BinCounter), value % LoopCounterNumber);
+        set => PlayerPrefs.SetInt(nameof(BinCounter), Mathf.Max(0, value));
     }
 
     private readonly Queue<TopBin> _topBinQueue = new();
@@ -49,14 +48,30 @@ public class TopBinController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (_levelManager)
+        {
+            _levelManager.LevelStarted += OnLevelStarted;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_levelManager)
+        {
+            _levelManager.LevelStarted -= OnLevelStarted;
+        }
+    }
+
     public void Initialize()
     {
-        LoopCounterNumber = _binFrequencyData.LoopCounterNumber;
         _topBinPool.Initialize(_startPoint.position);
     }
 
     public void Tick()
     {
+        if (_levelManager != null && !_levelManager.CanSpawnBin()) return;
         if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count) return;
 
         if (_timeCapped && _elapsedTime < _spawnInterval)
@@ -73,6 +88,8 @@ public class TopBinController : MonoBehaviour
 
     public async Awaitable SendBinToScanner()
     {
+        if (_topBinQueue.Count == 0) return;
+
         var bin = _topBinQueue.Dequeue();
         UIManager.Instance.Timer.StopTimer();
 
@@ -137,14 +154,22 @@ public class TopBinController : MonoBehaviour
 
     public void CreateTopBin()
     {
-        var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
-        _spawnInterval = _binFrequencyData.GetSpawnInterval(BinCounter);
+        if (!CanSpawnMoreBins()) return;
+
+        var frequencyData = CurrentFrequencyData();
+        if (frequencyData == null) return;
+
+        int binIndexInLevel = _levelManager != null ? _levelManager.CurrentBinIndexInLevel : BinCounter;
+
+        var sortTypeTrashCount = frequencyData.GetSortTypeForBinIndex(binIndexInLevel, GetAllowedSorts(), GetBiasLookup());
+        _spawnInterval = frequencyData.GetSpawnIntervalForBinIndex(binIndexInLevel);
 
         var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
         topBin.TrashCount = sortTypeTrashCount.Item2;
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
         _elapsedTime = 0;
+        _levelManager?.RegisterBinSpawned();
 
         if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count)
         {
@@ -154,12 +179,21 @@ public class TopBinController : MonoBehaviour
         MoveBins();
     }
 
-    public (TrashSortType, int) CreateTopBin(int index)
+    public bool TryCreateTopBin(int index, out (TrashSortType, int) createdBinData)
     {
-        var sortTypeTrashCount = _binFrequencyData.GetSortType(BinCounter);
+        createdBinData = default;
+
+        if (!CanSpawnMoreBins()) return false;
+
+        var frequencyData = CurrentFrequencyData();
+        if (frequencyData == null) return false;
+
+        int binIndexInLevel = _levelManager != null ? _levelManager.CurrentBinIndexInLevel : BinCounter;
+
+        var sortTypeTrashCount = frequencyData.GetSortTypeForBinIndex(binIndexInLevel, GetAllowedSorts(), GetBiasLookup());
         var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
         topBin.TrashCount = sortTypeTrashCount.Item2;
-        _spawnInterval = _binFrequencyData.GetSpawnInterval(BinCounter);
+        _spawnInterval = frequencyData.GetSpawnIntervalForBinIndex(binIndexInLevel);
 
         var pos = _beltController.ConveyorBelts[^index].transform.position;
         pos.y = _startPoint.position.y;
@@ -167,8 +201,59 @@ public class TopBinController : MonoBehaviour
 
         _topBinQueue.Enqueue(topBin);
         _timeCapped = true;
+        _levelManager?.RegisterBinSpawned();
         MoveBins();
 
-        return new(topBin.SortType, topBin.TrashCount);
+        createdBinData = new(topBin.SortType, topBin.TrashCount);
+        return true;
+    }
+
+    private void OnLevelStarted(int levelIndex)
+    {
+        _elapsedTime = 0;
+        _timeCapped = false;
+    }
+
+    public void ResetForNewLevel()
+    {
+        while (_topBinQueue.Count > 0)
+        {
+            var bin = _topBinQueue.Dequeue();
+            _topBinPool.Release(bin);
+        }
+
+        _elapsedTime = 0;
+        _timeCapped = false;
+    }
+
+    private IReadOnlyCollection<TrashSortType> GetAllowedSorts()
+    {
+        if (_levelManager == null) return null;
+
+        var unlockedBins = _levelManager.GetUnlockedBins();
+        return unlockedBins.Count > 0 ? unlockedBins : null;
+    }
+
+    private bool CanSpawnMoreBins()
+    {
+        if (_levelManager == null) return true;
+        return _levelManager.CanSpawnBin();
+    }
+
+    private BinFrequencyData CurrentFrequencyData()
+    {
+        if (_levelManager != null)
+        {
+            var data = _levelManager.GetBinFrequencyData();
+            if (data != null) return data;
+        }
+
+        return _binFrequencyData;
+    }
+
+    private IReadOnlyDictionary<TrashSortType, float> GetBiasLookup()
+    {
+        if (_levelManager == null) return null;
+        return _levelManager.GetBiasLookup();
     }
 }

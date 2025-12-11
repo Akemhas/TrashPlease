@@ -19,6 +19,7 @@ public class BinLidController : MonoBehaviour
 
         foreach (var playerBin in _playerBins)
         {
+            if (playerBin == null || !playerBin.gameObject.activeInHierarchy) continue;
             var dist = Vector3.Distance(playerBin.transform.position, mouseWorldPos);
 
             if (dist <= _range && InputManager.HasTrash)

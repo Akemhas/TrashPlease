@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BinController _binController;
     [SerializeField] private TopBinController _topBinController;
     [SerializeField] private TrashController _trashController;
+    [SerializeField, Required] private LevelManager _levelManager;
 
     private TrashSortType _currentSortType;
     private int _currentTrashCount;
@@ -58,7 +59,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(Instance.gameObject);
+            Destroy(gameObject);
+            return;
         }
 
         Instance = this;
@@ -77,6 +79,13 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
         }
+        if (_levelManager)
+        {
+            _levelManager.AllLevelsCompleted += HandleAllLevelsCompleted;
+            _levelManager.LevelProgressChanged += OnLevelProgressChanged;
+            _levelManager.LevelStarted += OnLevelStarted;
+            _levelManager.LevelCompleted += OnLevelCompleted;
+        }
     }
 
     private void OnDisable()
@@ -91,17 +100,25 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.QuestionPopupClosed -= OnQuestionPopupClosed;
         }
+        if (_levelManager)
+        {
+            _levelManager.AllLevelsCompleted -= HandleAllLevelsCompleted;
+            _levelManager.LevelProgressChanged -= OnLevelProgressChanged;
+            _levelManager.LevelStarted -= OnLevelStarted;
+            _levelManager.LevelCompleted -= OnLevelCompleted;
+        }
     }
 
     private void Start()
     {
         AudioManager.Instance.PlaySoundTrack(SoundTrackType.Gameplay);
         _topBinController.Initialize();
-        var topBinData = _topBinController.CreateTopBin(5);
-        _currentSortType = topBinData.Item1;
-        _currentTrashCount = topBinData.Item2;
-        _trashController.LoadTrash(_currentSortType, _currentTrashCount);
-        _topBinController.CreateTopBin(7);
+        _levelManager?.StartLevel();
+        if (_levelManager != null && UIManager.Instance)
+        {
+            UIManager.Instance.SetLevelProgress(_levelManager.BinsSortedThisLevel, _levelManager.BinsToComplete());
+        }
+        CreateInitialBins();
         TemperatureManager.SetTemperature(0);
     }
 
@@ -177,8 +194,12 @@ public class GameManager : MonoBehaviour
 
     private void OnCenterBinBeforeDestroy()
     {
+        _levelManager?.RegisterBinSorted();
         IsScannerEmpty = true;
-        _currentGameState = GameState.WaitingBin;
+        if (_currentGameState != GameState.Paused)
+        {
+            _currentGameState = GameState.WaitingBin;
+        }
         _trashController.DestroyAllTrash();
     }
 
@@ -232,5 +253,87 @@ public class GameManager : MonoBehaviour
         Tween.StopAll();
         Time.timeScale = 0;
         UIManager.Instance.Fail();
+    }
+
+    private void HandleAllLevelsCompleted()
+    {
+        _currentGameState = GameState.Paused;
+        Time.timeScale = 0;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.Timer.StopTimer();
+            UIManager.Instance.ShowAllLevelsComplete(OnRestartFromBeginning);
+        }
+    }
+
+    private void OnLevelProgressChanged(int sorted, int total)
+    {
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.SetLevelProgress(sorted, total);
+        }
+    }
+
+    private void OnLevelStarted(int levelIndex)
+    {
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.SetLevelProgress(0, _levelManager.BinsToComplete());
+        }
+        _topBinController.ResetForNewLevel();
+        CreateInitialBins();
+    }
+
+    private void OnLevelCompleted(int levelIndex)
+    {
+        _currentGameState = GameState.Paused;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.ShowLevelComplete(_levelManager.IsCurrentLevelLast, OnNextLevel, OnRestartLevel);
+        }
+    }
+
+    private void CreateInitialBins()
+    {
+        if (_topBinController.TryCreateTopBin(5, out var topBinData))
+        {
+            _currentSortType = topBinData.Item1;
+            _currentTrashCount = topBinData.Item2;
+            _trashController.LoadTrash(_currentSortType, _currentTrashCount);
+            _topBinController.TryCreateTopBin(7, out _);
+            _currentGameState = GameState.WaitingBin;
+        }
+        else
+        {
+            HandleAllLevelsCompleted();
+        }
+    }
+
+    private void OnNextLevel()
+    {
+        Time.timeScale = 1;
+        if (_levelManager.TryAdvanceToNextLevel())
+        {
+            _currentGameState = GameState.WaitingBin;
+        }
+        else
+        {
+            HandleAllLevelsCompleted();
+        }
+    }
+
+    private void OnRestartLevel()
+    {
+        Time.timeScale = 1;
+        _levelManager.RestartCurrentLevel();
+        _currentGameState = GameState.WaitingBin;
+    }
+
+    private void OnRestartFromBeginning()
+    {
+        Time.timeScale = 1;
+        GameManager.Score = 0;
+        _levelManager.ResetProgress();
+        _currentGameState = GameState.WaitingBin;
     }
 }

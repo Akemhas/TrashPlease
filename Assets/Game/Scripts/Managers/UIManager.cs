@@ -29,9 +29,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InspectController _inspectionController;
     [SerializeField] private QuestionPopup _questionPopup;
     [SerializeField] private FailScreen _failScreen;
+    [SerializeField] private LevelCompletePopup _levelCompletePopup;
+    [SerializeField] private AllLevelsCompletePopup _allLevelsCompletePopup;
 
     [Space, SerializeField] private TextMeshProUGUI _counter;
     [SerializeField] private Button _okButton;
+
+    [Header("Level Progress")]
+    [SerializeField] private Image _levelProgressFill;
+    [SerializeField] private TextMeshProUGUI _levelProgressLabel;
 
     [SerializeField] private Button _leftSwipeButton;
     [SerializeField] private Button _centerSwipeButton;
@@ -156,5 +162,29 @@ public class UIManager : MonoBehaviour
                 _rightSwipe.color = Color.white;
                 return;
         }
+    }
+
+    public void SetLevelProgress(int sorted, int total)
+    {
+        if (_levelProgressFill == null) return;
+        float fill = total > 0 ? (float)sorted / total : 0;
+        _levelProgressFill.fillAmount = Mathf.Clamp01(fill);
+
+        if (_levelProgressLabel != null)
+        {
+            _levelProgressLabel.SetText($"{sorted}/{Mathf.Max(total, 1)}");
+        }
+    }
+
+    public void ShowLevelComplete(bool isLastLevel, Action nextLevel, Action restartLevel)
+    {
+        if (_levelCompletePopup == null) return;
+        _levelCompletePopup.Open(isLastLevel, nextLevel, restartLevel);
+    }
+
+    public void ShowAllLevelsComplete(Action restartFromBeginning)
+    {
+        if (_allLevelsCompletePopup == null) return;
+        _allLevelsCompletePopup.Open(restartFromBeginning);
     }
 }

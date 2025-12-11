@@ -9,7 +9,7 @@ public class TrashController : MonoBehaviour
     public event Action TrashCreated;
     public event Action AllTrashDestroyed;
 
-    [SerializeField] private List<TrashSortType> _includedSortTypes;
+    [SerializeField] private LevelManager _levelManager;
     [SerializeField] private TrashTypeData _trashTypeData;
     [SerializeField] private TrashLoader _trashLoader;
     [SerializeField, Range(0, 1)] private float _spawnSpacingAmount = .6f;
@@ -132,6 +132,7 @@ public class TrashController : MonoBehaviour
             UIManager.Instance.IncreaseCounter(-3);
             playerBin.ScaleUpDown();
             DestroyTrash(trash);
+            _levelManager?.AddMistakeBias(trash.TrashSortType);
         }
 
         if (_instantiatedTrashList.Count == 0)
@@ -153,7 +154,7 @@ public class TrashController : MonoBehaviour
             int randomValue = Random.Range(0, 3);
             string address;
 
-            if (randomValue % 2 == 0)
+            if (randomValue % 2 == 0 || wrongTypes.Count == 0)
             {
                 address = _trashTypeData.GetRandomTrashAddress(sortType);
             }
@@ -217,10 +218,15 @@ public class TrashController : MonoBehaviour
 
     private List<TrashSortType> GetWrongSortTypes(TrashSortType sortType)
     {
-        List<TrashSortType> wrongSortTypes = new List<TrashSortType>();
-        foreach (var value in _includedSortTypes)
+        var wrongSortTypes = new List<TrashSortType>();
+        var allowed = _levelManager != null ? _levelManager.GetUnlockedBins() : null;
+        if (allowed == null || allowed.Count == 0)
         {
-            var enumValue = value;
+            return wrongSortTypes;
+        }
+
+        foreach (var enumValue in allowed)
+        {
             if (enumValue != sortType && enumValue != TrashSortType.Question)
             {
                 wrongSortTypes.Add(enumValue);

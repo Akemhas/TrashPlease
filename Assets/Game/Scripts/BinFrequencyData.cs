@@ -7,56 +7,62 @@ using Sirenix.OdinInspector;
 [CreateAssetMenu(menuName = "Create BinFrequencyData", fileName = "BinFrequencyData", order = 0)]
 public class BinFrequencyData : ScriptableObject
 {
-    public int LoopCounterNumber => _difficultyIntervals[^1].BinCounter;
+    public int LoopCounterNumber => _difficultyIntervals.Count > 0 ? _difficultyIntervals[^1].BinCounter : 0;
     [SerializeField, DelayedProperty, ValidateInput("Validate")] private List<DifficultyInterval> _difficultyIntervals;
     [NonSerialized] private readonly Dictionary<int, DifficultyInterval> _difficultyIntervalLookupTable = new();
 
-    public (TrashSortType, int) GetSortType(int binCounter)
+    public (TrashSortType, int) GetSortTypeForBinIndex(int binIndexInLevel, IReadOnlyCollection<TrashSortType> allowedSortTypes = null, IReadOnlyDictionary<TrashSortType, float> biasLookup = null)
     {
         (TrashSortType, int) result = new(TrashSortType.Residual, 3);
         if (_difficultyIntervals.Count <= 0) return result;
         if (_difficultyIntervals.Count == 1)
         {
-            result.Item1 = _difficultyIntervals[0].GetRandomSortType();
+            result.Item1 = _difficultyIntervals[0].GetRandomSortType(allowedSortTypes, biasLookup);
             result.Item2 = _difficultyIntervals[0].TrashCount;
             return result;
         }
 
-        var difficultyInterval = GetDifficultyInterval(binCounter);
-        result.Item1 = difficultyInterval.GetRandomSortType();
-        result.Item2 = difficultyInterval.TrashCount;
+        var difficultyInterval = GetDifficultyInterval(binIndexInLevel);
+        if (difficultyInterval != null)
+        {
+            result.Item1 = difficultyInterval.GetRandomSortType(allowedSortTypes, biasLookup);
+            result.Item2 = difficultyInterval.TrashCount;
+        }
 
         return result;
     }
 
-    public float GetSpawnInterval(int binCounter)
+    public float GetSpawnIntervalForBinIndex(int binIndexInLevel)
     {
-        var difficultyInterval = GetDifficultyInterval(binCounter);
-        return difficultyInterval.SpawnInterval;
+        var difficultyInterval = GetDifficultyInterval(binIndexInLevel);
+        return difficultyInterval?.SpawnInterval ?? 1.5f;
     }
 
-    private DifficultyInterval GetDifficultyInterval(int binCounter)
+    private DifficultyInterval GetDifficultyInterval(int binIndexInLevel)
     {
-        if (_difficultyIntervalLookupTable.ContainsKey(binCounter))
+        if (_difficultyIntervalLookupTable.ContainsKey(binIndexInLevel))
         {
-            return _difficultyIntervalLookupTable[binCounter];
+            return _difficultyIntervalLookupTable[binIndexInLevel];
         }
 
+        if (_difficultyIntervals.Count == 0) return null;
+
         int underLimit = 0;
+        DifficultyInterval lastInterval = _difficultyIntervals[^1];
 
         foreach (var difficultyInterval in _difficultyIntervals)
         {
-            if (binCounter >= underLimit && binCounter < difficultyInterval.BinCounter)
+            if (binIndexInLevel >= underLimit && binIndexInLevel < difficultyInterval.BinCounter)
             {
-                _difficultyIntervalLookupTable.TryAdd(binCounter, difficultyInterval);
+                _difficultyIntervalLookupTable.TryAdd(binIndexInLevel, difficultyInterval);
                 return difficultyInterval;
             }
 
             underLimit = difficultyInterval.BinCounter;
         }
 
-        Debug.LogError($"Couldn't find the Difficulty interval for {binCounter}");
-        return null;
+        _difficultyIntervalLookupTable.TryAdd(binIndexInLevel, lastInterval);
+        return lastInterval;
     }
 
     private bool Validate()
@@ -93,16 +99,66 @@ public class BinFrequencyData : ScriptableObject
 
         [Delayed] public List<TrashProbability> TrashProbabilities;
 
-        public TrashSortType GetRandomSortType()
+        public TrashSortType GetRandomSortType(IReadOnlyCollection<TrashSortType> allowedSortTypes, IReadOnlyDictionary<TrashSortType, float> biasLookup)
         {
-            int randomProbability = Random.Range(0, 101);
-            int totalProbability = 0;
-
-            foreach (var trashProbability in TrashProbabilities)
+            HashSet<TrashSortType> allowedLookup = null;
+            if (allowedSortTypes != null && allowedSortTypes.Count > 0)
             {
-                totalProbability += trashProbability.Probability;
+                allowedLookup = new HashSet<TrashSortType>(allowedSortTypes);
+            }
 
-                if (randomProbability <= totalProbability)
+            List<TrashProbability> eligibleProbabilities = TrashProbabilities;
+
+            if (allowedLookup != null)
+            {
+                eligibleProbabilities = new List<TrashProbability>();
+                foreach (var trashProbability in TrashProbabilities)
+                {
+                    if (allowedLookup.Contains(trashProbability.SortType))
+                    {
+                        eligibleProbabilities.Add(trashProbability);
+                    }
+                }
+            }
+
+            if (eligibleProbabilities.Count == 0)
+            {
+                eligibleProbabilities = TrashProbabilities;
+            }
+
+            float totalProbability = 0;
+
+            foreach (var trashProbability in eligibleProbabilities)
+            {
+                float weight = trashProbability.Probability;
+                if (biasLookup != null && biasLookup.TryGetValue(trashProbability.SortType, out var bias))
+                {
+                    weight += bias;
+                }
+
+                totalProbability += weight;
+            }
+
+            if (totalProbability <= 0)
+            {
+                Debug.LogError($"Couldn't Get Random Probability");
+                return TrashSortType.Residual;
+            }
+
+            float randomProbability = Random.Range(0f, totalProbability);
+            float probabilityCounter = 0;
+
+            foreach (var trashProbability in eligibleProbabilities)
+            {
+                float weight = trashProbability.Probability;
+                if (biasLookup != null && biasLookup.TryGetValue(trashProbability.SortType, out var bias))
+                {
+                    weight += bias;
+                }
+
+                probabilityCounter += weight;
+
+                if (randomProbability <= probabilityCounter)
                 {
                     return trashProbability.SortType;
                 }
