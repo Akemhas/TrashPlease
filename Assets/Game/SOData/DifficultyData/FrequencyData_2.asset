@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficultyIntervals:
   - BinCounter: 2
-    TrashCount: 3
+    TrashCount: 1
     SpawnInterval: 11
     TrashProbabilities:
     - SortType: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
     - SortType: 0
       Probability: 20
   - BinCounter: 4
-    TrashCount: 8
+    TrashCount: 1
     SpawnInterval: 10
     TrashProbabilities:
     - SortType: 0

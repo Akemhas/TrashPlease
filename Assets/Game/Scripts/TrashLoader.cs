@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -30,16 +31,23 @@ public class TrashLoader : MonoBehaviour
 
     private async void LoadTrashAsync(string address)
     {
-        LoadingCount++;
-        var handle = Addressables.LoadAssetAsync<GameObject>(address);
-
-        handle.Completed += operationHandle =>
+        try
         {
-            ReferenceCountCache.TryAdd(address, 0);
-            PrefabReferenceCache.TryAdd(address, operationHandle.Result);
-            LoadingCount--;
-        };
+            LoadingCount++;
+            var handle = Addressables.LoadAssetAsync<GameObject>(address);
 
-        await handle.Task;
+            handle.Completed += operationHandle =>
+            {
+                ReferenceCountCache.TryAdd(address, 0);
+                PrefabReferenceCache.TryAdd(address, operationHandle.Result);
+                LoadingCount--;
+            };
+
+            await handle.Task;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
 }

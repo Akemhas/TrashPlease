@@ -873,7 +873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputPaused: 0
-  _binScroller: {fileID: 1244775420}
 --- !u!4 &507722875
 Transform:
   m_ObjectHideFlags: 0
@@ -1642,6 +1641,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: InspectTable
       objectReference: {fileID: 0}
+    - target: {fileID: 3710541054759138871, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.317
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394991481929360787, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185410074146464081, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655394347356850814, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8463398814910879535, guid: d5747b2801d584529b34e6f255e5a318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1901,6 +1916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c777f37753e9f7e49b01129d46b87362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pos: 0
 --- !u!114 &1244775421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,7 +2135,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: b5c7818dc8e23ec4c8e1e3c91fceed13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca10d15ae6f2c4b638e141c60b9fdac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2991,6 +3007,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1244775420}
+    - target: {fileID: 5414935025097200473, guid: ea0f9c739c7f04cf0af812be24e9beb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8988772321229611069, guid: ea0f9c739c7f04cf0af812be24e9beb8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

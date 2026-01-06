@@ -8,8 +8,6 @@ public class DragHandler : MonoBehaviour
 {
     [ReadOnly] public bool InputPaused;
 
-    [SerializeField] private BinScroll _binScroller;
-
     private InputAction _dragAction;
     private InputAction _swipeAction;
 
@@ -58,11 +56,6 @@ public class DragHandler : MonoBehaviour
 
     public void AddSwipe(Transform t, Vector2 mousePosition)
     {
-        if (_binScroller.Tween.isAlive)
-        {
-            _binScroller.Tween.Stop();
-        }
-
         _draggable = t;
         _swipeStartX = t.position.x;
         _worldPos.x = mousePosition.x;
@@ -82,23 +75,6 @@ public class DragHandler : MonoBehaviour
         if (!_draggable) return;
 
         _swipeAction.Disable();
-        float swipeDistance = _draggable.position.x - _swipeStartX;
-
-        if (swipeDistance < -_swipeThreshold)
-        {
-            _binScroller.SwipeDir(1);
-        }
-
-        if (swipeDistance > _swipeThreshold)
-        {
-            _binScroller.SwipeDir(-1);
-        }
-
-        if (Math.Abs(swipeDistance) <= _swipeThreshold && Math.Abs(swipeDistance) > 0)
-        {
-            _binScroller.MoveBack();
-        }
-
         _draggable = null;
     }
 

@@ -39,15 +39,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _levelProgressFill;
     [SerializeField] private TextMeshProUGUI _levelProgressLabel;
 
-    [SerializeField] private Button _leftSwipeButton;
-    [SerializeField] private Button _centerSwipeButton;
-    [SerializeField] private Button _rightSwipeButton;
-
-    [SerializeField] private Image _leftSwipe;
-    [SerializeField] private Image _centerSwipe;
-    [SerializeField] private Image _rightSwipe;
-
-
     private void Awake()
     {
         Instance = this;
@@ -59,14 +50,10 @@ public class UIManager : MonoBehaviour
         _counter.SetText(GameManager.Score.ToString());
     }
 
-
     private void OnEnable()
     {
         _questionPopup.PopupClosed += OnQuestionPopupClosed;
         _okButton.onClick.AddListener(OnOkButtonClicked);
-        _leftSwipeButton.onClick.AddListener(OnLeftSwipe);
-        _rightSwipeButton.onClick.AddListener(OnRightSwipe);
-        _centerSwipeButton.onClick.AddListener(OnCenterSwipe);
         InputManager.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
         TemperatureManager.TemperatureChanged += OnTemperatureChanged;
     }
@@ -75,26 +62,8 @@ public class UIManager : MonoBehaviour
     {
         _questionPopup.PopupClosed -= OnQuestionPopupClosed;
         _okButton.onClick.RemoveListener(OnOkButtonClicked);
-        _leftSwipeButton.onClick.RemoveListener(OnLeftSwipe);
-        _rightSwipeButton.onClick.RemoveListener(OnRightSwipe);
-        _centerSwipeButton.onClick.RemoveListener(OnCenterSwipe);
         InputManager.TrashPickedFromInspectTable -= OnTrashPickedFromInspectTable;
         TemperatureManager.TemperatureChanged -= OnTemperatureChanged;
-    }
-
-    private void OnLeftSwipe()
-    {
-        SwipeButtonClicked?.Invoke(-1);
-    }
-
-    private void OnRightSwipe()
-    {
-        SwipeButtonClicked?.Invoke(1);
-    }
-
-    private void OnCenterSwipe()
-    {
-        SwipeButtonClicked?.Invoke(0);
     }
 
     private void OnTemperatureChanged(float temp)
@@ -140,28 +109,6 @@ public class UIManager : MonoBehaviour
     public void Fail()
     {
         _failScreen.Open();
-    }
-
-    public void ChangeSwipeIndicatorVisual(int posIndex)
-    {
-        switch (posIndex)
-        {
-            case -1:
-                _leftSwipe.color = Color.white;
-                _centerSwipe.color = Color.gray;
-                _rightSwipe.color = Color.gray;
-                return;
-            case 0:
-                _leftSwipe.color = Color.gray;
-                _centerSwipe.color = Color.white;
-                _rightSwipe.color = Color.gray;
-                return;
-            case 1:
-                _leftSwipe.color = Color.gray;
-                _centerSwipe.color = Color.gray;
-                _rightSwipe.color = Color.white;
-                return;
-        }
     }
 
     public void SetLevelProgress(int sorted, int total)

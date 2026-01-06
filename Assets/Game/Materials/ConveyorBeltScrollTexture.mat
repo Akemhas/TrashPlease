@@ -55,6 +55,7 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpriteOffset: {r: 0, g: 0, b: 0, a: 0}
     - _SpriteTiling: {r: 1, g: 1, b: 0, a: 0}

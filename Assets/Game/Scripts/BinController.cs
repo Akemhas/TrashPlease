@@ -50,15 +50,20 @@ public class BinController : MonoBehaviour
 
     public void DestroyBin()
     {
-        ScrollConveyorBelt();
-        Tween.LocalPositionX(_binHandle.Result.transform, _binDestroyPos.x, _binEntranceDuration)
-            .OnComplete(() =>
-            {
-                BinBeforeDestroy?.Invoke();
-                TopBinController.BinCounter++;
-                CurrentBin = null;
-                Addressables.ReleaseInstance(_binHandle);
-            });
+        OnTrashBinDestroyed();
+        // ScrollConveyorBelt();
+        // var binTransform = _binHandle.Result.transform;
+        // Tween.LocalPositionX(binTransform, _binDestroyPos.x, _binEntranceDuration)
+        //     .OnComplete(OnTrashBinDestroyed);
+        return;
+
+        void OnTrashBinDestroyed()
+        {
+            BinBeforeDestroy?.Invoke();
+            TopBinController.BinCounter++;
+            CurrentBin = null;
+            Addressables.ReleaseInstance(_binHandle);
+        }
     }
 
     public void StartCreatingBin(TrashSortType sortType)
