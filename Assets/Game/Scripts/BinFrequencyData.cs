@@ -40,9 +40,9 @@ public class BinFrequencyData : ScriptableObject
 
     private DifficultyInterval GetDifficultyInterval(int binIndexInLevel)
     {
-        if (_difficultyIntervalLookupTable.ContainsKey(binIndexInLevel))
+        if (_difficultyIntervalLookupTable.TryGetValue(binIndexInLevel, out var interval))
         {
-            return _difficultyIntervalLookupTable[binIndexInLevel];
+            return interval;
         }
 
         if (_difficultyIntervals.Count == 0) return null;

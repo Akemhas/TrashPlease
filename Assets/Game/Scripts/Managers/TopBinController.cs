@@ -134,15 +134,16 @@ public class TopBinController : MonoBehaviour
 
             Tween.StopAll(topBin);
             PlayingAnimationCount++;
-            Tween.PositionX(topBin.transform, beltPosition, distance / 2, ease: Ease.Linear).OnComplete(() =>
-            {
-                if (topBin == topMostBin)
+            Tween.PositionX(topBin.transform, beltPosition, distance / 3, ease: Ease.Linear)
+                .OnComplete(() =>
                 {
-                    BinReachedEnd?.Invoke(topBin);
-                }
+                    if (topBin == topMostBin)
+                    {
+                        BinReachedEnd?.Invoke(topBin);
+                    }
 
-                PlayingAnimationCount--;
-            });
+                    PlayingAnimationCount--;
+                });
             i++;
         }
     }
@@ -150,7 +151,6 @@ public class TopBinController : MonoBehaviour
     public TopBin Peek() => _topBinQueue.Peek();
 
     public bool TryPeek(out TopBin result) => _topBinQueue.TryPeek(out result);
-
 
     public void CreateTopBin()
     {
@@ -171,10 +171,10 @@ public class TopBinController : MonoBehaviour
         _elapsedTime = 0;
         _levelManager?.RegisterBinSpawned();
 
-        if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count)
-        {
-            UIManager.Instance.Timer.StartTimer();
-        }
+        // if (_topBinQueue.Count >= _beltController.ConveyorBelts.Count)
+        // {
+        //     UIManager.Instance.Timer.StartTimer();
+        // }
 
         MoveBins();
     }

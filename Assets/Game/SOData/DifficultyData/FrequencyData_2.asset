@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FrequencyData_2
   m_EditorClassIdentifier: 
   _difficultyIntervals:
-  - BinCounter: 2
+  - BinCounter: 5
     TrashCount: 1
-    SpawnInterval: 11
+    SpawnInterval: 3
     TrashProbabilities:
     - SortType: 1
       Probability: 30
@@ -25,9 +25,9 @@ MonoBehaviour:
       Probability: 20
     - SortType: 0
       Probability: 20
-  - BinCounter: 4
+  - BinCounter: 5
     TrashCount: 1
-    SpawnInterval: 10
+    SpawnInterval: 3
     TrashProbabilities:
     - SortType: 0
       Probability: 20

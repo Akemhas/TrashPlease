@@ -1,4 +1,5 @@
 using System;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -115,7 +116,8 @@ public class UIManager : MonoBehaviour
     {
         if (_levelProgressFill == null) return;
         float fill = total > 0 ? (float)sorted / total : 0;
-        _levelProgressFill.fillAmount = Mathf.Clamp01(fill);
+        Tween.StopAll(_levelProgressFill);
+        Tween.UIFillAmount(_levelProgressFill, fill, .1f);
 
         if (_levelProgressLabel != null)
         {

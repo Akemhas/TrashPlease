@@ -13,22 +13,20 @@ MonoBehaviour:
   m_Name: BinFrequencyData
   m_EditorClassIdentifier: 
   _difficultyIntervals:
-  - BinCounter: 2
-    TrashCount: 3
+  - BinCounter: 5
+    TrashCount: 1
     SpawnInterval: 11
     TrashProbabilities:
     - SortType: 0
-      Probability: 0
+      Probability: 20
     - SortType: 1
-      Probability: 0
+      Probability: 10
     - SortType: 2
-      Probability: 40
+      Probability: 30
     - SortType: 3
       Probability: 40
-    - SortType: 8
-      Probability: 20
-  - BinCounter: 4
-    TrashCount: 4
+  - BinCounter: 10
+    TrashCount: 1
     SpawnInterval: 10
     TrashProbabilities:
     - SortType: 0
@@ -36,106 +34,6 @@ MonoBehaviour:
     - SortType: 1
       Probability: 20
     - SortType: 2
-      Probability: 20
+      Probability: 30
     - SortType: 3
-      Probability: 20
-    - SortType: 8
-      Probability: 20
-  - BinCounter: 8
-    TrashCount: 5
-    SpawnInterval: 9
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 20
-    - SortType: 1
-      Probability: 20
-    - SortType: 2
-      Probability: 20
-    - SortType: 3
-      Probability: 20
-    - SortType: 8
-      Probability: 20
-  - BinCounter: 10
-    TrashCount: 5
-    SpawnInterval: 8
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
-  - BinCounter: 22
-    TrashCount: 6
-    SpawnInterval: 7.5
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
-  - BinCounter: 25
-    TrashCount: 7
-    SpawnInterval: 6.5
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
-  - BinCounter: 50
-    TrashCount: 8
-    SpawnInterval: 6
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
-  - BinCounter: 70
-    TrashCount: 8
-    SpawnInterval: 5.5
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
-  - BinCounter: 100
-    TrashCount: 9
-    SpawnInterval: 5
-    TrashProbabilities:
-    - SortType: 0
-      Probability: 22
-    - SortType: 1
-      Probability: 22
-    - SortType: 2
-      Probability: 22
-    - SortType: 3
-      Probability: 22
-    - SortType: 8
-      Probability: 12
+      Probability: 30
