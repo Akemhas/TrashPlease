@@ -7,5 +7,7 @@ public class TrashData : ScriptableObject
     public TrashSortType SortType;
     public int DepositValue;
     public string Name;
+    public string NameInDe;
     public string Information;
+    public string Erlauterung;
 }

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BinController _binController;
     [SerializeField] private TopBinController _topBinController;
     [SerializeField] private TrashController _trashController;
-    [SerializeField, Required] private LevelManager _levelManager;
+    [SerializeField, Required] public LevelManager _levelManager;
 
     private TrashSortType _currentSortType;
     private int _currentTrashCount;
@@ -75,10 +75,6 @@ public class GameManager : MonoBehaviour
         _binController.BinReachedCenter += OnCenterBinReachedCenter;
         _trashController.TrashCreated += OnTrashCreated;
         _trashController.AllTrashDestroyed += OnAllTrashDestroyed;
-        if (UIManager.Instance)
-        {
-            UIManager.Instance.QuestionPopupClosed += OnQuestionPopupClosed;
-        }
         if (_levelManager)
         {
             _levelManager.AllLevelsCompleted += HandleAllLevelsCompleted;
@@ -96,10 +92,6 @@ public class GameManager : MonoBehaviour
         _binController.BinReachedCenter -= OnCenterBinReachedCenter;
         _trashController.TrashCreated -= OnTrashCreated;
         _trashController.AllTrashDestroyed -= OnAllTrashDestroyed;
-        if (UIManager.Instance)
-        {
-            UIManager.Instance.QuestionPopupClosed -= OnQuestionPopupClosed;
-        }
         if (_levelManager)
         {
             _levelManager.AllLevelsCompleted -= HandleAllLevelsCompleted;
@@ -235,11 +227,6 @@ public class GameManager : MonoBehaviour
         _isBinMoving = false;
     }
 
-    private void OnQuestionPopupClosed()
-    {
-        _currentGameState = GameState.WaitingBin;
-    }
-
     private enum GameState
     {
         WaitingBin,
@@ -332,7 +319,7 @@ public class GameManager : MonoBehaviour
     private void OnRestartFromBeginning()
     {
         Time.timeScale = 1;
-        GameManager.Score = 0;
+        Score = 0;
         _levelManager.ResetProgress();
         _currentGameState = GameState.WaitingBin;
     }

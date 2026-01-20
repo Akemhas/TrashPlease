@@ -21,14 +21,13 @@ public class UIManager : MonoBehaviour
         private set => _instance = value;
     }
 
-    public event Action QuestionPopupClosed;
     public event Action<int> SwipeButtonClicked;
 
     public Timer Timer;
 
+    [SerializeField] private QuizController _quizController;
     [SerializeField] private TextMeshProUGUI _temperatureTMP;
     [SerializeField] private InspectController _inspectionController;
-    [SerializeField] private QuestionPopup _questionPopup;
     [SerializeField] private FailScreen _failScreen;
     [SerializeField] private LevelCompletePopup _levelCompletePopup;
     [SerializeField] private AllLevelsCompletePopup _allLevelsCompletePopup;
@@ -53,7 +52,6 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _questionPopup.PopupClosed += OnQuestionPopupClosed;
         _okButton.onClick.AddListener(OnOkButtonClicked);
         InputManager.TrashPickedFromInspectTable += OnTrashPickedFromInspectTable;
         TemperatureManager.TemperatureChanged += OnTemperatureChanged;
@@ -61,7 +59,6 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _questionPopup.PopupClosed -= OnQuestionPopupClosed;
         _okButton.onClick.RemoveListener(OnOkButtonClicked);
         InputManager.TrashPickedFromInspectTable -= OnTrashPickedFromInspectTable;
         TemperatureManager.TemperatureChanged -= OnTemperatureChanged;
@@ -73,12 +70,8 @@ public class UIManager : MonoBehaviour
         _temperatureTMP.SetText($"{tempToShow:0.0}°C");
     }
 
-    private void OnQuestionPopupClosed() => QuestionPopupClosed?.Invoke();
-
     public void OpenQuestionPopup()
     {
-        AudioManager.Instance.PlaySoundEffect(SoundEffectType.QuizPopup);
-        _questionPopup.Open();
     }
 
     private void OnOkButtonClicked()
@@ -128,7 +121,17 @@ public class UIManager : MonoBehaviour
     public void ShowLevelComplete(bool isLastLevel, Action nextLevel, Action restartLevel)
     {
         if (_levelCompletePopup == null) return;
+        nextLevel += OnNextLevel;
         _levelCompletePopup.Open(isLastLevel, nextLevel, restartLevel);
+    }
+
+    private void OnNextLevel()
+    {
+        if (GameManager.Instance._levelManager.CurrentLevelIndex % 2 == 1)
+        {
+            AudioManager.Instance.PlaySoundEffect(SoundEffectType.QuizPopup);
+            _quizController.Open();
+        }
     }
 
     public void ShowAllLevelsComplete(Action restartFromBeginning)

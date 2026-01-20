@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2d5188e2b2df4d1c944ac652e6d91b2
+    m_Address: Bin_Battery
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fff8870d3b55a42d3b31f55417f5bf09
     m_Address: Bin_Plastic
     m_ReadOnly: 0

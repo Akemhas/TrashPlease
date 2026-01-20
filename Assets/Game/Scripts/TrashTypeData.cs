@@ -14,6 +14,39 @@ public class TrashTypeData : ScriptableObject
 
     public TrashSortTypeTrashDataListDictionary TrashLookup = new();
 
+    public List<TrashDataExportStorage> TrashExports = new List<TrashDataExportStorage>();
+    public string ExportJson;
+    public string ImportJson;
+
+    [Button]
+    public void ExportData()
+    {
+        TrashExports.Clear();
+        foreach (var data in _trashData)
+        {
+            TrashExports.Add(new TrashDataExportStorage
+            {
+                Address = data.Address,
+                NameInEn = data.Name,
+                ExplanationInEn = data.Information
+            });
+        }
+
+        ExportJson = Newtonsoft.Json.JsonConvert.SerializeObject(TrashExports);
+    }
+
+    [Button]
+    public void ImportData()
+    {
+        TrashExports = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TrashDataExportStorage>>(ImportJson);
+        foreach (var export in TrashExports)
+        {
+            var data = _trashData.Find(x => x.Address == export.Address);
+            data.NameInDe = export.NameInDe;
+            data.Erlauterung = export.ExplanationInDe;
+        }
+    }
+
     public string GetRandomTrashAddress(TrashSortType sortType)
     {
         var data = TrashLookup[sortType];
@@ -71,13 +104,18 @@ public class TrashTypeData : ScriptableObject
 #endif
 }
 
+[Serializable]
+public class TrashSortTypeTrashDataListDictionary : SerializableDictionary<TrashSortType, List<TrashData>, TrashDataListStorage> { }
 
 [Serializable]
-public class TrashSortTypeTrashDataListDictionary : SerializableDictionary<TrashSortType, List<TrashData>, TrashDataListStorage>
-{
-}
+public class TrashDataListStorage : SerializableDictionary.Storage<List<TrashData>> { }
 
 [Serializable]
-public class TrashDataListStorage : SerializableDictionary.Storage<List<TrashData>>
+public class TrashDataExportStorage
 {
+    public string Address;
+    public string NameInEn;
+    public string NameInDe;
+    public string ExplanationInEn;
+    public string ExplanationInDe;
 }

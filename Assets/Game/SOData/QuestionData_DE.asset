@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788901760637a4497b8dc019131d5183, type: 3}
+  m_Name: QuestionData_DE
+  m_EditorClassIdentifier: 
+  Questions:
+  - QuestionText: "Wohin geh\xF6rt eine Bananenschale?"
+    Explanation: 
+    CorrectAnswer: Biotonne
+    WrongAnswers:
+    - Papiertonne
+    - Gelbe Tonne
+    - "Restm\xFCll"
+  - QuestionText: "Wohin geh\xF6rt eine Zeitung?"
+    Explanation: 
+    CorrectAnswer: Papiertonne
+    WrongAnswers:
+    - Biotonne
+    - Gelbe Tonne
+    - "Restm\xFCll"
+  - QuestionText: "Wohin geh\xF6rt eine leere Plastikflasche ohne Pfand?"
+    Explanation: 
+    CorrectAnswer: Gelbe Tonne
+    WrongAnswers:
+    - Glascontainer
+    - Papiertonne
+    - Biotonne
+  - QuestionText: Was solltest du tun, bevor du einen Joghurtbecher in die Gelbe
+      Tonne wirfst?
+    Explanation: 
+    CorrectAnswer: Leeren und Essensreste entfernen
+    WrongAnswers:
+    - Mit Essensresten hineinwerfen
+    - Komplett auswaschen
+    - In die Biotonne werfen
+  - QuestionText: "Wohin geh\xF6rt ein fettiger Pizzakarton?"
+    Explanation: 
+    CorrectAnswer: "Restm\xFCll"
+    WrongAnswers:
+    - Papiertonne
+    - Biotonne
+    - Gelbe Tonne
+  - QuestionText: "Restm\xFCll"
+    Explanation: 
+    CorrectAnswer: Biotonne
+    WrongAnswers:
+    - Gelbe Tonne
+    - Papiertonne
+    - Glascontainer
+  - QuestionText: "Wohin geh\xF6rt zerbrochenes Trinkglas?"
+    Explanation: 
+    CorrectAnswer: "Restm\xFCll"
+    WrongAnswers:
+    - Glascontainer
+    - Gelbe Tonne
+    - Papiertonne
+  - QuestionText: "Warum d\xFCrfen Plastikt\xFCten (auch kompostierbare T\xFCten)
+      nicht in die Biotonne geworfen werden?"
+    Explanation: 
+    CorrectAnswer: Sie zersetzen sich nicht richtig
+    WrongAnswers:
+    - Sie riechen schlecht
+    - Sie sind zu leicht
+    - Sie sind aus Papier
+  - QuestionText: "Wohin geh\xF6rt der Deckel eines Marmeladenglases?"
+    Explanation: 
+    CorrectAnswer: Gelbe Tonne
+    WrongAnswers:
+    - "Restm\xFCll"
+    - Papiertonne
+    - Biotonne
+  - QuestionText: Was kann passieren, wenn Abfall falsch sortiert wird?
+    Explanation: 
+    CorrectAnswer: "Falsch getrennte Abf\xE4lle werden nicht recycelt, sondern verbrannt."
+    WrongAnswers:
+    - Das Recycling wird schneller
+    - Es passiert nichts
+    - Der Abfall verschwindet automatisch

@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,8 +21,16 @@ public class FailScreen : MonoBehaviour
     {
         _overlay.gameObject.SetActive(true);
         _panel.gameObject.SetActive(true);
-        _currentScore.SetText($"Current Score\n{GameManager.Score}");
-        _highestScore.SetText($"Highest Score\n{GameManager.HighestScore}");
+        if (SettingsManager.ActiveLanguage == "de")
+        {
+            _currentScore.SetText($"Aktueller Punktestand\n{GameManager.Score}");
+            _highestScore.SetText($"Höchste Punktzahl\n{GameManager.HighestScore}");
+        }
+        else
+        {
+            _currentScore.SetText($"Current Score\n{GameManager.Score}");
+            _highestScore.SetText($"Highest Score\n{GameManager.HighestScore}");
+        }
         AudioManager.Instance.PlaySoundTrack(SoundTrackType.Lose);
     }
 

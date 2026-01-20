@@ -8,6 +8,7 @@ namespace Managers
 {
     public class SettingsManager : MonoBehaviour
     {
+        public static string ActiveLanguage = "en";
         public static event Action<string> LanguageChanged;
 
         [SerializeField] private TextMeshProUGUI _titleTmp;
@@ -68,6 +69,7 @@ namespace Managers
 
         private void OnLanguageChanged(string languageCode)
         {
+            ActiveLanguage = languageCode;
             var locale = LocalizationSettings.AvailableLocales.Locales.Find(r => r.CustomFormatterCode == languageCode);
             LocalizationSettings.SelectedLocale = locale;
         }

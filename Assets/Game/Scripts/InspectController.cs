@@ -20,6 +20,7 @@ public class InspectController : MonoBehaviour
     [SerializeField] private ChatGptService _chatGptService;
     [SerializeField] private GameObject _askAiPanel;
     [SerializeField] private Button _wantToAskAIButton;
+    [SerializeField] private TextMeshProUGUI _wantToAskAIButtonText;
     [SerializeField] private Button _closeAiPanelButton;
     [SerializeField] private TMP_InputField _questionInput;
     [SerializeField] private Button _askAiButton;
@@ -98,8 +99,9 @@ public class InspectController : MonoBehaviour
 
     private void SetText(TrashData trashData)
     {
-        _itemName.SetText(trashData.Name);
-        _text.SetText(trashData.Information);
+        _wantToAskAIButtonText.SetText(SettingsManager.ActiveLanguage == "de" ? "Möchten Sie KI befragen?" : "Want to ask AI?"); 
+        _itemName.SetText(SettingsManager.ActiveLanguage == "de" ? trashData.NameInDe : trashData.Name);
+        _text.SetText(SettingsManager.ActiveLanguage == "de" ? trashData.Erlauterung : trashData.Information);
     }
 
     private void ResetAiUi()

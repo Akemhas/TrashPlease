@@ -22,7 +22,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aec2ab3da267746b7b414c82f7297dc8, type: 2}
   - {fileID: 11400000, guid: bd4f5aef292c24e2a851e1b981658df5, type: 2}
   - {fileID: 11400000, guid: 3b44b4531c2ec16449798bf85d0ed40f, type: 2}
-  - {fileID: 11400000, guid: 9b45e7037e1d848b7bbf9b994d22513d, type: 2}
   - {fileID: 11400000, guid: 42ff1280aef8e45d7be4945c447583d1, type: 2}
   - {fileID: 11400000, guid: 6444196eb8a7c448a986f0bc0c80a37f, type: 2}
   - {fileID: 11400000, guid: 2e4456582ab1e443d9892b9fbd1434f1, type: 2}
@@ -57,8 +56,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1b81cfecda07451999fde2a0fae24c1, type: 2}
   - {fileID: 11400000, guid: 50cb8fc0e98514fd38b5ab0c0050b68f, type: 2}
   - {fileID: 11400000, guid: 5016a17b5722f4c76bc37084a783d378, type: 2}
-  - {fileID: 11400000, guid: 373868dfe138d4fd3829f84b2c86b1bb, type: 2}
-  - {fileID: 11400000, guid: e2da702f45a4c4e96afab17eb60d4fb7, type: 2}
   - {fileID: 11400000, guid: 05f74e9a2b686400abf16256f7be13dc, type: 2}
   - {fileID: 11400000, guid: 8f97f8dd0b24d49a2976789f53d40ba2, type: 2}
   - {fileID: 11400000, guid: 9cad799ef2834430fb1afe224c0740a4, type: 2}
@@ -71,7 +68,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df7589b8eec476e45a0d6763b4e6dc3d, type: 2}
   - {fileID: 11400000, guid: 704baf712e696df4aa89b3f1778695da, type: 2}
   TrashLookup:
-    m_keys: 01000000000000000a000000030000000600000004000000020000000500000007000000
+    m_keys: 01000000000000000a000000030000000600000004000000050000000700000002000000
     m_values:
     - data:
       - {fileID: 11400000, guid: 685b13d11473d481a808411a9e0ea853, type: 2}
@@ -81,8 +78,6 @@ MonoBehaviour:
       - {fileID: 11400000, guid: d187bdbf3982642b69733da435937e2e, type: 2}
       - {fileID: 11400000, guid: 27c41f9e695734c3b82a9457de1cc700, type: 2}
       - {fileID: 11400000, guid: 5016a17b5722f4c76bc37084a783d378, type: 2}
-      - {fileID: 11400000, guid: 373868dfe138d4fd3829f84b2c86b1bb, type: 2}
-      - {fileID: 11400000, guid: e2da702f45a4c4e96afab17eb60d4fb7, type: 2}
       - {fileID: 11400000, guid: 05f74e9a2b686400abf16256f7be13dc, type: 2}
       - {fileID: 11400000, guid: 84d670eb24b0a4a75bbaf82a52351f90, type: 2}
       - {fileID: 11400000, guid: 88cf0acdd6b4d421d9cebae8a4c3eb0c, type: 2}
@@ -125,13 +120,6 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 2b0f3cc0aacd74799ab765901b7e9bb7, type: 2}
       - {fileID: 11400000, guid: 0dd859d1b36044d1f910610a6cb1edd8, type: 2}
     - data:
-      - {fileID: 11400000, guid: 9b45e7037e1d848b7bbf9b994d22513d, type: 2}
-      - {fileID: 11400000, guid: 73094dd3fb0a243408a846bdd8ebe95f, type: 2}
-      - {fileID: 11400000, guid: 7cae9080cfc434bcc8ae616aa46d2422, type: 2}
-      - {fileID: 11400000, guid: 6d871d9982639408a8ee39010ea66bb4, type: 2}
-      - {fileID: 11400000, guid: 17fdbe3c231db8c4abe3a942ebd2c982, type: 2}
-      - {fileID: 11400000, guid: 3d8065a57f7933e4b836a7abdd474076, type: 2}
-    - data:
       - {fileID: 11400000, guid: 2e4456582ab1e443d9892b9fbd1434f1, type: 2}
       - {fileID: 11400000, guid: c14cadad6fa0a4ae493a43c9832d2cad, type: 2}
       - {fileID: 11400000, guid: b71b39054258447359cfc29a93d23a68, type: 2}
@@ -139,3 +127,686 @@ MonoBehaviour:
       - {fileID: 11400000, guid: e1b81cfecda07451999fde2a0fae24c1, type: 2}
     - data:
       - {fileID: 11400000, guid: 70698172879084b28aa28ca6675650b8, type: 2}
+    - data:
+      - {fileID: 11400000, guid: 73094dd3fb0a243408a846bdd8ebe95f, type: 2}
+      - {fileID: 11400000, guid: 7cae9080cfc434bcc8ae616aa46d2422, type: 2}
+      - {fileID: 11400000, guid: 6d871d9982639408a8ee39010ea66bb4, type: 2}
+      - {fileID: 11400000, guid: 17fdbe3c231db8c4abe3a942ebd2c982, type: 2}
+      - {fileID: 11400000, guid: 3d8065a57f7933e4b836a7abdd474076, type: 2}
+  TrashExports:
+  - Address: AluminiumFoil
+    NameInEn: Aluminium Foil
+    NameInDe: Alufolie
+    ExplanationInEn: Clean aluminium foil can be recycled with metal waste in the
+      yellow bin; however, heavily soiled foil should go into general waste.
+    ExplanationInDe: "Saubere Alufolie kann im Metallabfall in der Gelben Tonne recycelt
+      werden; stark verschmutzte Folie geh\xF6rt jedoch in den Restm\xFCll."
+  - Address: AppleCore
+    NameInEn: Apple Core
+    NameInDe: "Apfelgeh\xE4use"
+    ExplanationInEn: Organic waste like apple cores belongs in the organic waste
+      bin (Bioabfall).
+    ExplanationInDe: "Organische Abf\xE4lle wie Apfelgeh\xE4use geh\xF6ren in die
+      Biotonne (Bioabfall)."
+  - Address: BananaPeel
+    NameInEn: Banana Peel
+    NameInDe: Bananenschale
+    ExplanationInEn: Banana peels should be disposed of in the organic waste bin.
+    ExplanationInDe: Bananenschalen sollten in der Biotonne entsorgt werden.
+  - Address: Battery_1
+    NameInEn: Battery
+    NameInDe: Batterie
+    ExplanationInEn: Batteries contain hazardous materials and must be disposed of
+      at designated collection points or in battery recycling boxes.
+    ExplanationInDe: "Batterien enthalten Schadstoffe und m\xFCssen an Sammelstellen
+      oder in Batterie-Recyclingboxen entsorgt werden."
+  - Address: Battery_2
+    NameInEn: Battery
+    NameInDe: Batterie
+    ExplanationInEn: Batteries contain hazardous materials and must be disposed of
+      at designated collection points or in battery recycling boxes.
+    ExplanationInDe: "Batterien enthalten Schadstoffe und m\xFCssen an Sammelstellen
+      oder in Batterie-Recyclingboxen entsorgt werden."
+  - Address: Battery_3
+    NameInEn: Battery
+    NameInDe: Batterie
+    ExplanationInEn: Batteries contain hazardous materials and must be disposed of
+      at designated collection points or in battery recycling boxes.
+    ExplanationInDe: "Batterien enthalten Schadstoffe und m\xFCssen an Sammelstellen
+      oder in Batterie-Recyclingboxen entsorgt werden."
+  - Address: BrokenPlate
+    NameInEn: Broken Plate
+    NameInDe: Zerbrochener Teller
+    ExplanationInEn: Ceramic items are not recyclable and should go into general
+      waste.
+    ExplanationInDe: "Keramikartikel sind nicht recycelbar und sollten im Restm\xFCll
+      entsorgt werden."
+  - Address: BrownBeer
+    NameInEn: Beer
+    NameInDe: Bierflasche (Braunglas)
+    ExplanationInEn: Brown glass bottles should be placed in the brown glass recycling
+      container to maintain glass purity.
+    ExplanationInDe: Braune Glasflaschen sollten im Braunglascontainer entsorgt werden,
+      um die Sortenreinheit zu erhalten.
+  - Address: CD
+    NameInEn: CD
+    NameInDe: CD
+    ExplanationInEn: CDs are electronic waste and should be disposed of at designated
+      e-waste collection points or recycling centers.
+    ExplanationInDe: "CDs sind Elektroschrott und sollten an speziellen Sammelstellen
+      oder Wertstoffh\xF6fen abgegeben werden."
+  - Address: CleaningSpray_1
+    NameInEn: Cleaning Spray
+    NameInDe: Reinigungsspray
+    ExplanationInEn: Empty and clean spray bottles belong in the yellow recycling
+      bin for plastic and metal waste.
+    ExplanationInDe: "Leere und saubere Spr\xFChflaschen geh\xF6ren in die Gelbe
+      Tonne f\xFCr Kunststoff- und Metallabf\xE4lle."
+  - Address: CleaningSpray_2
+    NameInEn: Cleaning Spray
+    NameInDe: Reinigungsspray
+    ExplanationInEn: Empty and clean spray bottles belong in the yellow recycling
+      bin for plastic and metal waste.
+    ExplanationInDe: "Leere und saubere Spr\xFChflaschen geh\xF6ren in die Gelbe
+      Tonne f\xFCr Kunststoff- und Metallabf\xE4lle."
+  - Address: ClearGlassJar
+    NameInEn: Glass Jar
+    NameInDe: "Glasbeh\xE4lter (Wei\xDFglas)"
+    ExplanationInEn: Clear glass jars should go in the white-glass recycling container.
+    ExplanationInDe: "Durchsichtige Glasbeh\xE4lter sollten im Wei\xDFglascontainer
+      entsorgt werden."
+  - Address: CoffeeBeans
+    NameInEn: Coffee Beans
+    NameInDe: Kaffeebohnen
+    ExplanationInEn: Coffee grounds and beans can go in the organic waste bin.
+    ExplanationInDe: "Kaffeesatz und Kaffeebohnen k\xF6nnen in der Biotonne entsorgt
+      werden."
+  - Address: CrushedCan
+    NameInEn: Crushed Can
+    NameInDe: "Zerdr\xFCckte Dose"
+    ExplanationInEn: Non pfand-marked cans belong in the yellow recycling bin; Pfand-marked
+      cans should be returned to collection points for a deposit refund even when
+      crushed.
+    ExplanationInDe: "Dosen ohne Pfand geh\xF6ren in die Gelbe Tonne; Pfanddosen
+      sollten trotz Verformung zur Pfandr\xFCckgabe gebracht werden."
+  - Address: Eggshells
+    NameInEn: Eggshells
+    NameInDe: Eierschalen
+    ExplanationInEn: Eggshells can be disposed of in the organic waste bin.
+    ExplanationInDe: "Eierschalen k\xF6nnen in der Biotonne entsorgt werden."
+  - Address: FluorescentBulb_Blue
+    NameInEn: Blue Bulb
+    NameInDe: "Blaue Gl\xFChbirne"
+    ExplanationInEn: Light bulbs, depending on the type, should be disposed of at
+      special recycling points.
+    ExplanationInDe: "Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+      entsorgt werden."
+  - Address: FluorescentBulb_Green
+    NameInEn: Green Bulb
+    NameInDe: "Gr\xFCne Gl\xFChbirne"
+    ExplanationInEn: Light bulbs, depending on the type, should be disposed of at
+      special recycling points.
+    ExplanationInDe: "Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+      entsorgt werden."
+  - Address: FluorescentBulb_Off
+    NameInEn: Off Bulb
+    NameInDe: "Ausgeschaltete Gl\xFChbirne"
+    ExplanationInEn: Light bulbs, depending on the type, should be disposed of at
+      special recycling points.
+    ExplanationInDe: "Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+      entsorgt werden."
+  - Address: FluorescentBulb_Red
+    NameInEn: Red Bulb
+    NameInDe: "Rote Gl\xFChbirne"
+    ExplanationInEn: Light bulbs, depending on the type, should be disposed of at
+      special recycling points.
+    ExplanationInDe: "Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+      entsorgt werden."
+  - Address: FluorescentBulb_Yellow
+    NameInEn: Yellow Bulb
+    NameInDe: "Gelbe Gl\xFChbirne"
+    ExplanationInEn: Light bulbs, depending on the type, should be disposed of at
+      special recycling points.
+    ExplanationInDe: "Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+      entsorgt werden."
+  - Address: GreenWine
+    NameInEn: Gren Wine Bottle
+    NameInDe: "Gr\xFCne Weinflasche"
+    ExplanationInEn: Green glass bottles belong in the green-glass recycling container
+      to maintain glass purity.
+    ExplanationInDe: "Gr\xFCne Glasflaschen geh\xF6ren in den Gr\xFCnglascontainer,
+      um die Sortenreinheit zu erhalten."
+  - Address: HoneyJam
+    NameInEn: Honay Jam Jar
+    NameInDe: Honig- oder Marmeladenglas
+    ExplanationInEn: Empty and clean honey jars go in the appropriate glass container
+      based on their color.
+    ExplanationInDe: "Leere und saubere Honiggl\xE4ser geh\xF6ren je nach Farbe in
+      den entsprechenden Glascontainer."
+  - Address: MilkPack
+    NameInEn: Milk Pack
+    NameInDe: Milchpackung
+    ExplanationInEn: Dispose of empty milk packs in the yellow bin for recyclable
+      packaging.
+    ExplanationInDe: Entsorgen Sie leere Milchpackungen in der Gelben Tonne.
+  - Address: Newspaper
+    NameInEn: Newspaper
+    NameInDe: Zeitung
+    ExplanationInEn: Newspapers belong in the paper recycling bin.
+    ExplanationInDe: "Zeitungen geh\xF6ren in die Papiertonne."
+  - Address: OldPhone_1
+    NameInEn: Oldest Phone
+    NameInDe: Sehr altes Telefon
+    ExplanationInEn: Old smartphones can be recycled at electronics collection points.
+    ExplanationInDe: "Alte Smartphones k\xF6nnen an Sammelstellen f\xFCr Elektroschrott
+      recycelt werden."
+  - Address: OldPhone_2
+    NameInEn: Old Phone
+    NameInDe: Altes Telefon
+    ExplanationInEn: Old smartphones can be recycled at electronics collection points.
+    ExplanationInDe: "Alte Smartphones k\xF6nnen an Sammelstellen f\xFCr Elektroschrott
+      recycelt werden."
+  - Address: OrangeJuice
+    NameInEn: Orange Juice
+    NameInDe: Orangensaftpackung
+    ExplanationInEn: Dispose of empty juice packs in the yellow bin for recyclable
+      packaging.
+    ExplanationInDe: Entsorgen Sie leere Saftpackungen in der Gelben Tonne.
+  - Address: PaintCan_1
+    NameInEn: Paint Can
+    NameInDe: Farbdose
+    ExplanationInEn: Paint cans with residues are hazardous waste and should go to
+      a special disposal site.
+    ExplanationInDe: "Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren zu einer
+      speziellen Entsorgungsstelle."
+  - Address: PaintCan_2
+    NameInEn: Paint Can
+    NameInDe: Farbdose
+    ExplanationInEn: Paint cans with residues are hazardous waste and should go to
+      a special disposal site.
+    ExplanationInDe: "Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren zu einer
+      speziellen Entsorgungsstelle."
+  - Address: PaintCan_3
+    NameInEn: Paint Can
+    NameInDe: Farbdose
+    ExplanationInEn: Paint cans with residues are hazardous waste and should go to
+      a special disposal site.
+    ExplanationInDe: "Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren zu einer
+      speziellen Entsorgungsstelle."
+  - Address: PaintCan_4
+    NameInEn: Paint Can
+    NameInDe: Farbdose
+    ExplanationInEn: Paint cans with residues are hazardous waste and should go to
+      a special disposal site.
+    ExplanationInDe: "Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren zu einer
+      speziellen Entsorgungsstelle."
+  - Address: PaperBag
+    NameInEn: Paper Bag
+    NameInDe: "Papiert\xFCte"
+    ExplanationInEn: Paper bags can be recycled in the paper recycling bin.
+    ExplanationInDe: "Papiert\xFCten k\xF6nnen in der Papiertonne recycelt werden."
+  - Address: PaperEnvelope
+    NameInEn: Paper Envelope
+    NameInDe: Briefumschlag
+    ExplanationInEn: Paper evelopes belong in the paper recycling bin. If the envelope
+      has a plastic window you can try nto remove it.
+    ExplanationInDe: "Briefumschl\xE4ge geh\xF6ren in die Papiertonne. Plastikfenster
+      sollten nach M\xF6glichkeit entfernt werden."
+  - Address: Pen
+    NameInEn: Old Pen
+    NameInDe: Alter Stift
+    ExplanationInEn: Pens typically go in general waste unless part of a special
+      recycling program.
+    ExplanationInDe: "Stifte geh\xF6ren normalerweise in den Restm\xFCll."
+  - Address: Perfume_1
+    NameInEn: Perfume
+    NameInDe: "Parf\xFCmflakon"
+    ExplanationInEn: Empty perfume bottles go in the appropriate glass recycling
+      container based on color.
+    ExplanationInDe: "Leere Parf\xFCmflaschen geh\xF6ren je nach Farbe in den entsprechenden
+      Glascontainer."
+  - Address: Perfume_2
+    NameInEn: Perfume
+    NameInDe: "Parf\xFCmflakon"
+    ExplanationInEn: Empty perfume bottles go in the appropriate glass recycling
+      container based on color.
+    ExplanationInDe: "Leere Parf\xFCmflaschen geh\xF6ren je nach Farbe in den entsprechenden
+      Glascontainer."
+  - Address: PlasticSodaBottle
+    NameInEn: Soda Bottle
+    NameInDe: "Plastik-Getr\xE4nkeflasche"
+    ExplanationInEn: Pfand-marked plastic bottles should be returned for a deposit
+      refund.
+    ExplanationInDe: "Kunststoffflaschen mit Pfand sollten gegen Erstattung des Pfands
+      zur\xFCckgegeben werden."
+  - Address: Shampoo
+    NameInEn: Shampoo Bottle
+    NameInDe: Shampooflasche
+    ExplanationInEn: Dispose of empty shampoo bottles in the yellow bin for recyclable
+      plastics.
+    ExplanationInDe: Entsorgen Sie leere Shampooflaschen in der Gelben Tonne.
+  - Address: SodaCan
+    NameInEn: Soda Can
+    NameInDe: "Getr\xE4nkedose"
+    ExplanationInEn: Return Pfand-marked soda cans for a deposit refund.
+    ExplanationInDe: "Geben Sie Pfanddosen gegen Erstattung des Pfands zur\xFCck."
+  - Address: StrawberryJam_1
+    NameInEn: Strawberry Jam Jar
+    NameInDe: Erdbeermarmeladenglas
+    ExplanationInEn: Empty and clean jam jars belong in the correct glass recycling
+      container based on color.
+    ExplanationInDe: "Leere und saubere Marmeladengl\xE4ser geh\xF6ren je nach Farbe
+      in den richtigen Glascontainer."
+  - Address: StrawberryJam_2
+    NameInEn: Strawberry Jam Jar
+    NameInDe: Erdbeermarmeladenglas
+    ExplanationInEn: Empty and clean jam jars belong in the correct glass recycling
+      container based on color.
+    ExplanationInDe: "Leere und saubere Marmeladengl\xE4ser geh\xF6ren je nach Farbe
+      in den richtigen Glascontainer."
+  - Address: TeaBag
+    NameInEn: Tea Bag
+    NameInDe: Teebeutel
+    ExplanationInEn: Most tea bags are made of a synthetic material and belong in
+      the general waste.
+    ExplanationInDe: "Die meisten Teebeutel enthalten Kunststoffe und geh\xF6ren
+      in den Restm\xFCll."
+  - Address: ToothPaste_1
+    NameInEn: Toothpaste
+    NameInDe: Zahnpasta
+    ExplanationInEn: Dispose of empty toothpaste tubes in the yellow recycling bin.
+    ExplanationInDe: Entsorgen Sie leere Zahnpastatuben in der Gelben Tonne.
+  - Address: TunaCan
+    NameInEn: Tuna Can
+    NameInDe: Thunfischdose
+    ExplanationInEn: Dispose of empty tuna cans in the yellow recycling bin for metals.
+    ExplanationInDe: "Entsorgen Sie leere Thunfischdosen in der Gelben Tonne f\xFCr
+      Metalle."
+  - Address: UsedTissues_1
+    NameInEn: Used Tissues
+    NameInDe: "Benutzte Taschent\xFCcher"
+    ExplanationInEn: Used tissues belong in the general waste bin.
+    ExplanationInDe: "Benutzte Taschent\xFCcher geh\xF6ren in den Restm\xFCll."
+  - Address: UsedTissues_2
+    NameInEn: Used Tissues
+    NameInDe: "Benutzte Taschent\xFCcher"
+    ExplanationInEn: Used tissues belong in the general waste bin.
+    ExplanationInDe: "Benutzte Taschent\xFCcher geh\xF6ren in den Restm\xFCll."
+  - Address: WaterBottle
+    NameInEn: Bottle of Water
+    NameInDe: Wasserflasche
+    ExplanationInEn: Pfand-marked plastic bottles should be returned for a deposit
+      refund.
+    ExplanationInDe: "Wasserflaschen mit Pfand sollten gegen Erstattung des Pfands
+      zur\xFCckgegeben werden."
+  - Address: YogurtBox
+    NameInEn: Yoghurt
+    NameInDe: Joghurtbecher
+    ExplanationInEn: Separate the plastic and aluminum foil before disposing of each
+      in the yellow recycling bin.
+    ExplanationInDe: Trennen Sie Aludeckel und Kunststoffbecher vor der Entsorgung
+      in der Gelben Tonne.
+  - Address: cleanKFC
+    NameInEn: Clean KFC Box
+    NameInDe: Saubere KFC-Box
+    ExplanationInEn: If clean and made entirely of paper or cardboard, it belongs
+      in the paper recycling bin.
+    ExplanationInDe: "Wenn sie sauber ist und nur aus Pappe besteht, geh\xF6rt sie
+      in die Papiertonne."
+  - Address: cleanPizza
+    NameInEn: Clean Pizza Box
+    NameInDe: Sauberer Pizzakarton
+    ExplanationInEn: If clean and made entirely of paper or cardboard, it belongs
+      in the paper recycling bin.
+    ExplanationInDe: "Wenn er sauber ist, geh\xF6rt der Pizzakarton in die Papiertonne."
+  - Address: greasyKFC
+    NameInEn: Greasy KFC Box
+    NameInDe: Fettige KFC-Box
+    ExplanationInEn: Greasy or food-soiled boxes belong in general waste.
+    ExplanationInDe: "Fettige oder verschmutzte Kartons geh\xF6ren in den Restm\xFCll."
+  - Address: greasyPizza
+    NameInEn: Greasy Pizza Box
+    NameInDe: Fettiger Pizzakarton
+    ExplanationInEn: Greasy or food-soiled boxes belong in general waste.
+    ExplanationInDe: "Stark verschmutzte oder fettige Pizzakartons geh\xF6ren in
+      den Restm\xFCll."
+  - Address: receipt1
+    NameInEn: Paper Receipt
+    NameInDe: Kassenbon
+    ExplanationInEn: Paper receipts often contain thermal paper, which is not recyclable;
+      they belong in general waste.
+    ExplanationInDe: "Kassenbons aus Thermopapier sind nicht recycelbar und geh\xF6ren
+      in den Restm\xFCll."
+  - Address: receipt2
+    NameInEn: Paper Receipt
+    NameInDe: Kassenbon
+    ExplanationInEn: Paper receipts often contain thermal paper, which is not recyclable;
+      they belong in general waste.
+    ExplanationInDe: "Kassenbons aus Thermopapier sind nicht recycelbar und geh\xF6ren
+      in den Restm\xFCll."
+  ExportJson: '[{"Address":"AluminiumFoil","NameInEn":"Aluminium Foil","NameInDe":null,"ExplanationInEn":"Clean
+    aluminium foil can be recycled with metal waste in the yellow bin; however, heavily
+    soiled foil should go into general waste.","ExplanationInDe":null},{"Address":"AppleCore","NameInEn":"Apple
+    Core","NameInDe":null,"ExplanationInEn":"Organic waste like apple cores belongs
+    in the organic waste bin (Bioabfall).","ExplanationInDe":null},{"Address":"BananaPeel","NameInEn":"Banana
+    Peel","NameInDe":null,"ExplanationInEn":"Banana peels should be disposed of in
+    the organic waste bin.","ExplanationInDe":null},{"Address":"Battery_1","NameInEn":"Battery","NameInDe":null,"ExplanationInEn":"Batteries
+    contain hazardous materials and must be disposed of at designated collection
+    points or in battery recycling boxes.","ExplanationInDe":null},{"Address":"Battery_2","NameInEn":"Battery","NameInDe":null,"ExplanationInEn":"Batteries
+    contain hazardous materials and must be disposed of at designated collection
+    points or in battery recycling boxes.","ExplanationInDe":null},{"Address":"Battery_3","NameInEn":"Battery","NameInDe":null,"ExplanationInEn":"Batteries
+    contain hazardous materials and must be disposed of at designated collection
+    points or in battery recycling boxes.","ExplanationInDe":null},{"Address":"BrokenPlate","NameInEn":"Broken
+    Plate","NameInDe":null,"ExplanationInEn":"Ceramic items are not recyclable and
+    should go into general waste.","ExplanationInDe":null},{"Address":"BrownBeer","NameInEn":"Beer","NameInDe":null,"ExplanationInEn":"Brown
+    glass bottles should be placed in the brown glass recycling container to maintain
+    glass purity.","ExplanationInDe":null},{"Address":"CD","NameInEn":"CD","NameInDe":null,"ExplanationInEn":"CDs
+    are electronic waste and should be disposed of at designated e-waste collection
+    points or recycling centers.","ExplanationInDe":null},{"Address":"CleaningSpray_1","NameInEn":"Cleaning
+    Spray","NameInDe":null,"ExplanationInEn":"Empty and clean spray bottles belong
+    in the yellow recycling bin for plastic and metal waste.","ExplanationInDe":null},{"Address":"CleaningSpray_2","NameInEn":"Cleaning
+    Spray","NameInDe":null,"ExplanationInEn":"Empty and clean spray bottles belong
+    in the yellow recycling bin for plastic and metal waste.","ExplanationInDe":null},{"Address":"ClearGlassJar","NameInEn":"Glass
+    Jar","NameInDe":null,"ExplanationInEn":"Clear glass jars should go in the white-glass
+    recycling container.","ExplanationInDe":null},{"Address":"CoffeeBeans","NameInEn":"Coffee
+    Beans","NameInDe":null,"ExplanationInEn":"Coffee grounds and beans can go in
+    the organic waste bin.","ExplanationInDe":null},{"Address":"CrushedCan","NameInEn":"Crushed
+    Can","NameInDe":null,"ExplanationInEn":"Non pfand-marked cans belong in the yellow
+    recycling bin; Pfand-marked cans should be returned to collection points for
+    a deposit refund even when crushed.","ExplanationInDe":null},{"Address":"Eggshells","NameInEn":"Eggshells","NameInDe":null,"ExplanationInEn":"Eggshells
+    can be disposed of in the organic waste bin.","ExplanationInDe":null},{"Address":"FluorescentBulb_Blue","NameInEn":"Blue
+    Bulb","NameInDe":null,"ExplanationInEn":"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.","ExplanationInDe":null},{"Address":"FluorescentBulb_Green","NameInEn":"Green
+    Bulb","NameInDe":null,"ExplanationInEn":"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.","ExplanationInDe":null},{"Address":"FluorescentBulb_Off","NameInEn":"Off
+    Bulb","NameInDe":null,"ExplanationInEn":"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.","ExplanationInDe":null},{"Address":"FluorescentBulb_Red","NameInEn":"Red
+    Bulb","NameInDe":null,"ExplanationInEn":"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.","ExplanationInDe":null},{"Address":"FluorescentBulb_Yellow","NameInEn":"Yellow
+    Bulb","NameInDe":null,"ExplanationInEn":"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.","ExplanationInDe":null},{"Address":"GreenWine","NameInEn":"Gren
+    Wine Bottle","NameInDe":null,"ExplanationInEn":"Green glass bottles belong in
+    the green-glass recycling container to maintain glass purity.","ExplanationInDe":null},{"Address":"HoneyJam","NameInEn":"Honay
+    Jam Jar","NameInDe":null,"ExplanationInEn":"Empty and clean honey jars go in
+    the appropriate glass container based on their color.","ExplanationInDe":null},{"Address":"MilkPack","NameInEn":"Milk
+    Pack","NameInDe":null,"ExplanationInEn":"Dispose of empty milk packs in the yellow
+    bin for recyclable packaging.","ExplanationInDe":null},{"Address":"Newspaper","NameInEn":"Newspaper","NameInDe":null,"ExplanationInEn":"Newspapers
+    belong in the paper recycling bin.","ExplanationInDe":null},{"Address":"OldPhone_1","NameInEn":"Oldest
+    Phone","NameInDe":null,"ExplanationInEn":"Old smartphones can be recycled at
+    electronics collection points.","ExplanationInDe":null},{"Address":"OldPhone_2","NameInEn":"Old
+    Phone","NameInDe":null,"ExplanationInEn":"Old smartphones can be recycled at
+    electronics collection points.","ExplanationInDe":null},{"Address":"OrangeJuice","NameInEn":"Orange
+    Juice","NameInDe":null,"ExplanationInEn":"Dispose of empty juice packs in the
+    yellow bin for recyclable packaging.","ExplanationInDe":null},{"Address":"PaintCan_1","NameInEn":"Paint
+    Can","NameInDe":null,"ExplanationInEn":"Paint cans with residues are hazardous
+    waste and should go to a special disposal site.","ExplanationInDe":null},{"Address":"PaintCan_2","NameInEn":"Paint
+    Can","NameInDe":null,"ExplanationInEn":"Paint cans with residues are hazardous
+    waste and should go to a special disposal site.","ExplanationInDe":null},{"Address":"PaintCan_3","NameInEn":"Paint
+    Can","NameInDe":null,"ExplanationInEn":"Paint cans with residues are hazardous
+    waste and should go to a special disposal site.","ExplanationInDe":null},{"Address":"PaintCan_4","NameInEn":"Paint
+    Can","NameInDe":null,"ExplanationInEn":"Paint cans with residues are hazardous
+    waste and should go to a special disposal site.","ExplanationInDe":null},{"Address":"PaperBag","NameInEn":"Paper
+    Bag","NameInDe":null,"ExplanationInEn":"Paper bags can be recycled in the paper
+    recycling bin.","ExplanationInDe":null},{"Address":"PaperEnvelope","NameInEn":"Paper
+    Envelope","NameInDe":null,"ExplanationInEn":"Paper evelopes belong in the paper
+    recycling bin. If the envelope has a plastic window you can try nto remove it.","ExplanationInDe":null},{"Address":"Pen","NameInEn":"Old
+    Pen","NameInDe":null,"ExplanationInEn":"Pens typically go in general waste unless
+    part of a special recycling program.","ExplanationInDe":null},{"Address":"Perfume_1","NameInEn":"Perfume","NameInDe":null,"ExplanationInEn":"Empty
+    perfume bottles go in the appropriate glass recycling container based on color.","ExplanationInDe":null},{"Address":"Perfume_2","NameInEn":"Perfume","NameInDe":null,"ExplanationInEn":"Empty
+    perfume bottles go in the appropriate glass recycling container based on color.","ExplanationInDe":null},{"Address":"PlasticSodaBottle","NameInEn":"Soda
+    Bottle","NameInDe":null,"ExplanationInEn":"Pfand-marked plastic bottles should
+    be returned for a deposit refund.","ExplanationInDe":null},{"Address":"Shampoo","NameInEn":"Shampoo
+    Bottle","NameInDe":null,"ExplanationInEn":"Dispose of empty shampoo bottles in
+    the yellow bin for recyclable plastics.","ExplanationInDe":null},{"Address":"SodaCan","NameInEn":"Soda
+    Can","NameInDe":null,"ExplanationInEn":"Return Pfand-marked soda cans for a deposit
+    refund.","ExplanationInDe":null},{"Address":"StrawberryJam_1","NameInEn":"Strawberry
+    Jam Jar","NameInDe":null,"ExplanationInEn":"Empty and clean jam jars belong in
+    the correct glass recycling container based on color.","ExplanationInDe":null},{"Address":"StrawberryJam_2","NameInEn":"Strawberry
+    Jam Jar","NameInDe":null,"ExplanationInEn":"Empty and clean jam jars belong in
+    the correct glass recycling container based on color.","ExplanationInDe":null},{"Address":"TeaBag","NameInEn":"Tea
+    Bag","NameInDe":null,"ExplanationInEn":"Most tea bags are made of a synthetic
+    material and belong in the general waste.","ExplanationInDe":null},{"Address":"ToothPaste_1","NameInEn":"Toothpaste","NameInDe":null,"ExplanationInEn":"Dispose
+    of empty toothpaste tubes in the yellow recycling bin.","ExplanationInDe":null},{"Address":"TunaCan","NameInEn":"Tuna
+    Can","NameInDe":null,"ExplanationInEn":"Dispose of empty tuna cans in the yellow
+    recycling bin for metals.","ExplanationInDe":null},{"Address":"UsedTissues_1","NameInEn":"Used
+    Tissues","NameInDe":null,"ExplanationInEn":"Used tissues belong in the general
+    waste bin.","ExplanationInDe":null},{"Address":"UsedTissues_2","NameInEn":"Used
+    Tissues","NameInDe":null,"ExplanationInEn":"Used tissues belong in the general
+    waste bin.","ExplanationInDe":null},{"Address":"WaterBottle","NameInEn":"Bottle
+    of Water","NameInDe":null,"ExplanationInEn":"Pfand-marked plastic bottles should
+    be returned for a deposit refund.","ExplanationInDe":null},{"Address":"YogurtBox","NameInEn":"Yoghurt","NameInDe":null,"ExplanationInEn":"Separate
+    the plastic and aluminum foil before disposing of each in the yellow recycling
+    bin.","ExplanationInDe":null},{"Address":"cleanKFC","NameInEn":"Clean KFC Box","NameInDe":null,"ExplanationInEn":"If
+    clean and made entirely of paper or cardboard, it belongs in the paper recycling
+    bin.","ExplanationInDe":null},{"Address":"cleanPizza","NameInEn":"Clean Pizza
+    Box","NameInDe":null,"ExplanationInEn":"If clean and made entirely of paper or
+    cardboard, it belongs in the paper recycling bin.","ExplanationInDe":null},{"Address":"greasyKFC","NameInEn":"Greasy
+    KFC Box","NameInDe":null,"ExplanationInEn":"Greasy or food-soiled boxes belong
+    in general waste.","ExplanationInDe":null},{"Address":"greasyPizza","NameInEn":"Greasy
+    Pizza Box","NameInDe":null,"ExplanationInEn":"Greasy or food-soiled boxes belong
+    in general waste.","ExplanationInDe":null},{"Address":"receipt1","NameInEn":"Paper
+    Receipt","NameInDe":null,"ExplanationInEn":"Paper receipts often contain thermal
+    paper, which is not recyclable; they belong in general waste.","ExplanationInDe":null},{"Address":"receipt2","NameInEn":"Paper
+    Receipt","NameInDe":null,"ExplanationInEn":"Paper receipts often contain thermal
+    paper, which is not recyclable; they belong in general waste.","ExplanationInDe":null}]'
+  ImportJson: "[   {     \"Address\": \"AluminiumFoil\",     \"NameInEn\": \"Aluminium
+    Foil\",     \"NameInDe\": \"Alufolie\",     \"ExplanationInEn\": \"Clean aluminium
+    foil can be recycled with metal waste in the yellow bin; however, heavily soiled
+    foil should go into general waste.\",     \"ExplanationInDe\": \"Saubere Alufolie
+    kann im Metallabfall in der Gelben Tonne recycelt werden; stark verschmutzte
+    Folie geh\xF6rt jedoch in den Restm\xFCll.\"   },   {     \"Address\": \"AppleCore\",    
+    \"NameInEn\": \"Apple Core\",     \"NameInDe\": \"Apfelgeh\xE4use\",     \"ExplanationInEn\":
+    \"Organic waste like apple cores belongs in the organic waste bin (Bioabfall).\",    
+    \"ExplanationInDe\": \"Organische Abf\xE4lle wie Apfelgeh\xE4use geh\xF6ren in
+    die Biotonne (Bioabfall).\"   },   {     \"Address\": \"BananaPeel\",     \"NameInEn\":
+    \"Banana Peel\",     \"NameInDe\": \"Bananenschale\",     \"ExplanationInEn\":
+    \"Banana peels should be disposed of in the organic waste bin.\",     \"ExplanationInDe\":
+    \"Bananenschalen sollten in der Biotonne entsorgt werden.\"   },   {     \"Address\":
+    \"Battery_1\",     \"NameInEn\": \"Battery\",     \"NameInDe\": \"Batterie\",    
+    \"ExplanationInEn\": \"Batteries contain hazardous materials and must be disposed
+    of at designated collection points or in battery recycling boxes.\",     \"ExplanationInDe\":
+    \"Batterien enthalten Schadstoffe und m\xFCssen an Sammelstellen oder in Batterie-Recyclingboxen
+    entsorgt werden.\"   },   {     \"Address\": \"Battery_2\",     \"NameInEn\":
+    \"Battery\",     \"NameInDe\": \"Batterie\",     \"ExplanationInEn\": \"Batteries
+    contain hazardous materials and must be disposed of at designated collection
+    points or in battery recycling boxes.\",     \"ExplanationInDe\": \"Batterien
+    enthalten Schadstoffe und m\xFCssen an Sammelstellen oder in Batterie-Recyclingboxen
+    entsorgt werden.\"   },   {     \"Address\": \"Battery_3\",     \"NameInEn\":
+    \"Battery\",     \"NameInDe\": \"Batterie\",     \"ExplanationInEn\": \"Batteries
+    contain hazardous materials and must be disposed of at designated collection
+    points or in battery recycling boxes.\",     \"ExplanationInDe\": \"Batterien
+    enthalten Schadstoffe und m\xFCssen an Sammelstellen oder in Batterie-Recyclingboxen
+    entsorgt werden.\"   },   {     \"Address\": \"BrokenPlate\",     \"NameInEn\":
+    \"Broken Plate\",     \"NameInDe\": \"Zerbrochener Teller\",     \"ExplanationInEn\":
+    \"Ceramic items are not recyclable and should go into general waste.\",     \"ExplanationInDe\":
+    \"Keramikartikel sind nicht recycelbar und sollten im Restm\xFCll entsorgt werden.\"  
+    },   {     \"Address\": \"BrownBeer\",     \"NameInEn\": \"Beer\",     \"NameInDe\":
+    \"Bierflasche (Braunglas)\",     \"ExplanationInEn\": \"Brown glass bottles should
+    be placed in the brown glass recycling container to maintain glass purity.\",    
+    \"ExplanationInDe\": \"Braune Glasflaschen sollten im Braunglascontainer entsorgt
+    werden, um die Sortenreinheit zu erhalten.\"   },   {     \"Address\": \"CD\",    
+    \"NameInEn\": \"CD\",     \"NameInDe\": \"CD\",     \"ExplanationInEn\": \"CDs
+    are electronic waste and should be disposed of at designated e-waste collection
+    points or recycling centers.\",     \"ExplanationInDe\": \"CDs sind Elektroschrott
+    und sollten an speziellen Sammelstellen oder Wertstoffh\xF6fen abgegeben werden.\"  
+    },   {     \"Address\": \"CleaningSpray_1\",     \"NameInEn\": \"Cleaning Spray\",    
+    \"NameInDe\": \"Reinigungsspray\",     \"ExplanationInEn\": \"Empty and clean
+    spray bottles belong in the yellow recycling bin for plastic and metal waste.\",    
+    \"ExplanationInDe\": \"Leere und saubere Spr\xFChflaschen geh\xF6ren in die Gelbe
+    Tonne f\xFCr Kunststoff- und Metallabf\xE4lle.\"   },   {     \"Address\": \"CleaningSpray_2\",    
+    \"NameInEn\": \"Cleaning Spray\",     \"NameInDe\": \"Reinigungsspray\",    
+    \"ExplanationInEn\": \"Empty and clean spray bottles belong in the yellow recycling
+    bin for plastic and metal waste.\",     \"ExplanationInDe\": \"Leere und saubere
+    Spr\xFChflaschen geh\xF6ren in die Gelbe Tonne f\xFCr Kunststoff- und Metallabf\xE4lle.\"  
+    },   {     \"Address\": \"ClearGlassJar\",     \"NameInEn\": \"Glass Jar\",    
+    \"NameInDe\": \"Glasbeh\xE4lter (Wei\xDFglas)\",     \"ExplanationInEn\": \"Clear
+    glass jars should go in the white-glass recycling container.\",     \"ExplanationInDe\":
+    \"Durchsichtige Glasbeh\xE4lter sollten im Wei\xDFglascontainer entsorgt werden.\"  
+    },   {     \"Address\": \"CoffeeBeans\",     \"NameInEn\": \"Coffee Beans\",    
+    \"NameInDe\": \"Kaffeebohnen\",     \"ExplanationInEn\": \"Coffee grounds and
+    beans can go in the organic waste bin.\",     \"ExplanationInDe\": \"Kaffeesatz
+    und Kaffeebohnen k\xF6nnen in der Biotonne entsorgt werden.\"   },   {     \"Address\":
+    \"CrushedCan\",     \"NameInEn\": \"Crushed Can\",     \"NameInDe\": \"Zerdr\xFCckte
+    Dose\",     \"ExplanationInEn\": \"Non pfand-marked cans belong in the yellow
+    recycling bin; Pfand-marked cans should be returned to collection points for
+    a deposit refund even when crushed.\",     \"ExplanationInDe\": \"Dosen ohne
+    Pfand geh\xF6ren in die Gelbe Tonne; Pfanddosen sollten trotz Verformung zur
+    Pfandr\xFCckgabe gebracht werden.\"   },   {     \"Address\": \"Eggshells\",    
+    \"NameInEn\": \"Eggshells\",     \"NameInDe\": \"Eierschalen\",     \"ExplanationInEn\":
+    \"Eggshells can be disposed of in the organic waste bin.\",     \"ExplanationInDe\":
+    \"Eierschalen k\xF6nnen in der Biotonne entsorgt werden.\"   },   {     \"Address\":
+    \"FluorescentBulb_Blue\",     \"NameInEn\": \"Blue Bulb\",     \"NameInDe\":
+    \"Blaue Gl\xFChbirne\",     \"ExplanationInEn\": \"Light bulbs, depending on
+    the type, should be disposed of at special recycling points.\",     \"ExplanationInDe\":
+    \"Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen entsorgt werden.\"  
+    },   {     \"Address\": \"FluorescentBulb_Green\",     \"NameInEn\": \"Green
+    Bulb\",     \"NameInDe\": \"Gr\xFCne Gl\xFChbirne\",     \"ExplanationInEn\":
+    \"Light bulbs, depending on the type, should be disposed of at special recycling
+    points.\",     \"ExplanationInDe\": \"Gl\xFChbirnen sollten je nach Typ an speziellen
+    Recyclingstellen entsorgt werden.\"   },   {     \"Address\": \"FluorescentBulb_Off\",    
+    \"NameInEn\": \"Off Bulb\",     \"NameInDe\": \"Ausgeschaltete Gl\xFChbirne\",    
+    \"ExplanationInEn\": \"Light bulbs, depending on the type, should be disposed
+    of at special recycling points.\",     \"ExplanationInDe\": \"Gl\xFChbirnen sollten
+    je nach Typ an speziellen Recyclingstellen entsorgt werden.\"   },   {     \"Address\":
+    \"FluorescentBulb_Red\",     \"NameInEn\": \"Red Bulb\",     \"NameInDe\": \"Rote
+    Gl\xFChbirne\",     \"ExplanationInEn\": \"Light bulbs, depending on the type,
+    should be disposed of at special recycling points.\",     \"ExplanationInDe\":
+    \"Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen entsorgt werden.\"  
+    },   {     \"Address\": \"FluorescentBulb_Yellow\",     \"NameInEn\": \"Yellow
+    Bulb\",     \"NameInDe\": \"Gelbe Gl\xFChbirne\",     \"ExplanationInEn\": \"Light
+    bulbs, depending on the type, should be disposed of at special recycling points.\",    
+    \"ExplanationInDe\": \"Gl\xFChbirnen sollten je nach Typ an speziellen Recyclingstellen
+    entsorgt werden.\"   },   {     \"Address\": \"GreenWine\",     \"NameInEn\":
+    \"Gren Wine Bottle\",     \"NameInDe\": \"Gr\xFCne Weinflasche\",     \"ExplanationInEn\":
+    \"Green glass bottles belong in the green-glass recycling container to maintain
+    glass purity.\",     \"ExplanationInDe\": \"Gr\xFCne Glasflaschen geh\xF6ren
+    in den Gr\xFCnglascontainer, um die Sortenreinheit zu erhalten.\"   },   {    
+    \"Address\": \"HoneyJam\",     \"NameInEn\": \"Honay Jam Jar\",     \"NameInDe\":
+    \"Honig- oder Marmeladenglas\",     \"ExplanationInEn\": \"Empty and clean honey
+    jars go in the appropriate glass container based on their color.\",     \"ExplanationInDe\":
+    \"Leere und saubere Honiggl\xE4ser geh\xF6ren je nach Farbe in den entsprechenden
+    Glascontainer.\"   },   {     \"Address\": \"MilkPack\",     \"NameInEn\": \"Milk
+    Pack\",     \"NameInDe\": \"Milchpackung\",     \"ExplanationInEn\": \"Dispose
+    of empty milk packs in the yellow bin for recyclable packaging.\",     \"ExplanationInDe\":
+    \"Entsorgen Sie leere Milchpackungen in der Gelben Tonne.\"   },   {     \"Address\":
+    \"Newspaper\",     \"NameInEn\": \"Newspaper\",     \"NameInDe\": \"Zeitung\",    
+    \"ExplanationInEn\": \"Newspapers belong in the paper recycling bin.\",     \"ExplanationInDe\":
+    \"Zeitungen geh\xF6ren in die Papiertonne.\"   },   {     \"Address\": \"OldPhone_1\",    
+    \"NameInEn\": \"Oldest Phone\",     \"NameInDe\": \"Sehr altes Telefon\",    
+    \"ExplanationInEn\": \"Old smartphones can be recycled at electronics collection
+    points.\",     \"ExplanationInDe\": \"Alte Smartphones k\xF6nnen an Sammelstellen
+    f\xFCr Elektroschrott recycelt werden.\"   },   {     \"Address\": \"OldPhone_2\",    
+    \"NameInEn\": \"Old Phone\",     \"NameInDe\": \"Altes Telefon\",     \"ExplanationInEn\":
+    \"Old smartphones can be recycled at electronics collection points.\",     \"ExplanationInDe\":
+    \"Alte Smartphones k\xF6nnen an Sammelstellen f\xFCr Elektroschrott recycelt
+    werden.\"   },   {     \"Address\": \"OrangeJuice\",     \"NameInEn\": \"Orange
+    Juice\",     \"NameInDe\": \"Orangensaftpackung\",     \"ExplanationInEn\": \"Dispose
+    of empty juice packs in the yellow bin for recyclable packaging.\",     \"ExplanationInDe\":
+    \"Entsorgen Sie leere Saftpackungen in der Gelben Tonne.\"   },   {     \"Address\":
+    \"PaintCan_1\",     \"NameInEn\": \"Paint Can\",     \"NameInDe\": \"Farbdose\",    
+    \"ExplanationInEn\": \"Paint cans with residues are hazardous waste and should
+    go to a special disposal site.\",     \"ExplanationInDe\": \"Farbdosen mit Resten
+    sind Sonderm\xFCll und geh\xF6ren zu einer speziellen Entsorgungsstelle.\"  
+    },   {     \"Address\": \"PaintCan_2\",     \"NameInEn\": \"Paint Can\",    
+    \"NameInDe\": \"Farbdose\",     \"ExplanationInEn\": \"Paint cans with residues
+    are hazardous waste and should go to a special disposal site.\",     \"ExplanationInDe\":
+    \"Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren zu einer speziellen
+    Entsorgungsstelle.\"   },   {     \"Address\": \"PaintCan_3\",     \"NameInEn\":
+    \"Paint Can\",     \"NameInDe\": \"Farbdose\",     \"ExplanationInEn\": \"Paint
+    cans with residues are hazardous waste and should go to a special disposal site.\",    
+    \"ExplanationInDe\": \"Farbdosen mit Resten sind Sonderm\xFCll und geh\xF6ren
+    zu einer speziellen Entsorgungsstelle.\"   },   {     \"Address\": \"PaintCan_4\",    
+    \"NameInEn\": \"Paint Can\",     \"NameInDe\": \"Farbdose\",     \"ExplanationInEn\":
+    \"Paint cans with residues are hazardous waste and should go to a special disposal
+    site.\",     \"ExplanationInDe\": \"Farbdosen mit Resten sind Sonderm\xFCll und
+    geh\xF6ren zu einer speziellen Entsorgungsstelle.\"   },   {     \"Address\":
+    \"PaperBag\",     \"NameInEn\": \"Paper Bag\",     \"NameInDe\": \"Papiert\xFCte\",    
+    \"ExplanationInEn\": \"Paper bags can be recycled in the paper recycling bin.\",    
+    \"ExplanationInDe\": \"Papiert\xFCten k\xF6nnen in der Papiertonne recycelt werden.\"  
+    },   {     \"Address\": \"PaperEnvelope\",     \"NameInEn\": \"Paper Envelope\",    
+    \"NameInDe\": \"Briefumschlag\",     \"ExplanationInEn\": \"Paper evelopes belong
+    in the paper recycling bin. If the envelope has a plastic window you can try
+    nto remove it.\",     \"ExplanationInDe\": \"Briefumschl\xE4ge geh\xF6ren in
+    die Papiertonne. Plastikfenster sollten nach M\xF6glichkeit entfernt werden.\"  
+    },   {     \"Address\": \"Pen\",     \"NameInEn\": \"Old Pen\",     \"NameInDe\":
+    \"Alter Stift\",     \"ExplanationInEn\": \"Pens typically go in general waste
+    unless part of a special recycling program.\",     \"ExplanationInDe\": \"Stifte
+    geh\xF6ren normalerweise in den Restm\xFCll.\"   },   {     \"Address\": \"Perfume_1\",    
+    \"NameInEn\": \"Perfume\",     \"NameInDe\": \"Parf\xFCmflakon\",     \"ExplanationInEn\":
+    \"Empty perfume bottles go in the appropriate glass recycling container based
+    on color.\",     \"ExplanationInDe\": \"Leere Parf\xFCmflaschen geh\xF6ren je
+    nach Farbe in den entsprechenden Glascontainer.\"   },   {     \"Address\": \"Perfume_2\",    
+    \"NameInEn\": \"Perfume\",     \"NameInDe\": \"Parf\xFCmflakon\",     \"ExplanationInEn\":
+    \"Empty perfume bottles go in the appropriate glass recycling container based
+    on color.\",     \"ExplanationInDe\": \"Leere Parf\xFCmflaschen geh\xF6ren je
+    nach Farbe in den entsprechenden Glascontainer.\"   },   {     \"Address\": \"PlasticSodaBottle\",    
+    \"NameInEn\": \"Soda Bottle\",     \"NameInDe\": \"Plastik-Getr\xE4nkeflasche\",    
+    \"ExplanationInEn\": \"Pfand-marked plastic bottles should be returned for a
+    deposit refund.\",     \"ExplanationInDe\": \"Kunststoffflaschen mit Pfand sollten
+    gegen Erstattung des Pfands zur\xFCckgegeben werden.\"   },   {     \"Address\":
+    \"Shampoo\",     \"NameInEn\": \"Shampoo Bottle\",     \"NameInDe\": \"Shampooflasche\",    
+    \"ExplanationInEn\": \"Dispose of empty shampoo bottles in the yellow bin for
+    recyclable plastics.\",     \"ExplanationInDe\": \"Entsorgen Sie leere Shampooflaschen
+    in der Gelben Tonne.\"   },   {     \"Address\": \"SodaCan\",     \"NameInEn\":
+    \"Soda Can\",     \"NameInDe\": \"Getr\xE4nkedose\",     \"ExplanationInEn\":
+    \"Return Pfand-marked soda cans for a deposit refund.\",     \"ExplanationInDe\":
+    \"Geben Sie Pfanddosen gegen Erstattung des Pfands zur\xFCck.\"   },   {    
+    \"Address\": \"StrawberryJam_1\",     \"NameInEn\": \"Strawberry Jam Jar\",    
+    \"NameInDe\": \"Erdbeermarmeladenglas\",     \"ExplanationInEn\": \"Empty and
+    clean jam jars belong in the correct glass recycling container based on color.\",    
+    \"ExplanationInDe\": \"Leere und saubere Marmeladengl\xE4ser geh\xF6ren je nach
+    Farbe in den richtigen Glascontainer.\"   },   {     \"Address\": \"StrawberryJam_2\",    
+    \"NameInEn\": \"Strawberry Jam Jar\",     \"NameInDe\": \"Erdbeermarmeladenglas\",    
+    \"ExplanationInEn\": \"Empty and clean jam jars belong in the correct glass recycling
+    container based on color.\",     \"ExplanationInDe\": \"Leere und saubere Marmeladengl\xE4ser
+    geh\xF6ren je nach Farbe in den richtigen Glascontainer.\"   },   {     \"Address\":
+    \"TeaBag\",     \"NameInEn\": \"Tea Bag\",     \"NameInDe\": \"Teebeutel\",    
+    \"ExplanationInEn\": \"Most tea bags are made of a synthetic material and belong
+    in the general waste.\",     \"ExplanationInDe\": \"Die meisten Teebeutel enthalten
+    Kunststoffe und geh\xF6ren in den Restm\xFCll.\"   },   {     \"Address\": \"ToothPaste_1\",    
+    \"NameInEn\": \"Toothpaste\",     \"NameInDe\": \"Zahnpasta\",     \"ExplanationInEn\":
+    \"Dispose of empty toothpaste tubes in the yellow recycling bin.\",     \"ExplanationInDe\":
+    \"Entsorgen Sie leere Zahnpastatuben in der Gelben Tonne.\"   },   {     \"Address\":
+    \"TunaCan\",     \"NameInEn\": \"Tuna Can\",     \"NameInDe\": \"Thunfischdose\",    
+    \"ExplanationInEn\": \"Dispose of empty tuna cans in the yellow recycling bin
+    for metals.\",     \"ExplanationInDe\": \"Entsorgen Sie leere Thunfischdosen
+    in der Gelben Tonne f\xFCr Metalle.\"   },   {     \"Address\": \"UsedTissues_1\",    
+    \"NameInEn\": \"Used Tissues\",     \"NameInDe\": \"Benutzte Taschent\xFCcher\",    
+    \"ExplanationInEn\": \"Used tissues belong in the general waste bin.\",     \"ExplanationInDe\":
+    \"Benutzte Taschent\xFCcher geh\xF6ren in den Restm\xFCll.\"   },   {     \"Address\":
+    \"UsedTissues_2\",     \"NameInEn\": \"Used Tissues\",     \"NameInDe\": \"Benutzte
+    Taschent\xFCcher\",     \"ExplanationInEn\": \"Used tissues belong in the general
+    waste bin.\",     \"ExplanationInDe\": \"Benutzte Taschent\xFCcher geh\xF6ren
+    in den Restm\xFCll.\"   },   {     \"Address\": \"WaterBottle\",     \"NameInEn\":
+    \"Bottle of Water\",     \"NameInDe\": \"Wasserflasche\",     \"ExplanationInEn\":
+    \"Pfand-marked plastic bottles should be returned for a deposit refund.\",    
+    \"ExplanationInDe\": \"Wasserflaschen mit Pfand sollten gegen Erstattung des
+    Pfands zur\xFCckgegeben werden.\"   },   {     \"Address\": \"YogurtBox\",    
+    \"NameInEn\": \"Yoghurt\",     \"NameInDe\": \"Joghurtbecher\",     \"ExplanationInEn\":
+    \"Separate the plastic and aluminum foil before disposing of each in the yellow
+    recycling bin.\",     \"ExplanationInDe\": \"Trennen Sie Aludeckel und Kunststoffbecher
+    vor der Entsorgung in der Gelben Tonne.\"   },   {     \"Address\": \"cleanKFC\",    
+    \"NameInEn\": \"Clean KFC Box\",     \"NameInDe\": \"Saubere KFC-Box\",     \"ExplanationInEn\":
+    \"If clean and made entirely of paper or cardboard, it belongs in the paper recycling
+    bin.\",     \"ExplanationInDe\": \"Wenn sie sauber ist und nur aus Pappe besteht,
+    geh\xF6rt sie in die Papiertonne.\"   },   {     \"Address\": \"cleanPizza\",    
+    \"NameInEn\": \"Clean Pizza Box\",     \"NameInDe\": \"Sauberer Pizzakarton\",    
+    \"ExplanationInEn\": \"If clean and made entirely of paper or cardboard, it belongs
+    in the paper recycling bin.\",     \"ExplanationInDe\": \"Wenn er sauber ist,
+    geh\xF6rt der Pizzakarton in die Papiertonne.\"   },   {     \"Address\": \"greasyKFC\",    
+    \"NameInEn\": \"Greasy KFC Box\",     \"NameInDe\": \"Fettige KFC-Box\",    
+    \"ExplanationInEn\": \"Greasy or food-soiled boxes belong in general waste.\",    
+    \"ExplanationInDe\": \"Fettige oder verschmutzte Kartons geh\xF6ren in den Restm\xFCll.\"  
+    },   {     \"Address\": \"greasyPizza\",     \"NameInEn\": \"Greasy Pizza Box\",    
+    \"NameInDe\": \"Fettiger Pizzakarton\",     \"ExplanationInEn\": \"Greasy or
+    food-soiled boxes belong in general waste.\",     \"ExplanationInDe\": \"Stark
+    verschmutzte oder fettige Pizzakartons geh\xF6ren in den Restm\xFCll.\"   },  
+    {     \"Address\": \"receipt1\",     \"NameInEn\": \"Paper Receipt\",     \"NameInDe\":
+    \"Kassenbon\",     \"ExplanationInEn\": \"Paper receipts often contain thermal
+    paper, which is not recyclable; they belong in general waste.\",     \"ExplanationInDe\":
+    \"Kassenbons aus Thermopapier sind nicht recycelbar und geh\xF6ren in den Restm\xFCll.\"  
+    },   {     \"Address\": \"receipt2\",     \"NameInEn\": \"Paper Receipt\",    
+    \"NameInDe\": \"Kassenbon\",     \"ExplanationInEn\": \"Paper receipts often
+    contain thermal paper, which is not recyclable; they belong in general waste.\",    
+    \"ExplanationInDe\": \"Kassenbons aus Thermopapier sind nicht recycelbar und
+    geh\xF6ren in den Restm\xFCll.\"   } ]"

@@ -160,11 +160,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 74cc5f30848534ec684742852f5a23ce
-    m_Address: ToothPaste_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78d03eecdf43ee54c964c4d62d3f31bc
     m_Address: receipt1
     m_ReadOnly: 0
@@ -242,11 +237,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ad757c2da704642699f73c0d161b2bec
     m_Address: Eggshells
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b370f0970deaa46039551a276bd56664
-    m_Address: ToothPaste_3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

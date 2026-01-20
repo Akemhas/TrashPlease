@@ -808,6 +808,7 @@ MonoBehaviour:
   _chatGptService: {fileID: 9009564304795686101}
   _askAiPanel: {fileID: 5992664390043280052}
   _wantToAskAIButton: {fileID: 5230042454888567719}
+  _wantToAskAIButtonText: {fileID: 8818624020142868642}
   _closeAiPanelButton: {fileID: 295104374988296740}
   _questionInput: {fileID: 8618277282481347230}
   _askAiButton: {fileID: 3842016616502472563}

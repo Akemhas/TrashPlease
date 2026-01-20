@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788901760637a4497b8dc019131d5183, type: 3}
+  m_Name: QuestionData_EN
+  m_EditorClassIdentifier: 
+  Questions:
+  - QuestionText: Where does a banana peel belong?
+    Explanation: 
+    CorrectAnswer: Bio waste bin
+    WrongAnswers:
+    - Paper bin
+    - Yellow bin
+    - Residual waste bin
+  - QuestionText: Where should a newspaper be thrown away?
+    Explanation: 
+    CorrectAnswer: Paper bin
+    WrongAnswers:
+    - Bio waste bin
+    - Yellow bin
+    - Residual waste bin
+  - QuestionText: Where does an empty plastic bottle without deposit belong?
+    Explanation: 
+    CorrectAnswer: Yellow bin
+    WrongAnswers:
+    - Glass container
+    - Paper bin
+    - Bio waste bin
+  - QuestionText: What should you do before putting a yogurt cup in the yellow bin?
+    Explanation: 
+    CorrectAnswer: Empty it and remove leftovers
+    WrongAnswers:
+    - Put it in with leftovers
+    - Throw with the lid
+    - Put it in the bio bin
+  - QuestionText: Where does a greasy pizza box belong?
+    Explanation: 
+    CorrectAnswer: Residual waste bin
+    WrongAnswers:
+    - Paper bin
+    - Bio waste bin
+    - Yellow bin
+  - QuestionText: Where should coffee grounds be thrown away?
+    Explanation: 
+    CorrectAnswer: 'Bio waste bin '
+    WrongAnswers:
+    - Yellow bin
+    - Paper bin
+    - Glass container
+  - QuestionText: Where does broken drinking glass belong?
+    Explanation: 
+    CorrectAnswer: Residual waste bin
+    WrongAnswers:
+    - Glass container
+    - Yellow bin
+    - Paper bin
+  - QuestionText: Why should plastic bags (even composable bags) NOT go into the
+      bio waste bin?
+    Explanation: 
+    CorrectAnswer: They do not decompose properly
+    WrongAnswers:
+    - They smell bad
+    - They are too light
+    - They are recyclable as paper
+  - QuestionText: Where does a glass jar lid belong?
+    Explanation: 
+    CorrectAnswer: Yellow bin
+    WrongAnswers:
+    - ' Residual waste bin '
+    - Paper bin
+    - Bio waste bin
+  - QuestionText: What can happen if waste is sorted incorrectly
+    Explanation: 
+    CorrectAnswer: Incorrectly separated waste is not recycled, it is incinerated.
+    WrongAnswers:
+    - Recycling becomes faster
+    - Nothing happens
+    - Waste disappears automatically

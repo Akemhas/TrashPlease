@@ -25,7 +25,7 @@ MonoBehaviour:
       Probability: 20
     - SortType: 0
       Probability: 20
-  - BinCounter: 5
+  - BinCounter: 10
     TrashCount: 1
     SpawnInterval: 3
     TrashProbabilities:
@@ -34,8 +34,6 @@ MonoBehaviour:
     - SortType: 1
       Probability: 20
     - SortType: 2
-      Probability: 20
+      Probability: 30
     - SortType: 3
-      Probability: 20
-    - SortType: 8
-      Probability: 20
+      Probability: 30

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class QuestionPopup : MonoBehaviour
 {
     public event Action PopupClosed;
 
-    [SerializeField] private QuestionData _questionData;
+    private QuestionData QuestionData => SettingsManager.ActiveLanguage != "de" ? _questionDataDe : _questionDataEn;
+    [SerializeField] private QuestionData _questionDataEn;
+    [SerializeField] private QuestionData _questionDataDe;
     [SerializeField] private GameObject _panelHolder;
     [SerializeField] private GameObject _overlay;
     [SerializeField] private Button _closeButton;
@@ -24,7 +27,7 @@ public class QuestionPopup : MonoBehaviour
     private Image _overlayImage;
 
     private Question _currentQuestion;
-    private readonly WaitForSeconds _waitForSeconds = new(3f);
+    private readonly WaitForSecondsRealtime _waitForSeconds = new(0.3f);
     private Coroutine _closeCoroutine;
     [SerializeField] private Vector2 _closeButtonDisabledPosition;
     [SerializeField] private Vector2 _closeButtonEnabledPosition;
@@ -34,6 +37,8 @@ public class QuestionPopup : MonoBehaviour
         get => PlayerPrefs.GetInt(nameof(QuestionIndex), 0);
         set => PlayerPrefs.SetInt(nameof(QuestionIndex), value);
     }
+
+    private int _answerCount;
 
     private void Awake()
     {
@@ -66,17 +71,23 @@ public class QuestionPopup : MonoBehaviour
 
     private void OnAnswerClicked(Answer clickedAnswer)
     {
-        foreach (var answer in _answers)
-        {
-            answer.ToggleButtonActiveness(false);
-            if (answer.IsCorrect) answer.SetCorrect();
-            else if (!clickedAnswer.IsCorrect) answer.SetWrong();
-        }
-
+        _answerCount++;
         if (clickedAnswer.IsCorrect)
         {
             clickedAnswer.SetCorrect();
-            UIManager.Instance.IncreaseCounter(5);
+            AudioManager.Instance.PlaySoundEffect(SoundEffectType.QuizPopup);
+            if (_answerCount < 4)
+            {
+                UIManager.Instance.IncreaseCounter(6 - _answerCount);
+            }
+
+            if (_closeCoroutine != null) StopCoroutine(_closeCoroutine);
+            _closeCoroutine = StartCoroutine(CloseTimer());
+
+            foreach (var answer in _answers)
+            {
+                answer.ToggleButtonActiveness(false);
+            }
         }
         else clickedAnswer.SetWrong();
 
@@ -89,24 +100,21 @@ public class QuestionPopup : MonoBehaviour
             _explanationTMP.transform.parent.gameObject.SetActive(true);
             _explanationTMP.SetText(_currentQuestion.Explanation);
         }
-
-        Tween.UIAnchoredPosition((RectTransform)_closeButton.transform, _closeButtonDisabledPosition, _closeButtonEnabledPosition, .2f, Ease.OutBack);
-
-        if (_closeCoroutine != null) StopCoroutine(_closeCoroutine);
-        _closeCoroutine = StartCoroutine(CloseTimer());
     }
 
     private IEnumerator CloseTimer()
     {
         yield return _waitForSeconds;
-        Close();
+        Close(true);
     }
 
-    public void Open()
+    public void Open(bool isInstant = false)
     {
+        _answerCount = 0;
+        Time.timeScale = 0;
         ((RectTransform)_closeButton.transform).anchoredPosition = _closeButtonDisabledPosition;
         SetupQuestion(GetQuestion());
-        _overlay.SetActive(true);
+        // _overlay.SetActive(true);
         _panelHolder.SetActive(true);
 
         foreach (var answer in _answers)
@@ -115,20 +123,37 @@ public class QuestionPopup : MonoBehaviour
             answer.SetNeutral();
         }
 
-        Tween.Scale(_panelHolder.transform, Vector3.zero, Vector3.one, .2f, Ease.OutBack);
-        Tween.Alpha(_overlayImage, 0, .6f, .2f, Ease.OutBack);
+        if (isInstant)
+        {
+            _panelHolder.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            Tween.Scale(_panelHolder.transform, Vector3.zero, Vector3.one, .2f, Ease.OutBack, useUnscaledTime: true);
+            // Tween.Alpha(_overlayImage, 0, .6f, .2f, Ease.OutBack, useUnscaledTime: true);
+        }
     }
 
-    private void Close()
+    public void Close(bool isInstant = false, bool invokeActions = true)
     {
+        Time.timeScale = 1;
         if (_closeCoroutine != null) StopCoroutine(_closeCoroutine);
-        Tween.Alpha(_overlayImage, .6f, 0, .2f, Ease.InBack);
-        Tween.Scale(_panelHolder.transform, Vector3.one, Vector3.zero, .2f, Ease.InBack)
+        if (isInstant)
+        {
+            _panelHolder.transform.localScale = Vector3.zero;
+            _panelHolder.SetActive(false);
+            // _overlay.SetActive(false);
+            if (invokeActions) PopupClosed?.Invoke();
+            return;
+        }
+
+        // Tween.Alpha(_overlayImage, .6f, 0, .2f, Ease.InBack);
+        Tween.Scale(_panelHolder.transform, Vector3.one, new Vector3(.3f, .3f, .3f), .2f, Ease.InBack)
             .OnComplete(() =>
             {
                 _panelHolder.SetActive(false);
-                _overlay.SetActive(false);
-                PopupClosed?.Invoke();
+                // _overlay.SetActive(false);
+                if (invokeActions) PopupClosed?.Invoke();
             });
     }
 
@@ -164,9 +189,9 @@ public class QuestionPopup : MonoBehaviour
 
     private Question GetQuestion()
     {
-        _currentQuestion = QuestionIndex < _questionData.Questions.Count
-            ? _questionData.Questions[QuestionIndex]
-            : _questionData.Questions[Random.Range(0, _questionData.Questions.Count)];
+        _currentQuestion = QuestionIndex < QuestionData.Questions.Count
+            ? QuestionData.Questions[QuestionIndex]
+            : QuestionData.Questions[Random.Range(0, QuestionData.Questions.Count)];
         return _currentQuestion;
     }
 }

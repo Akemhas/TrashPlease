@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ public class LevelCompletePopup : MonoBehaviour
 {
     [SerializeField] private GameObject _panel, _overlay;
     [SerializeField] private TextMeshProUGUI _titleText;
+    [SerializeField] private TextMeshProUGUI _currentScoreText;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _restartButton;
 
@@ -26,9 +28,15 @@ public class LevelCompletePopup : MonoBehaviour
         _nextAction = nextLevel;
         _restartAction = restartLevel;
 
-        if (_titleText != null)
+        if (SettingsManager.ActiveLanguage == "de")
+        {
+            _titleText.SetText(isLastLevel ? "Letztes Level abgeschlossen!" : "Level abgeschlossen!");
+            _currentScoreText.text = "Aktueller Punktestand: " + GameManager.Score;
+        }
+        else
         {
             _titleText.SetText(isLastLevel ? "Final Level Complete!" : "Level Complete!");
+            _currentScoreText.text = "Current Score: " + GameManager.Score;
         }
 
         if (_nextButton != null) _nextButton.gameObject.SetActive(!isLastLevel);

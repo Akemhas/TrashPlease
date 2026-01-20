@@ -161,7 +161,9 @@ public class TopBinController : MonoBehaviour
 
         int binIndexInLevel = _levelManager != null ? _levelManager.CurrentBinIndexInLevel : BinCounter;
 
-        var sortTypeTrashCount = frequencyData.GetSortTypeForBinIndex(binIndexInLevel, GetAllowedSorts(), GetBiasLookup());
+        var allowedBins = GetAllowedSorts();
+        var biasLookup = GetBiasLookup();
+        var sortTypeTrashCount = frequencyData.GetSortTypeForBinIndex(binIndexInLevel, allowedBins, biasLookup);
         _spawnInterval = frequencyData.GetSpawnIntervalForBinIndex(binIndexInLevel);
 
         var topBin = _topBinPool.Get(sortTypeTrashCount.Item1);
